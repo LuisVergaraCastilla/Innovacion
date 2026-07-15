@@ -26,7 +26,13 @@ st.set_page_config(
 @st.cache_resource
 def cargar_modelo():
     modelo_path = os.path.join(os.path.dirname(__file__), "modelo_beex_produccion.pkl")
-    return joblib.load(modelo_path)
+    modelo = joblib.load(modelo_path)
+    # Corregir incompatibilidad de versión de scikit-learn (probability='deprecated')
+    if hasattr(modelo, "steps") and len(modelo.steps) > 0:
+        svm_step = modelo.steps[-1][1]
+        if hasattr(svm_step, "probability") and svm_step.probability == "deprecated":
+            svm_step.probability = False
+    return modelo
 
 modelo = cargar_modelo()
 
