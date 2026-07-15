@@ -1,0 +1,1471 @@
+texto_interaccion,intencion_cliente,longitud_texto,contiene_urgencia
+ayuda asesor de ventas por favor pucha,Ventas,38,0
+oye quiero renovar mi plan osea,Ventas,31,0
+oye error en el navegador al abrir la app pucha o sea en el sistema,Soporte,67,0
+por favor aplicacion movil no abre se cierra entonces con mi contrato,Soporte,69,0
+ayuda pago con tarjeta rechazado mmm resulta que con mi tarjeta,Facturacion,63,0
+oye kuiero solisitar un reembolso de sobro e,Soporte,44,0
+hola reclamar por cobro excesivo ahh,Reclamos,36,0
+hola necesito mi comprobante pucha,Facturacion,34,0
+por favor no me carga la pagina web ehh resulta que rapido,Reclamos,58,0
+por favor error de login usuario bloqueado pucha,Soporte,48,0
+por favor detalles del ciclo de facturacion ehh y sobre mi cuenta,Facturacion,65,0
+oye kuiero ber mi estado de suenta mmm,Facturacion,38,0
+buenas mi cuenta aparece como suspendida pucha o sea con mi tarjeta,Soporte,67,0
+mi internet no funsiona o sea rapido,Soporte,36,0
+estimados costos adicionales por activacion este... entonces del servicio,Ventas,73,0
+ayuda cuales son las promociones de internet este... o sea rapido,Ventas,65,0
+por favor el servicio de internet esta lento mmm,Soporte,48,0
+me estan cobrando de mas en la factura ahh o sea de la aplicacion,Facturacion,65,0
+ola kuiero aumentar la belosidad sontratada resulta kue son mi sontrato,Ventas,71,0
+duda con el desglose del cobro mmm,Facturacion,34,0
+ayuda falla de red inalambrisa e entonses aora mismo,Soporte,52,0
+hola duda con mi factura del servicio mmm,Facturacion,41,0
+estimados quiero comprar un plan ilimitado osea resulta que para hoy mismo,Ventas,74,0
+costos adicionales por activacion,Ventas,33,0
+ayuda me interesa adkuirir otra linea de serbisio e,Ventas,51,0
+ola no ay señal en mi sona mmm o sea sobre mi suenta,Soporte,52,0
+ola el internet ba a paso de tortuga este... y son mi sontrato,Soporte,62,0
+ayuda pago con tarjeta rechazado este...,Facturacion,40,0
+buenas aclaracion de cargos adicionales ahh,Facturacion,43,0
+falla tecnica en la red local ehh pero sobre mi cuenta,Soporte,54,0
+estimados pagar con tarjeta de credito ehh y de la aplicacion,Facturacion,61,0
+buenos dias no recibo correos de verificacion este...,Soporte,53,0
+hola el internet va a paso de tortuga pucha,Soporte,43,0
+metodos de pago habilitados mmm,Facturacion,31,0
+buenos dias mi computador no se conecta al servidor mmm,Facturacion,55,0
+por favor cambiar clave de mi red inalambrica y sobre mi cuenta,Soporte,63,0
+ayuda cuanto es mi deuda ahh o sea con mi tarjeta,Facturacion,49,0
+kuiero somprar un plan ilimitado,Ventas,32,0
+estimados mi cuenta aparece como suspendida,Soporte,43,0
+ayuda mi internet no funciona osea,Soporte,34,0
+quiero ver mi estado de cuenta ahh,Facturacion,34,0
+estimados exijo una devolucion por falta de servicio pucha,Reclamos,58,0
+por fabor sambiar slabe de mi red inalambrisa a,Soporte,47,0
+buenas quiero pasarme a postpago ehh o sea en el sistema,Ventas,56,0
+buenas el router tiene la luz roja resulta que sobre mi cuenta,Soporte,62,0
+hola la pantalla se queda en blanco osea y de la aplicacion,Soporte,59,0
+oye aclaracion de cargos adicionales,Facturacion,36,0
+buenas costo de instalacion de la fibra pucha,Ventas,45,0
+buenas mi transferencia no pasa este... porque ahora mismo,Facturacion,58,0
+buenas deseo adquirir fibra simetrica mmm entonces rapido,Ventas,57,0
+por favor quiero darme de baja osea entonces ahora mismo,Reclamos,56,1
+estimados el internet va a paso de tortuga este... porque en el sistema,Soporte,71,0
+estimados me cobraron doble estoy harto del servicio ahh,Reclamos,56,1
+ayuda tienen fibra optica este...,Ventas,33,0
+ayuda aplicacion movil no abre se cierra osea,Soporte,45,0
+ayuda soporte con la configuracion del proxy,Soporte,44,0
+buenos dias soporte tesniso urgente por fabor osea,Soporte,50,1
+ayuda exijo solusion inmediata porkue son mi sontrato,Reclamos,53,0
+buenos dias no puedo conectar el wifi osea resulta que para hoy mismo,Soporte,69,0
+estimados boy a denunsiarlos ante el regulador este...,Reclamos,54,0
+oye mi computador no se conecta al servidor ehh resulta que para hoy mismo,Soporte,74,0
+estimados duda son mi fastura del serbisio mmm pero son mi sontrato,Facturacion,67,0
+oye kuiero somprar un plan ilimitado mmm,Ventas,40,0
+estimados no me carga la pagina web pucha,Soporte,41,0
+buenas duda con mi factura del servicio pucha resulta que para hoy mismo,Facturacion,72,0
+buenos dias mi cuenta registra saldo a favor ehh,Facturacion,48,0
+buenas cuales son los requisitos para contratar osea porque ahora mismo,Ventas,71,0
+buenos dias mi internet no funsiona mmm,Soporte,39,0
+hola solicitar cotizacion corporativa este...,Ventas,45,0
+buenas pésima atension al sliente de este bot y del serbisio,Reclamos,60,0
+estimados factura duplicada en mi cuenta osea entonces ahora mismo,Facturacion,66,0
+oye se desconecta a cada rato porque ahora mismo,Soporte,48,0
+por favor la conexion se cae constantemente pucha resulta que ahora mismo,Soporte,73,0
+ayuda no puedo ingresar al sistema,Soporte,34,0
+catalogo de equipos disponibles osea,Ventas,36,0
+ayuda como adquiero un chip nuevo osea,Ventas,38,0
+oye factura duplicada en mi cuenta osea,Facturacion,39,0
+buenos dias no recibo correos de verificacion osea resulta que con mi tarjeta,Soporte,77,0
+por fabor donde pago mi mensualidad osea,Facturacion,40,0
+buenos dias falla de red inalambrica y en el sistema,Soporte,52,0
+hola costo de instalacion de la fibra pucha pero sobre mi cuenta,Ventas,64,0
+por favor mi cuenta aparece como suspendida osea,Soporte,48,0
+hola me siento estafado con este plan pucha y rapido,Reclamos,52,1
+ola presios del pakuete pusa,Ventas,28,0
+por favor tengo un problema de conexion con el servicio ehh porque con mi contrato,Soporte,82,0
+factura duplicada en mi cuenta osea entonces para hoy mismo,Facturacion,59,0
+duda con mi factura del servicio osea resulta que rapido,Facturacion,56,0
+estimados cuales son los requisitos para contratar este...,Ventas,58,0
+por favor aclaracion de cargos adicionales este...,Facturacion,50,0
+ola error de red al dessargar arsibos pusa,Soporte,42,0
+oye llevo dias sin conexion de internet,Reclamos,39,0
+buenos dias facturacion de este mes atrasada este...,Facturacion,52,0
+por favor quiero afiliar mi pago a debito automatico o sea con mi tarjeta,Facturacion,73,0
+donde pago mi mensualidad osea,Facturacion,30,0
+estimados factura duplicada en mi cuenta,Facturacion,40,0
+no puedo conectar el wifi pucha,Soporte,31,0
+oye no resibo sorreos de berifisasion este...,Soporte,45,0
+costo de instalacion pucha,Ventas,26,0
+costo de instalacion de la fibra pucha pero con mi tarjeta,Ventas,58,0
+ayuda la pantalla se kueda en blanso osea,Soporte,41,0
+por favor me interesa el servicio hogar entonces rapido,Ventas,55,0
+estimados informacion de planes este... pero del servicio,Ventas,57,0
+buenas error en el link de pago osea entonces sobre mi cuenta,Facturacion,61,0
+estimados la conexion se cae constantemente mmm,Soporte,47,0
+buenas pagina web dice error 500 osea,Soporte,37,0
+ayuda cambiar mi fecha de vencimiento pucha,Facturacion,43,0
+buenas llevo dias sin conexion de internet pucha y del servicio,Reclamos,63,0
+ayuda costo de instalacion ahh,Ventas,30,0
+hola el internet es una basura,Reclamos,30,1
+estimados pesimo soporte de la app ahh resulta que ahora mismo,Reclamos,62,0
+ola planes familiares de telefonia e,Ventas,36,0
+buenas por que aumento el precio del recibo mmm pero ahora mismo,Facturacion,64,0
+ola solisitar sotisasion sorporatiba a,Ventas,38,0
+ayuda donde reporto mi comprobante ehh pero con mi contrato,Facturacion,59,0
+aplicacion movil no abre se cierra osea,Soporte,39,0
+ayuda me gustaria agregar cable a mi paquete ahh,Ventas,48,0
+buenos dias me estan cobrando de mas en la factura,Facturacion,50,0
+hola mi computador no se conecta al servidor osea,Soporte,49,0
+por favor error de red al descargar archivos,Soporte,44,0
+hola no tengo acceso al portal de clientes este... entonces del servicio,Soporte,72,0
+ola mi transferensia no pasa,Facturacion,28,0
+ola no resonose mis sredensiales,Soporte,32,0
+buenos dias aclaracion de cargos adicionales,Facturacion,44,0
+oye mi transferencia no pasa,Facturacion,28,0
+estimados mi modem parpadea sin parar este...,Soporte,45,0
+buenas que beneficios tiene el plan premium pucha entonces ahora mismo,Ventas,70,0
+buenos dias informacion sobre cobertura de planes osea,Ventas,54,0
+por favor nadie atiende mis reclamos ehh,Reclamos,40,0
+oye me gustaria agregar cable a mi paquete pucha entonces con mi contrato,Ventas,73,0
+buenas quiero darme de baja resulta que para hoy mismo,Reclamos,54,1
+estimados no recibo correos de verificacion osea,Soporte,48,0
+buenas necesito mi comprobante mmm,Facturacion,34,0
+pesimo soporte de la app ehh,Reclamos,28,0
+estimados donde pago mi mensualidad resulta que con mi contrato,Facturacion,63,0
+buenos dias detalles del ciclo de facturacion ehh porque en el sistema,Facturacion,70,0
+estimados mi internet no funciona resulta que del servicio,Soporte,58,0
+ayuda tengo un problema de conexion con el servicio este... porque para hoy mismo,Soporte,81,0
+por favor el monto de este mes es incorrecto pucha,Facturacion,50,0
+ayuda quiero contratar el servicio porque ahora mismo,Ventas,53,0
+buenos dias metodos de pago habilitados ehh y para hoy mismo,Facturacion,60,0
+oye facturacion de este mes atrasada ahh,Facturacion,40,0
+buenas se desconecta a cada rato ehh porque de la aplicacion,Soporte,60,0
+estimados no me llego el cobro osea,Reclamos,35,0
+hola mi cuenta registra saldo a favor ahh y con mi contrato,Facturacion,59,0
+planes familiares de telefonia mmm,Ventas,34,0
+oye soporte con la configuracion del proxy ehh,Soporte,46,0
+hola nadie me da solucion osea,Reclamos,30,0
+buenos dias no reconoce mis credenciales pucha o sea sobre mi cuenta,Soporte,68,0
+buenos dias tengo un problema de conexion con el servicio este...,Soporte,65,0
+ola me siento estafado son este plan,Reclamos,36,1
+hola error de red al descargar archivos,Soporte,39,0
+estimados me prometieron algo que no cumplen este... o sea con mi tarjeta,Reclamos,73,0
+oye me interesa adquirir otra linea de servicio pucha,Ventas,53,0
+mi modem parpadea sin parar osea,Soporte,32,0
+por favor no puedo ingresar al sistema,Soporte,38,0
+estimados no me sarga la pagina web a porkue son mi sontrato,Soporte,60,0
+oye informasion sobre sobertura de planes a,Ventas,43,0
+hola el internet va a paso de tortuga este...,Soporte,45,0
+aclaracion de cargos adicionales ahh pero en el sistema,Facturacion,55,0
+ayuda duda son mi fastura del serbisio osea,Facturacion,43,0
+buenos dias no me llego el cobro ahh,Facturacion,36,0
+oye no reconoce mis credenciales este...,Soporte,40,0
+catalogo de equipos disponibles ahh,Ventas,35,0
+hola me cobraron doble estoy harto del servicio mmm,Reclamos,51,1
+ayuda portabilidad de mi linea mmm,Ventas,34,0
+estimados me estan cobrando de mas en la factura,Facturacion,48,0
+por fabor error de red al dessargar arsibos a porkue son mi sontrato,Soporte,68,0
+por favor mi modem parpadea sin parar osea,Soporte,42,0
+buenas no puedo ingresar al sistema ahh resulta que de la aplicacion,Soporte,68,0
+cobro indebido registrado ahh entonces de la aplicacion,Facturacion,55,0
+ayuda nadie me da solusion pusa,Reclamos,31,0
+hola exijo una devolucion por falta de servicio osea,Reclamos,52,0
+planes familiares de telefonia pucha porque con mi tarjeta,Ventas,58,0
+cuanto es mi deuda este... entonces en el sistema,Facturacion,49,0
+buenos dias quiero contratar telefonia fija,Ventas,43,0
+hola detalles del ciclo de facturacion este...,Facturacion,46,0
+estimados no puedo conectar el wifi osea,Soporte,40,0
+estimados por que aumento el precio del recibo ahh,Facturacion,50,0
+no ay señal en mi sona mmm,Soporte,26,0
+estimados soporte con la configuracion del proxy este... entonces en el sistema,Soporte,79,0
+soporte tesniso urgente por fabor e,Soporte,35,1
+estimados cambiar clave de mi red inalambrica mmm y ahora mismo,Soporte,63,0
+ola no puedo sonestar el wifi a y en el sistema,Soporte,47,0
+hola olvide mi contrasena ahh resulta que sobre mi cuenta,Soporte,57,0
+ayuda mi transferensia no pasa e,Facturacion,32,0
+estimados la sonexion se sae sonstantemente a,Soporte,45,0
+estimados no puedo ingresar al sistema mmm pero de la aplicacion,Soporte,64,0
+ayuda no recibo correos de verificacion osea o sea rapido,Soporte,57,0
+estimados solusionen este problema son el pago ya osea pero para oy mismo,Reclamos,73,1
+por favor nadie me da solucion ehh,Reclamos,34,0
+por fabor resibo en formato digital por fabor osea resulta kue son mi sontrato,Facturacion,78,0
+hola quiero ver mi estado de cuenta mmm porque ahora mismo,Facturacion,58,0
+buenas quiero afiliar mi pago a debito automatico osea,Facturacion,54,0
+me interesa adquirir otra linea de servicio mmm,Soporte,47,0
+buenas metodos de pago habilitados osea,Facturacion,39,0
+buenos dias satalogo de ekuipos disponibles osea o sea para oy mismo,Ventas,68,0
+oye mi somputador no se sonesta al serbidor este... porkue sobre mi suenta,Soporte,74,0
+buenas aplisasion mobil no abre se sierra e pero en el sistema,Soporte,62,0
+me cobraron doble estoy harto del servicio mmm,Reclamos,46,1
+estimados cambiar clave de mi red inalambrica ahh,Soporte,49,0
+buenas es la tercera vez que llamo por lo mismo,Reclamos,47,0
+buenas aplicacion movil no abre se cierra mmm o sea rapido,Soporte,58,0
+buenos dias que beneficios tiene el plan premium ehh,Ventas,52,0
+problemas para ingresar ahh,Soporte,27,0
+ayuda exijo solucion inmediata ahh entonces sobre mi cuenta,Reclamos,59,0
+oye informacion de planes pucha,Ventas,31,0
+buenas informacion sobre cobertura de planes y sobre mi cuenta,Ventas,62,0
+hola confirmar si ya ingreso mi pago pucha o sea rapido,Facturacion,55,1
+ayuda soporte con la configuracion del proxy este...,Soporte,52,0
+me siento estafado con este plan mmm pero ahora mismo,Reclamos,53,1
+buenos dias soporte tecnico urgente por favor ahh,Soporte,49,1
+buenas nadie me da solucion ehh resulta que en el sistema,Reclamos,57,0
+hola falla de red inalambrica este...,Soporte,37,0
+estimados el internet es una basura este... pero de la aplisasion,Reclamos,65,1
+ola detalles del sislo de fasturasion e pero del serbisio,Facturacion,57,0
+oye falla tecnica en la red local pucha,Soporte,39,0
+hola donde reporto mi comprobante este...,Facturacion,41,0
+buenos dias quiero contratar telefonia fija pucha pero con mi contrato,Ventas,70,0
+estimados no hay señal en mi zona mmm entonces sobre mi cuenta,Soporte,62,0
+oye descuento no aplicado en el recibo ehh o sea con mi contrato,Facturacion,64,0
+por kue aumento el presio del resibo osea,Facturacion,41,0
+buenas factura duplicada en mi cuenta osea,Facturacion,42,0
+buenos dias aclaracion de cargos adicionales pucha,Facturacion,50,0
+ola kuiero suspender el serbisio definitibamente,Reclamos,48,0
+oye falla tecnica en la red local este...,Soporte,41,0
+estimados costos adicionales por activacion ehh pero en el sistema,Ventas,66,0
+hola el router tiene la luz roja entonces con mi tarjeta,Soporte,56,0
+buenas mi computador no se conecta al servidor ahh,Soporte,50,0
+aclaracion de cargos adicionales osea,Facturacion,37,0
+buenos dias tengo un problema de conexion con el servicio osea,Soporte,62,0
+buenos dias voy a denunciarlos ante el regulador este... entonces ahora mismo,Reclamos,77,1
+cobro indebido registrado ahh resulta que del servicio,Facturacion,54,0
+buenos dias no resonose mis sredensiales e,Soporte,42,0
+ayuda kuiero ressindir mi sontrato,Reclamos,34,0
+buenas necesito mi comprobante osea o sea de la aplicacion,Facturacion,58,0
+hola planes postpago con gigas libres osea,Ventas,42,0
+oye cambiar clave de mi red inalambrica ehh,Soporte,43,0
+hola costo de instalacion este...,Ventas,33,0
+por favor pagina web dice error 500 ehh entonces sobre mi cuenta,Soporte,64,0
+buenos dias duda con mi factura del servicio pucha y rapido,Facturacion,59,0
+buenos dias no me carga la pagina web pucha,Soporte,43,0
+hola me estan cobrando de mas en la factura,Facturacion,43,0
+me estan cobrando de mas en la factura mmm,Facturacion,42,0
+por favor pago pendiente sin procesar pero con mi tarjeta,Facturacion,57,0
+hola costos adicionales por activacion pucha entonces del servicio,Ventas,66,0
+buenos dias me gustaria agregar cable a mi paquete mmm porque para hoy mismo,Ventas,76,0
+por favor error de red al descargar archivos ehh,Soporte,48,0
+oye promociones para clientes nuevos pucha,Ventas,42,0
+hola catalogo de equipos disponibles este...,Ventas,44,0
+ayuda no reconoce mis credenciales ehh entonces con mi contrato,Soporte,63,0
+hola la pantalla se queda en blanco ahh resulta que en el sistema,Soporte,65,0
+hola detalles del ciclo de facturacion pucha y de la aplicacion,Facturacion,63,0
+oye aplicacion movil no abre se cierra ehh,Soporte,42,0
+por favor voy a presentar una queja sobre mi cuenta ehh,Reclamos,55,1
+cambiar clave de mi red inalambrica porque con mi contrato,Soporte,58,0
+por favor error en el link de pago,Facturacion,34,0
+oye nadie me da solucion osea entonces rapido,Reclamos,45,0
+no puedo ingresar al sistema pusa,Soporte,33,0
+mi internet no funciona este...,Soporte,31,0
+pagina web dice error 500 este...,Soporte,33,0
+estimados quiero suspender el servicio definitivamente osea y sobre mi cuenta,Reclamos,77,0
+buenos dias nadie me da solucion o sea en el sistema,Reclamos,52,0
+ayuda que beneficios tiene el plan premium este... resulta que con mi contrato,Ventas,78,0
+informacion de planes mmm,Ventas,25,0
+ayuda nadie me da solucion ehh resulta que con mi contrato,Reclamos,58,0
+falla de red inalambrica o sea de la aplicacion,Soporte,47,0
+buenos dias factura duplicada en mi cuenta pero de la aplicacion,Facturacion,64,0
+oye falla de red inalambrisa osea,Soporte,33,0
+hola nadie me da solucion este...,Reclamos,33,0
+buenos dias tengo un problema de conexion con el servicio ehh entonces rapido,Soporte,77,0
+buenas la conexion se cae constantemente este...,Soporte,48,0
+buenas se desconecta a cada rato mmm,Soporte,36,0
+buenos dias pesimo soporte de la app,Reclamos,36,0
+oye aplicacion movil no abre se cierra este... porque ahora mismo,Soporte,65,0
+buenos dias planes familiares de telefonia e,Ventas,44,0
+por favor planes postpago con gigas libres pucha,Ventas,48,0
+buenos dias olbide mi sontrasena a,Soporte,34,0
+oye cambiar mi fecha de vencimiento pucha pero ahora mismo,Facturacion,58,0
+ayuda pago con tarjeta rechazado ahh resulta que para hoy mismo,Facturacion,63,0
+ola asesor de bentas por fabor mmm porkue sobre mi suenta,Ventas,57,0
+buenas cuales son las promociones de internet pucha,Ventas,51,0
+por favor cambiar mi fecha de vencimiento ahh entonces del servicio,Facturacion,67,0
+estimados sosto de instalasion mmm,Ventas,34,0
+la sonexion se sae sonstantemente e,Soporte,35,0
+oye precios del paquete este...,Ventas,31,0
+por fabor no me sarga la pagina web este... porkue aora mismo,Soporte,61,0
+estimados me prometieron algo que no cumplen pucha entonces con mi tarjeta,Reclamos,74,0
+ayuda aclaracion de cargos adicionales ahh,Facturacion,42,0
+por fabor su serbisio es una porkueria mmm o sea en el sistema,Reclamos,62,0
+hola duda con el desglose del cobro ehh porque con mi tarjeta,Facturacion,61,0
+estimados quiero contratar telefonia fija ahh,Ventas,45,0
+oye pago con tarjeta rechazado ehh,Facturacion,34,0
+ayuda planes familiares de telefonia o sea son mi tarjeta,Ventas,57,0
+por favor facturacion de este mes atrasada ehh,Facturacion,46,0
+buenos dias me estan cobrando de mas en la factura pucha,Facturacion,56,0
+estimados voy a denunciarlos ante el regulador ehh o sea sobre mi cuenta,Reclamos,72,1
+ayuda necesito resetear mi clave de la cuenta,Soporte,45,0
+buenas problemas para ingresar e,Soporte,32,0
+oye quiero contratar el servicio mmm porque rapido,Ventas,50,0
+oye quiero ver mi estado de cuenta o sea de la aplicacion,Facturacion,57,0
+por favor portabilidad de mi linea o sea con mi tarjeta,Ventas,55,0
+hola error en el navegador al abrir la app ahh,Soporte,46,0
+buenos dias pago con tarjeta rechazado ehh,Facturacion,42,0
+ayuda quiero solicitar un reembolso de cobro ahh,Facturacion,48,0
+por fabor no ay señal en mi sona a,Soporte,34,0
+estimados portabilidad de mi linea ehh,Ventas,38,0
+buenas factura duplicada en mi cuenta osea y ahora mismo,Facturacion,56,0
+estimados quiero cancelar mi cuenta ya mmm entonces ahora mismo,Reclamos,63,1
+estimados se desconecta a cada rato este...,Soporte,43,0
+ayuda me interesa el servicio hogar ahh porque para hoy mismo,Ventas,61,0
+ayuda me prometieron algo que no cumplen mmm,Reclamos,44,0
+oye el internet es una basura mmm resulta que con mi contrato,Reclamos,61,1
+oye cuales son los requisitos para contratar osea pero del servicio,Ventas,67,0
+error de login usuario bloqueado osea pero sobre mi cuenta,Soporte,58,0
+por favor quiero dar de alta mi ruc,Facturacion,35,0
+estimados no recibo correos de verificacion,Soporte,43,0
+por favor se cayo la red este...,Soporte,32,0
+buenas kuiero aumentar la belosidad sontratada pusa,Ventas,51,0
+ayuda costos adicionales por activacion osea,Ventas,44,0
+buenas mi internet no funciona este... pero en el sistema,Soporte,57,0
+ayuda recibo en formato digital por favor osea o sea para hoy mismo,Facturacion,67,0
+hola es la tercera vez que llamo por lo mismo osea,Reclamos,50,0
+ayuda necesito mi comprobante osea pero en el sistema,Facturacion,53,0
+promociones para clientes nuevos ehh pero con mi tarjeta,Ventas,56,0
+buenos dias por que aumento el precio del recibo pucha,Facturacion,54,0
+por favor quiero afiliar mi pago a debito automatico pucha o sea ahora mismo,Facturacion,76,0
+oye problemas para ingresar mmm,Soporte,31,0
+buenas quiero comprar un plan ilimitado este...,Ventas,47,0
+hola me siento estafado con este plan ehh,Reclamos,41,1
+buenas quiero solicitar un reembolso de cobro ahh,Facturacion,49,0
+buenas exijo hablar con un supervisor por este cobro ahh,Reclamos,56,1
+por favor no me llego el cobro,Facturacion,30,0
+estimados necesito mi comprobante,Facturacion,33,0
+quiero solicitar un reembolso de cobro osea y con mi contrato,Facturacion,61,0
+por favor comprar nuevo equipo este...,Ventas,38,0
+buenas soporte tesniso urgente por fabor e porkue son mi sontrato,Soporte,65,1
+estimados planes postpago con gigas libres ahh,Ventas,46,0
+buenas resibo en formato digital por fabor este... pero para oy mismo,Facturacion,69,0
+ayuda problemas para ingresar osea o sea con mi tarjeta,Soporte,55,0
+estimados problemas para ingresar ehh,Soporte,37,0
+oye falla tesnisa en la red losal este...,Soporte,41,0
+ayuda cambiar clave de mi red inalambrica pucha,Soporte,47,0
+informacion sobre cobertura de planes osea entonces sobre mi cuenta,Ventas,67,0
+buenos dias facturacion de este mes atrasada mmm,Facturacion,48,0
+solicitar cotizacion corporativa mmm o sea ahora mismo,Ventas,54,0
+por fabor no puedo ingresar al sistema mmm porkue son mi sontrato,Soporte,65,0
+oye falla de red inalambrica ehh,Soporte,32,0
+por favor soporte con la configuracion del proxy ahh,Soporte,52,0
+hola quiero contratar telefonia fija osea o sea rapido,Ventas,54,0
+ayuda facturacion de este mes atrasada pucha,Facturacion,44,0
+ayuda donde reporto mi comprobante ahh o sea en el sistema,Facturacion,58,0
+hola no tengo acceso al portal de clientes,Soporte,42,0
+estimados informacion de planes este... entonces de la aplicacion,Ventas,65,0
+buenas mi modem parpadea sin parar ahh,Soporte,38,0
+buenas quiero contratar el servicio pucha porque con mi contrato,Ventas,64,0
+oye el router tiene la luz roja pucha,Soporte,37,0
+error de login usuario bloqueado ahh,Soporte,36,0
+oye la pantalla se queda en blanco pucha,Soporte,40,0
+ayuda me siento estafado son este plan a resulta kue son mi tarjeta,Reclamos,67,1
+por favor el sistema esta caido ahh,Soporte,35,0
+buenas mi internet no funciona mmm,Facturacion,34,0
+por favor quiero contratar telefonia fija,Ventas,41,0
+oye pésima atencion al cliente de este bot osea pero del servicio,Reclamos,65,0
+buenas llevo dias sin conexion de internet mmm o sea con mi tarjeta,Reclamos,67,0
+ola duda son mi fastura del serbisio este... entonses aora mismo,Facturacion,64,0
+ayuda nadie me da solucion ahh,Reclamos,30,0
+hola factura duplicada en mi cuenta ehh,Facturacion,39,0
+hola duda con el desglose del cobro mmm y para hoy mismo,Facturacion,56,0
+ola me interesa adkuirir otra linea de serbisio este...,Ventas,55,0
+ola planes familiares de telefonia pusa,Ventas,39,0
+ola suales son las promosiones de internet a,Ventas,44,0
+ayuda recibo en formato digital por favor mmm resulta que con mi tarjeta,Facturacion,72,0
+buenas quiero renovar mi plan osea porque ahora mismo,Ventas,53,0
+ayuda quiero dar de alta mi ruc osea porque sobre mi cuenta,Facturacion,59,0
+estimados mi computador no se conecta al servidor mmm,Soporte,53,0
+estimados tengo un problema con el servicio es pesimo mmm pero rapido,Reclamos,69,0
+hola error de red al descargar archivos pucha,Soporte,45,0
+ola duda son el desglose del sobro osea o sea son mi tarjeta,Facturacion,60,0
+por favor es un robo este cobro de penalidad mmm,Reclamos,48,1
+oye factura duplicada en mi cuenta ahh,Facturacion,38,0
+estimados quiero rescindir mi contrato mmm,Reclamos,42,0
+por favor la conexion se cae constantemente pucha porque rapido,Soporte,63,0
+por favor problemas para ingresar ahh y en el sistema,Soporte,53,0
+buenas mi computador no se conecta al servidor ehh porque rapido,Soporte,64,0
+oye kuiero sontratar el serbisio porkue de la aplisasion,Ventas,56,0
+oye mi cuenta aparece como suspendida,Soporte,37,0
+buenos dias cambiar clave de mi red inalambrica ehh resulta que en el sistema,Soporte,77,0
+oye quiero dar de alta mi ruc mmm,Facturacion,33,0
+buenos dias quiero solicitar un reembolso de cobro,Facturacion,50,0
+por favor el router tiene la luz roja osea,Soporte,42,0
+ayuda donde reporto mi comprobante este... entonces sobre mi cuenta,Facturacion,67,0
+estimados por que aumento el precio del recibo pucha porque con mi tarjeta,Facturacion,74,0
+problemas para ingresar pucha,Soporte,29,0
+estimados mi cuenta aparece como suspendida ehh,Soporte,47,0
+se cayo la red pucha pero en el sistema,Soporte,39,0
+estimados quiero pasarme a postpago pucha,Reclamos,41,0
+buenas quiero suspender el servicio definitivamente pucha,Reclamos,57,0
+problemas para ingresar o sea sobre mi suenta,Soporte,45,0
+oye costo de instalacion de la fibra mmm entonces con mi tarjeta,Ventas,64,0
+estimados mi computador no se conecta al servidor ahh porque en el sistema,Soporte,74,0
+hola pésima atencion al cliente de este bot ahh y de la aplicacion,Reclamos,66,0
+buenas cuales son las promociones de internet resulta que ahora mismo,Ventas,69,0
+estimados duda son el desglose del sobro este...,Facturacion,48,0
+buenos dias facturacion de este mes atrasada ahh,Facturacion,48,0
+buenas mi modem parpadea sin parar ahh resulta que sobre mi cuenta,Soporte,66,0
+hola necesito resetear mi clave de la cuenta este...,Soporte,52,0
+duda con mi factura del servicio este...,Facturacion,40,0
+buenas falla tecnica en la red local pucha,Soporte,42,0
+estimados problemas para ingresar a o sea del serbisio,Soporte,54,0
+no reconoce mis credenciales mmm,Soporte,32,0
+somprar nuebo ekuipo osea,Ventas,25,0
+quiero renovar mi plan pucha y en el sistema,Ventas,44,0
+informacion sobre cobertura de planes pucha y sobre mi cuenta,Ventas,61,0
+ayuda pagar con tarjeta de credito osea,Facturacion,39,0
+por favor cuales son las promociones de internet ahh,Ventas,52,0
+por favor quiero contratar el servicio,Ventas,38,0
+hola mi internet no funciona mmm porque en el sistema,Soporte,53,0
+buenos dias cobro indebido registrado osea entonces sobre mi cuenta,Facturacion,67,0
+oye kuiero sontratar telefonia fija este...,Ventas,43,0
+buenas cuales son las promociones de internet ahh resulta que rapido,Ventas,68,0
+buenas exijo solucion inmediata mmm o sea de la aplicacion,Reclamos,58,0
+oye solucionen este problema con el pago ya ehh porque con mi contrato,Reclamos,70,1
+oye mi modem parpadea sin parar mmm,Soporte,35,0
+por favor el router tiene la luz roja ahh,Soporte,41,0
+buenas nadie me da solusion este...,Reclamos,35,0
+hola necesito resetear mi clave de la cuenta ehh o sea del servicio,Soporte,67,0
+ayuda es un robo este cobro de penalidad mmm o sea en el sistema,Reclamos,64,1
+buenos dias no puedo ingresar al sistema osea,Soporte,45,0
+ayuda me siento estafado son este plan este...,Reclamos,46,1
+estimados quiero dar de alta mi ruc ahh,Facturacion,39,0
+soporte con la configuracion del proxy ahh,Soporte,42,0
+oye duda con mi factura del servicio mmm y en el sistema,Facturacion,56,0
+ayuda no tengo acceso al portal de clientes ahh,Soporte,47,0
+por fabor error en el nabegador al abrir la app pusa,Soporte,52,0
+buenas donde pago mi mensualidad pucha,Facturacion,38,0
+estimados error de red al descargar archivos mmm resulta que sobre mi cuenta,Soporte,76,0
+no recibo correos de verificacion pucha,Soporte,39,0
+no recibo correos de verificacion osea,Soporte,38,0
+estimados exijo hablar con un supervisor por este cobro mmm o sea de la aplicacion,Reclamos,82,1
+ayuda suales son los rekuisitos para sontratar a,Ventas,48,0
+ayuda llebo dias sin sonexion de internet e entonses en el sistema,Reclamos,66,0
+portabilidad de mi linea osea,Ventas,29,0
+hola tienen fibra optica osea,Ventas,29,0
+oye no me llego el cobro ahh pero en el sistema,Facturacion,47,0
+duda con el desglose del cobro ehh y ahora mismo,Facturacion,48,0
+buenas metodos de pago abilitados a,Facturacion,35,0
+hola quiero cancelar mi cuenta ya ahh resulta que ahora mismo,Reclamos,61,1
+deseo adquirir fibra simetrica,Ventas,30,0
+oye error en el link de pago osea resulta que de la aplicacion,Facturacion,62,0
+estimados quiero ver mi estado de cuenta osea porque rapido,Facturacion,59,0
+hola soporte con la configuracion del proxy pucha y en el sistema,Soporte,65,0
+soporte tesniso urgente por fabor este... pero rapido,Soporte,53,1
+buenos dias duda son mi fastura del serbisio mmm,Facturacion,48,0
+ayuda voy a denunciarlos ante el regulador pucha porque de la aplicacion,Reclamos,72,1
+oye cuales son los requisitos para contratar ahh porque en el sistema,Ventas,69,0
+ayuda quiero dar de alta mi ruc este...,Facturacion,39,0
+oye mi internet no funciona pero de la aplicacion,Soporte,49,0
+estimados velocidad de internet inestable mmm entonces con mi contrato,Soporte,70,0
+hola el servicio de internet esta lento este... entonces para hoy mismo,Soporte,71,0
+por favor error en el navegador al abrir la app pucha,Soporte,53,0
+no puedo ingresar al sistema pucha,Soporte,34,0
+ayuda solusionen este problema son el pago ya mmm,Reclamos,49,1
+buenas problemas para ingresar este...,Soporte,38,0
+buenas sostos adisionales por astibasion pusa,Ventas,45,0
+buenos dias mi modem parpadea sin parar mmm resulta que de la aplicacion,Soporte,72,0
+buenas pagina web dice error 500 este... entonces con mi tarjeta,Soporte,64,0
+buenas necesito mi comprobante mmm resulta que con mi tarjeta,Facturacion,61,0
+hola donde pago mi mensualidad pucha,Facturacion,36,0
+buenos dias necesito resetear mi clave de la cuenta pucha,Soporte,57,0
+buenos dias error en el link de pago,Facturacion,36,0
+hola descuento no aplicado en el recibo ehh pero para hoy mismo,Facturacion,63,0
+buenas error en el link de pago,Facturacion,31,0
+cuales son las promociones de internet,Ventas,38,0
+hola quiero suspender el servicio definitivamente ahh porque con mi tarjeta,Reclamos,75,0
+estimados donde reporto mi comprobante ehh,Facturacion,42,0
+buenos dias voy a presentar una queja sobre mi cuenta osea,Reclamos,58,1
+buenos dias metodos de pago habilitados ahh pero del servicio,Facturacion,61,0
+buenas cobro indebido registrado,Facturacion,32,0
+buenas quiero afiliar mi pago a debito automatico ahh,Facturacion,53,0
+por fabor kuiero afiliar mi pago a debito automatiso mmm,Facturacion,56,0
+oye no hay señal en mi zona osea resulta que de la aplicacion,Soporte,61,0
+buenos dias kuiero pasarme a postpago o sea sobre mi suenta,Ventas,59,0
+el router tiene la luz roja y con mi contrato,Soporte,45,0
+buenos dias servicio inestable exijo cancelacion sin penalidad pucha o sea con mi tarjeta,Reclamos,89,0
+ola problemas para ingresar mmm,Soporte,31,0
+que beneficios tiene el plan premium pucha resulta que en el sistema,Ventas,68,0
+hola como adquiero un chip nuevo ehh,Ventas,36,0
+oye kue benefisios tiene el plan premium a pero son mi sontrato,Ventas,63,0
+buenos dias es la tercera vez que llamo por lo mismo,Reclamos,52,0
+descuento no aplicado en el recibo ahh,Facturacion,38,0
+por favor su servicio es una porqueria este...,Reclamos,46,0
+estimados fasturasion de este mes atrasada e resulta kue para oy mismo,Facturacion,70,0
+oye la conexion se cae constantemente pucha porque rapido,Soporte,57,0
+buenos dias metodos de pago habilitados este...,Facturacion,47,0
+por fabor error en el nabegador al abrir la app este...,Soporte,55,0
+buenas que beneficios tiene el plan premium osea,Ventas,48,0
+por favor falla de red inalambrica ehh,Soporte,38,0
+buenas tengo un problema de conexion con el servicio este...,Ventas,60,0
+estimados servicio inestable exijo cancelacion sin penalidad pucha,Reclamos,66,0
+hola la conexion se cae constantemente resulta que con mi tarjeta,Soporte,65,0
+por favor donde reporto mi comprobante este...,Facturacion,46,0
+estimados voy a denunciarlos ante el regulador,Facturacion,46,1
+velocidad de internet inestable pucha,Soporte,37,0
+costos adicionales por activacion ehh o sea ahora mismo,Ventas,55,0
+ayuda cobro indebido registrado mmm,Facturacion,35,0
+buenos dias la sonexion se sae sonstantemente pero son mi sontrato,Soporte,66,0
+por favor quiero dar de alta mi ruc pero rapido,Facturacion,47,0
+buenas se cayo la red este... entonces con mi contrato,Soporte,54,0
+oye error en el navegador al abrir la app este...,Soporte,49,0
+oye me siento estafado con este plan osea,Reclamos,41,1
+buenas sobro indebido registrado este...,Facturacion,40,0
+ayuda mi cuenta aparece como suspendida este... o sea con mi tarjeta,Soporte,68,0
+estimados kuiero ber mi estado de suenta e,Reclamos,42,0
+hola donde pago mi mensualidad,Facturacion,30,0
+hola no reconoce mis credenciales ahh,Soporte,37,0
+ola kuiero pagar mi resibo osea,Facturacion,31,0
+buenos dias tengo un problema de conexion con el servicio,Soporte,57,0
+hola exijo hablar con un supervisor por este cobro osea,Reclamos,55,1
+buenos dias velocidad de internet inestable mmm o sea de la aplicacion,Soporte,70,0
+por favor catalogo de equipos disponibles mmm,Ventas,45,0
+ola deseo adkuirir fibra simetrisa a pero para oy mismo,Ventas,55,0
+estimados me gustaria agregar cable a mi paquete mmm,Ventas,52,0
+ayuda factura duplicada en mi cuenta,Facturacion,36,0
+buenas informacion sobre cobertura de planes,Ventas,44,0
+estimados soporte tecnico urgente por favor ahh,Soporte,47,1
+ayuda duda con el desglose del cobro ahh,Facturacion,40,0
+buenas metodos de pago habilitados ehh entonces para hoy mismo,Facturacion,62,0
+no recibo correos de verificacion,Soporte,33,0
+ayuda el router tiene la luz roja osea,Soporte,38,0
+oye es la tercera vez que llamo por lo mismo pucha,Reclamos,50,0
+oye se cayo la red pucha,Soporte,24,0
+detalles del ciclo de facturacion o sea del servicio,Facturacion,52,0
+buenos dias error de login usuario bloqueado pucha,Soporte,50,0
+estimados voy a denunciarlos ante el regulador ehh,Reclamos,50,1
+oye kue benefisios tiene el plan premium este... pero sobre mi suenta,Ventas,69,0
+buenas cuales son las promociones de internet mmm o sea con mi contrato,Ventas,71,0
+buenas pago con tarjeta rechazado mmm,Facturacion,37,0
+cobro indebido registrado osea resulta que de la aplicacion,Facturacion,59,0
+buenos dias necesito resetear mi clave de la cuenta osea porque para hoy mismo,Soporte,78,0
+oye solucionen este problema con el pago ya osea pero con mi contrato,Reclamos,69,1
+ola sostos adisionales por astibasion este... porkue para oy mismo,Ventas,66,0
+por favor el monto de este mes es incorrecto este... o sea con mi tarjeta,Facturacion,73,0
+ayuda no reconoce mis credenciales pucha,Soporte,40,0
+por fabor falla de red inalambrisa osea,Soporte,39,0
+oye soporte con la configuracion del proxy pucha o sea de la aplicacion,Soporte,71,0
+hola por que aumento el precio del recibo este... o sea con mi tarjeta,Facturacion,70,0
+oye mi cuenta registra saldo a favor pero de la aplicacion,Facturacion,58,0
+buenas la pantalla se kueda en blanso este...,Soporte,45,0
+necesito resetear mi clave de la cuenta,Soporte,39,0
+ayuda soporte con la configuracion del proxy osea,Soporte,49,0
+oye no me llego el cobro ahh porque del servicio,Facturacion,48,0
+por favor quiero cancelar mi cuenta ya pucha,Reclamos,44,1
+reclamar por cobro excesivo ahh,Reclamos,31,0
+buenos dias por kue aumento el presio del resibo pusa resulta kue son mi sontrato,Soporte,81,0
+ayuda nadie atiende mis reclamos porque con mi contrato,Reclamos,55,0
+ayuda no reconoce mis credenciales,Soporte,34,0
+buenas quiero afiliar mi pago a debito automatico osea pero rapido,Facturacion,66,0
+por favor la pantalla se queda en blanco osea resulta que rapido,Soporte,64,0
+buenos dias su serbisio es una porkueria este... o sea son mi tarjeta,Reclamos,69,0
+el router tiene la luz roja ehh porque sobre mi cuenta,Soporte,54,0
+oye recibo en formato digital por favor pucha o sea del servicio,Facturacion,64,0
+hola por que aumento el precio del recibo osea,Facturacion,46,0
+buenos dias cuales son los requisitos para contratar mmm resulta que rapido,Ventas,75,0
+cambiar mi fecha de vencimiento,Facturacion,31,0
+ayuda nadie atiende mis reclamos este... o sea con mi tarjeta,Reclamos,61,0
+ayuda me gustaria agregar cable a mi paquete este... pero con mi contrato,Ventas,73,0
+estimados asesor de ventas por favor ehh,Ventas,40,0
+buenas la pantalla se queda en blanco pucha,Soporte,43,0
+estimados falla de red inalambrisa e porkue son mi tarjeta,Soporte,58,0
+ayuda catalogo de equipos disponibles mmm y de la aplicacion,Ventas,60,0
+estimados mi computador no se conecta al servidor este... pero con mi tarjeta,Ventas,77,0
+por favor informacion de planes o sea del servicio,Ventas,50,0
+estimados me siento estafado con este plan este...,Reclamos,50,1
+buenas su servicio es una porqueria,Reclamos,35,0
+buenas su serbisio es una porkueria osea,Reclamos,40,0
+buenos dias metodos de pago habilitados,Facturacion,39,0
+ayuda costo de instalacion de la fibra mmm resulta que en el sistema,Reclamos,68,0
+buenas no recibo correos de verificacion mmm,Soporte,44,0
+buenos dias asesor de ventas por favor mmm,Ventas,42,0
+por favor costo de instalacion ehh,Ventas,34,0
+buenas el internet es una basura ehh,Reclamos,36,1
+oye nesesito resetear mi slabe de la suenta osea,Soporte,48,0
+hola confirmar si ya ingreso mi pago osea,Facturacion,41,1
+estimados aclaracion de cargos adicionales pucha,Facturacion,48,0
+por fabor exijo solusion inmediata e y del serbisio,Reclamos,51,0
+hola necesito mi comprobante osea pero con mi contrato,Facturacion,54,0
+buenas quiero cancelar mi cuenta ya ehh entonces en el sistema,Reclamos,62,1
+estimados mi modem parpadea sin parar ehh pero del servicio,Soporte,59,0
+buenas se desconecta a cada rato pucha,Soporte,38,0
+ayuda quiero contratar el servicio porque rapido,Ventas,48,0
+ola olbide mi sontrasena entonses en el sistema,Soporte,47,0
+buenos dias voy a presentar una queja sobre mi cuenta mmm,Reclamos,57,1
+hola duda con mi factura del servicio ahh,Facturacion,41,0
+hola mi computador no se conecta al servidor ahh,Ventas,48,0
+el router tiene la luz roja este...,Soporte,35,0
+ayuda voy a presentar una queja sobre mi cuenta este...,Reclamos,55,1
+no puedo ingresar al sistema este...,Soporte,36,0
+olvide mi contrasena pucha,Soporte,26,0
+buenos dias kuiero ber mi estado de suenta mmm o sea de la aplisasion,Facturacion,69,0
+hola por que aumento el precio del recibo o sea con mi contrato,Facturacion,63,0
+buenos dias no reconoce mis credenciales pucha y rapido,Soporte,55,0
+por favor metodos de pago habilitados ahh o sea de la aplicacion,Facturacion,64,0
+estimados no tengo acceso al portal de clientes ahh,Soporte,51,0
+costo de instalacion mmm pero de la aplicacion,Ventas,46,0
+buenas error de login usuario bloqueado osea,Soporte,44,0
+ayuda metodos de pago habilitados pucha porque con mi tarjeta,Facturacion,61,0
+oye solucionen este problema con el pago ya pucha,Reclamos,49,1
+buenos dias pago con tarjeta rechazado ehh y rapido,Facturacion,51,0
+por favor se desconecta a cada rato ehh resulta que del servicio,Soporte,64,0
+buenos dias kue benefisios tiene el plan premium mmm,Ventas,52,0
+buenos dias pagina web dice error 500 pucha o sea rapido,Soporte,56,0
+duda son el desglose del sobro osea porkue son mi sontrato,Facturacion,58,0
+buenas quiero afiliar mi pago a debito automatico,Facturacion,49,0
+ola error de login usuario blokueado a,Soporte,38,0
+buenos dias es la tercera vez que llamo por lo mismo mmm,Reclamos,56,0
+por favor es un robo este cobro de penalidad ahh o sea rapido,Reclamos,61,1
+hola planes postpago con gigas libres pucha entonces en el sistema,Ventas,66,0
+estimados planes familiares de telefonia ehh,Ventas,44,0
+buenos dias me siento estafado con este plan mmm pero para hoy mismo,Reclamos,68,1
+estimados error de login usuario blokueado pusa,Soporte,47,0
+buenos dias su servicio es una porqueria osea o sea con mi tarjeta,Reclamos,66,0
+hola no tengo acceso al portal de clientes pucha,Soporte,48,0
+buenos dias necesito resetear mi clave de la cuenta ahh resulta que del servicio,Soporte,80,0
+estimados suales son los rekuisitos para sontratar osea,Ventas,55,0
+estimados no hay señal en mi zona ehh,Soporte,37,0
+buenos dias promociones para clientes nuevos,Ventas,44,0
+oye somo adkuiero un sip nuebo a entonses para oy mismo,Ventas,55,0
+ayuda mi modem parpadea sin parar mmm,Soporte,37,0
+buenas mi transferensia no pasa mmm,Ventas,35,0
+hola costos adicionales por activacion osea porque rapido,Ventas,57,0
+buenos dias el monto de este mes es incorrecto osea,Facturacion,51,0
+ayuda quiero comprar un plan ilimitado pucha porque en el sistema,Ventas,65,0
+oye el internet es una basura este... y con mi contrato,Reclamos,55,1
+ayuda aplicacion movil no abre se cierra pucha,Soporte,46,0
+buenos dias kuiero somprar un plan ilimitado,Ventas,44,0
+hola comprar nuevo equipo o sea con mi contrato,Ventas,47,0
+buenos dias no puedo ingresar al sistema este... entonces de la aplicacion,Soporte,74,0
+ayuda el internet es una basura mmm,Ventas,35,1
+ola no resibo sorreos de berifisasion pusa,Soporte,42,0
+oye no puedo conectar el wifi ahh,Soporte,33,0
+ola mi suenta registra saldo a fabor osea resulta kue para oy mismo,Facturacion,67,0
+ayuda el servicio de internet esta lento pucha resulta que ahora mismo,Soporte,70,0
+quiero rescindir mi contrato pucha,Reclamos,34,0
+ayuda error de login usuario bloqueado mmm,Soporte,42,0
+quiero comprar un plan ilimitado ahh y para hoy mismo,Ventas,53,0
+por favor velocidad de internet inestable entonces con mi tarjeta,Soporte,65,0
+buenos dias su servicio es una porqueria ahh entonces de la aplicacion,Reclamos,70,0
+por favor voy a presentar una queja sobre mi cuenta ehh o sea para hoy mismo,Reclamos,76,1
+estimados deseo adquirir fibra simetrica pucha porque rapido,Ventas,60,0
+estimados quiero solicitar un reembolso de cobro osea porque con mi tarjeta,Facturacion,75,0
+estimados error en el navegador al abrir la app este... entonces para hoy mismo,Facturacion,79,0
+buenas reclamar por cobro excesivo pucha entonces rapido,Reclamos,56,0
+oye el router tiene la luz roja este...,Soporte,39,0
+oye es un robo este cobro de penalidad pucha pero con mi tarjeta,Reclamos,64,1
+hola el internet es una basura osea porque con mi contrato,Reclamos,58,1
+estimados falla tecnica en la red local ahh entonces rapido,Soporte,59,0
+buenos dias informasion sobre sobertura de planes mmm y de la aplisasion,Reclamos,72,0
+oye es la tersera bes kue llamo por lo mismo mmm o sea para oy mismo,Reclamos,68,0
+ayuda no reconoce mis credenciales este...,Soporte,42,0
+cuales son las promociones de internet mmm o sea de la aplicacion,Ventas,65,0
+ayuda mi modem parpadea sin parar ahh,Soporte,37,0
+por fabor sostos adisionales por astibasion este... entonses son mi sontrato,Ventas,76,0
+ayuda kue benefisios tiene el plan premium a,Ventas,44,0
+costo de instalacion pucha y con mi tarjeta,Ventas,43,0
+ayuda servicio inestable exijo cancelacion sin penalidad este...,Reclamos,64,0
+estimados problemas para ingresar ahh,Soporte,37,0
+estimados soporte tecnico urgente por favor este...,Soporte,51,1
+ayuda pagina web dice error 500 pucha entonces para hoy mismo,Soporte,61,0
+oye informacion de planes osea,Ventas,30,0
+ayuda tengo un problema de conexion con el servicio porque con mi contrato,Soporte,74,0
+buenas problemas para ingresar mmm,Soporte,34,0
+buenas soporte tecnico urgente por favor osea,Soporte,45,1
+falla de red inalambrica osea entonces con mi contrato,Soporte,54,0
+buenas error en el navegador al abrir la app ahh,Soporte,48,0
+hola error en el navegador al abrir la app ahh o sea sobre mi cuenta,Soporte,68,0
+buenas planes postpago con gigas libres ahh,Ventas,43,0
+ayuda la pantalla se kueda en blanso a,Soporte,38,0
+necesito resetear mi clave de la cuenta ahh y de la aplicacion,Soporte,62,0
+estimados pagina web dice error 500 osea,Soporte,40,0
+estimados el internet va a paso de tortuga ehh y para hoy mismo,Soporte,63,0
+estimados no hay señal en mi zona o sea de la aplicacion,Soporte,56,0
+ayuda quiero dar de alta mi ruc osea,Facturacion,36,0
+buenos dias la conexion se cae constantemente mmm o sea rapido,Soporte,62,0
+quiero rescindir mi contrato,Reclamos,28,0
+oye donde reporto mi comprobante mmm,Facturacion,36,0
+no puedo conectar el wifi ahh,Soporte,29,0
+ayuda quiero suspender el servicio definitivamente pucha,Reclamos,56,0
+hola duda con mi factura del servicio pucha,Facturacion,43,0
+ayuda falla de red inalambrica ahh porque en el sistema,Soporte,55,0
+buenas no hay señal en mi zona mmm,Soporte,34,0
+estimados planes postpago con gigas libres ehh,Ventas,46,0
+buenos dias recibo en formato digital por favor mmm pero en el sistema,Facturacion,70,0
+oye necesito mi comprobante este...,Facturacion,35,0
+duda con el desglose del cobro osea y del servicio,Facturacion,50,0
+buenos dias necesito resetear mi clave de la cuenta ahh,Soporte,55,0
+buenos dias mi computador no se conecta al servidor pucha,Soporte,57,0
+ola pagina web dise error 500 e pero aora mismo,Soporte,47,0
+hola detalles del ciclo de facturacion ahh,Facturacion,42,0
+estimados tengo un problema de conexion con el servicio pucha,Soporte,61,0
+oye quiero afiliar mi pago a debito automatico ehh porque del servicio,Facturacion,70,0
+por fabor el internet es una basura pusa porkue rapido,Reclamos,54,1
+hola pago con tarjeta rechazado ehh,Facturacion,35,0
+oye confirmar si ya ingreso mi pago pucha,Facturacion,41,1
+buenos dias no puedo ingresar al sistema mmm pero ahora mismo,Soporte,61,0
+estimados no reconoce mis credenciales mmm resulta que de la aplicacion,Soporte,71,0
+ayuda voy a presentar una queja sobre mi cuenta este... entonces sobre mi cuenta,Reclamos,80,1
+por favor duda con el desglose del cobro ehh,Facturacion,44,0
+cuanto es mi deuda,Facturacion,18,0
+oye no puedo conectar el wifi ehh pero de la aplicacion,Soporte,55,0
+ola olbide mi sontrasena e,Soporte,26,0
+mi internet no funciona osea,Soporte,28,0
+por favor tengo un problema con el servicio es pesimo o sea con mi contrato,Facturacion,75,0
+buenas la pantalla se queda en blanco osea pero del servicio,Soporte,60,0
+buenos dias falla de red inalambrica este...,Soporte,44,0
+mi internet no funsiona pusa o sea sobre mi suenta,Soporte,50,0
+buenas mi modem parpadea sin parar resulta que sobre mi cuenta,Soporte,62,0
+buenas quiero ver mi estado de cuenta ehh y rapido,Facturacion,50,0
+por fabor falla de red inalambrisa a o sea son mi tarjeta,Soporte,57,0
+ayuda mi cuenta registra saldo a favor osea,Facturacion,43,0
+buenos dias como adquiero un chip nuevo resulta que del servicio,Ventas,64,0
+ayuda tengo un problema de conexion con el servicio ehh,Soporte,55,0
+por favor llevo dias sin conexion de internet,Reclamos,45,0
+buenas me prometieron algo que no cumplen osea o sea en el sistema,Ventas,66,0
+estimados quiero pasarme a postpago pucha pero ahora mismo,Ventas,58,0
+estimados me interesa el servicio hogar este... pero del servicio,Ventas,65,0
+estimados error en el link de pago ehh,Facturacion,38,0
+por fabor nesesito mi somprobante,Facturacion,33,0
+buenas no puedo ingresar al sistema ahh,Soporte,39,0
+estimados mi transferencia no pasa este...,Facturacion,42,0
+estimados donde pago mi mensualidad este... porque rapido,Facturacion,57,0
+oye no reconoce mis credenciales osea,Soporte,37,0
+tienen fibra optica mmm,Ventas,23,0
+buenas quiero renovar mi plan este...,Ventas,37,0
+quiero rescindir mi contrato mmm,Reclamos,32,0
+estimados falla de red inalambrica mmm,Soporte,38,0
+hola me siento estafado con este plan este...,Reclamos,45,1
+ayuda tengo un problema de conexion con el servicio ehh resulta que de la aplicacion,Soporte,84,0
+buenas promociones para clientes nuevos ehh,Ventas,43,0
+por favor la conexion se cae constantemente pucha,Soporte,49,0
+quiero aumentar la velocidad contratada pucha porque de la aplicacion,Ventas,69,0
+no me llego el sobro resulta kue sobre mi suenta,Facturacion,48,0
+por fabor se dessonesta a sada rato osea o sea son mi tarjeta,Soporte,61,0
+estimados kuiero sontratar el serbisio este... entonses son mi tarjeta,Ventas,70,0
+buenos dias la pantalla se queda en blanco o sea sobre mi cuenta,Soporte,64,0
+estimados cobro indebido registrado ahh y con mi contrato,Facturacion,57,0
+hola el sistema esta caido ehh,Soporte,30,0
+buenos dias costo de instalacion de la fibra mmm o sea ahora mismo,Ventas,66,0
+buenos dias exijo una debolusion por falta de serbisio e entonses del serbisio,Reclamos,78,0
+ayuda no puedo ingresar al sistema ehh o sea con mi contrato,Soporte,60,0
+oye kuiero solisitar un reembolso de sobro osea pero aora mismo,Facturacion,63,0
+estimados quiero dar de alta mi ruc este... resulta que sobre mi cuenta,Facturacion,71,0
+estimados no puedo ingresar al sistema e pero son mi tarjeta,Soporte,60,0
+por fabor no me llego el sobro,Facturacion,30,0
+por favor no puedo conectar el wifi ahh,Soporte,39,0
+ayuda voy a denunciarlos ante el regulador ehh,Reclamos,46,1
+ayuda solicitar cotizacion corporativa osea,Ventas,43,0
+oye nadie atiende mis reclamos pucha,Reclamos,36,0
+estimados se desconecta a cada rato ehh entonces ahora mismo,Soporte,60,0
+buenos dias confirmar si ya ingreso mi pago este...,Facturacion,51,1
+buenos dias detalles del ciclo de facturacion pucha,Facturacion,51,0
+buenas tengo un problema de conexion con el servicio mmm y para hoy mismo,Soporte,73,0
+buenos dias kuiero somprar un plan ilimitado mmm resulta kue en el sistema,Ventas,74,0
+necesito resetear mi clave de la cuenta ahh y con mi contrato,Soporte,61,0
+nadie me da solucion este... porque con mi contrato,Reclamos,51,0
+por favor no puedo ingresar al sistema osea o sea de la aplicacion,Soporte,66,0
+hola mi cuenta registra saldo a favor osea porque en el sistema,Facturacion,63,0
+por favor error de login usuario bloqueado mmm,Soporte,46,0
+buenos dias fastura duplisada en mi suenta pusa,Ventas,47,0
+por favor no me llego el cobro ahh o sea con mi contrato,Facturacion,56,0
+oye su servicio es una porqueria osea,Reclamos,37,0
+ayuda no puedo sonestar el wifi osea o sea del serbisio,Soporte,55,0
+ayuda error de red al dessargar arsibos a,Soporte,41,0
+ayuda error de login usuario bloqueado mmm porque para hoy mismo,Soporte,64,0
+buenos dias olvide mi contrasena,Soporte,32,0
+oye comprar nuevo equipo osea,Ventas,29,0
+ayuda quiero afiliar mi pago a debito automatico ahh porque ahora mismo,Facturacion,71,0
+buenas soporte tesniso urgente por fabor e resulta kue en el sistema,Soporte,68,1
+buenas quiero cancelar mi cuenta ya este... entonces para hoy mismo,Reclamos,67,1
+buenos dias pagina web dice error 500 osea,Soporte,42,0
+buenos dias error en el link de pago osea,Facturacion,41,0
+cuanto es mi deuda mmm resulta que en el sistema,Facturacion,48,0
+por favor informacion de planes este... porque en el sistema,Ventas,60,0
+estimados pésima atencion al cliente de este bot este... o sea para hoy mismo,Reclamos,77,0
+buenas tengo un problema de conexion con el servicio,Soporte,52,0
+oye me gustaria agregar cable a mi paquete pucha porque de la aplicacion,Ventas,72,0
+necesito mi comprobante ahh,Facturacion,27,0
+ayuda necesito resetear mi clave de la cuenta este...,Soporte,53,0
+hola el internet es una basura ehh porque del servicio,Reclamos,54,1
+buenas recibo en formato digital por favor este...,Facturacion,50,0
+buenas kuiero pagar mi resibo pusa,Facturacion,34,0
+ola error de login usuario blokueado este... pero rapido,Soporte,56,0
+por favor servicio inestable exijo cancelacion sin penalidad porque para hoy mismo,Reclamos,82,0
+estimados cuanto es mi deuda y con mi tarjeta,Facturacion,45,0
+buenas suales son los rekuisitos para sontratar pusa y de la aplisasion,Ventas,71,0
+hola falla tecnica en la red local mmm,Soporte,38,0
+hola quiero pasarme a postpago ehh,Ventas,34,0
+estimados olvide mi contrasena,Soporte,30,0
+ayuda pésima atencion al cliente de este bot osea y en el sistema,Reclamos,65,0
+hola detalles del ciclo de facturacion pucha,Facturacion,44,0
+estimados pesimo soporte de la app ahh,Reclamos,38,0
+oye falla tecnica en la red local ehh,Soporte,37,0
+ayuda se desconecta a cada rato ehh,Soporte,35,0
+estimados quiero contratar telefonia fija osea,Ventas,46,0
+oye pesimo soporte de la app ehh,Reclamos,32,0
+buenas se desconecta a cada rato osea porque ahora mismo,Soporte,56,0
+oye error en el link de pago este... o sea con mi contrato,Facturacion,58,0
+oye pago pendiente sin procesar,Facturacion,31,0
+ayuda necesito mi comprobante porque del servicio,Facturacion,49,0
+por fabor detalles del sislo de fasturasion e,Facturacion,45,0
+oye falla tecnica en la red local pucha porque con mi tarjeta,Soporte,61,0
+oye me prometieron algo que no cumplen este...,Ventas,46,0
+buenos dias velocidad de internet inestable osea,Soporte,48,0
+buenas quiero ver mi estado de cuenta ehh o sea para hoy mismo,Facturacion,62,0
+buenas kuiero renobar mi plan pusa,Ventas,34,0
+buenos dias no recibo correos de verificacion osea,Soporte,50,0
+hola detalles del ciclo de facturacion ehh,Facturacion,42,0
+hola no hay señal en mi zona,Soporte,28,0
+buenos dias detalles del sislo de fasturasion este...,Facturacion,53,0
+buenos dias promociones para clientes nuevos ehh,Ventas,48,0
+por favor no me llego el cobro este...,Facturacion,38,0
+estimados el router tiene la lus roja osea,Soporte,42,0
+buenos dias metodos de pago habilitados ahh,Facturacion,43,0
+estimados precios del paquete pucha,Ventas,35,0
+oye como adquiero un chip nuevo ehh pero sobre mi cuenta,Ventas,56,0
+buenas quiero darme de baja osea,Reclamos,32,1
+estimados el router tiene la luz roja este... entonces en el sistema,Soporte,68,0
+el serbisio de internet esta lento,Soporte,34,0
+buenos dias mi cuenta aparece como suspendida ahh,Soporte,49,0
+buenos dias falla de red inalambrica ahh,Soporte,40,0
+oye no recibo correos de verificacion este...,Soporte,45,0
+buenas no puedo ingresar al sistema este...,Soporte,43,0
+ayuda la pantalla se queda en blanco este... entonces rapido,Soporte,60,0
+estimados no recibo correos de verificacion este... resulta que con mi contrato,Soporte,79,0
+por favor por que aumento el precio del recibo mmm pero con mi tarjeta,Facturacion,70,0
+oye nesesito resetear mi slabe de la suenta e,Soporte,45,0
+ayuda aplisasion mobil no abre se sierra osea entonses de la aplisasion,Soporte,71,0
+ayuda no reconoce mis credenciales este... pero para hoy mismo,Reclamos,62,0
+ayuda mi internet no funciona mmm,Soporte,33,0
+estimados soporte tecnico urgente por favor mmm,Soporte,47,1
+oye nadie me da solusion este... pero en el sistema,Reclamos,51,0
+quiero cancelar mi cuenta ya este... pero ahora mismo,Reclamos,53,1
+ayuda quiero pagar mi recibo osea,Facturacion,33,0
+estimados aplicacion movil no abre se cierra este... resulta que sobre mi cuenta,Soporte,80,0
+buenos dias pago con tarjeta rechazado este...,Facturacion,46,0
+ayuda mi transferencia no pasa pucha,Facturacion,36,0
+ayuda la pantalla se kueda en blanso a o sea rapido,Soporte,51,0
+oye comprar nuevo equipo mmm,Ventas,28,0
+ayuda error en el link de pago mmm,Facturacion,34,0
+oye descuento no aplicado en el recibo pucha resulta que con mi tarjeta,Facturacion,71,0
+buenos dias falla de red inalambrica,Soporte,36,0
+ayuda planes familiares de telefonia ahh resulta que para hoy mismo,Ventas,67,0
+hola error de login usuario bloqueado pucha,Soporte,43,0
+hola la pantalla se queda en blanco ehh,Soporte,39,0
+hola quiero darme de baja este...,Reclamos,33,1
+por favor quiero ver mi estado de cuenta este... o sea para hoy mismo,Facturacion,69,0
+ayuda no puedo ingresar al sistema a,Soporte,36,0
+ayuda cuanto es mi deuda mmm,Facturacion,28,0
+buenas tengo un problema de conexion con el servicio este... pero ahora mismo,Soporte,77,0
+hola no reconoce mis credenciales osea,Soporte,38,0
+solucionen este problema con el pago ya mmm,Reclamos,43,1
+oye pagar con tarjeta de credito este... y con mi tarjeta,Facturacion,57,0
+resibo en formato digital por fabor,Facturacion,35,0
+oye quiero pagar mi recibo pucha,Facturacion,32,0
+estimados el monto de este mes es incorrecto ahh resulta que del servicio,Facturacion,73,0
+buenas precios del paquete este... porque rapido,Ventas,48,0
+por favor no puedo conectar el wifi,Soporte,35,0
+buenas pesimo soporte de la app pucha o sea con mi contrato,Reclamos,59,0
+estimados velocidad de internet inestable ehh,Soporte,45,0
+hola cuanto es mi deuda mmm,Facturacion,27,0
+estimados me estan cobrando de mas en la factura osea,Reclamos,53,0
+buenos dias pesimo soporte de la app ehh,Reclamos,40,0
+por favor la pantalla se queda en blanco ehh resulta que con mi tarjeta,Soporte,71,0
+hola recibo en formato digital por favor mmm,Facturacion,44,0
+ayuda detalles del ciclo de facturacion este... o sea para hoy mismo,Facturacion,68,0
+oye su servicio es una porqueria ehh o sea en el sistema,Reclamos,56,0
+buenas informacion sobre cobertura de planes osea o sea para hoy mismo,Ventas,70,0
+por fabor la sonexion se sae sonstantemente,Soporte,43,0
+estimados pago con tarjeta rechazado,Facturacion,36,0
+estimados el monto de este mes es incorrecto osea,Facturacion,49,0
+estimados mi cuenta registra saldo a favor ehh pero del servicio,Facturacion,64,0
+quiero ver mi estado de cuenta pucha,Facturacion,36,0
+por favor costos adicionales por activacion mmm y rapido,Ventas,56,0
+hola no me carga la pagina web osea,Soporte,35,0
+tienen fibra optica mmm o sea del servicio,Ventas,42,0
+buenos dias duda son mi fastura del serbisio a resulta kue son mi tarjeta,Facturacion,73,0
+buenas quiero pagar mi recibo ehh o sea del servicio,Facturacion,52,0
+buenos dias aplicacion movil no abre se cierra este... entonces en el sistema,Soporte,77,0
+costo de instalacion resulta que del servicio,Ventas,45,0
+el internet va a paso de tortuga y con mi contrato,Soporte,50,0
+hola confirmar si ya ingreso mi pago este... o sea con mi tarjeta,Facturacion,65,1
+hola el internet va a paso de tortuga ahh,Soporte,41,0
+hola pago pendiente sin procesar este... porque con mi contrato,Facturacion,63,0
+buenos dias costo de instalacion de la fibra resulta que ahora mismo,Ventas,68,0
+ola nadie me da solusion osea,Reclamos,29,0
+oye cuales son las promociones de internet este...,Ventas,50,0
+por favor tienen fibra optica ehh,Ventas,33,0
+buenos dias falla tecnica en la red local ahh y del servicio,Soporte,60,0
+ayuda nadie atiende mis reslamos mmm,Reclamos,36,0
+ola la pantalla se kueda en blanso,Soporte,34,0
+exijo solusion inmediata resulta kue sobre mi suenta,Reclamos,52,0
+buenos dias aplicacion movil no abre se cierra ahh,Soporte,50,0
+por favor quiero contratar telefonia fija este...,Ventas,49,0
+buenas cambiar mi fecha de vencimiento mmm,Facturacion,42,0
+ola el router tiene la lus roja e,Soporte,33,0
+buenas se desconecta a cada rato,Soporte,32,0
+buenos dias quiero contratar el servicio pucha o sea rapido,Ventas,59,0
+oye quiero comprar un plan ilimitado este... o sea de la aplicacion,Ventas,67,0
+ayuda velocidad de internet inestable pucha,Facturacion,43,0
+buenos dias que beneficios tiene el plan premium ehh pero de la aplicacion,Ventas,74,0
+por favor catalogo de equipos disponibles ahh o sea del servicio,Ventas,64,0
+hola quiero pagar mi recibo ehh resulta que rapido,Facturacion,50,0
+buenas problemas para ingresar a,Soporte,32,0
+por favor cuales son las promociones de internet pucha y del servicio,Ventas,69,0
+buenas deseo adquirir fibra simetrica mmm,Ventas,41,0
+estimados el servicio de internet esta lento mmm entonces rapido,Soporte,64,0
+mi computador no se conecta al servidor osea,Soporte,44,0
+informacion de planes este... pero rapido,Ventas,41,0
+ayuda no puedo conectar el wifi ehh,Soporte,35,0
+buenos dias asesor de ventas por favor este...,Ventas,46,0
+metodos de pago abilitados a,Ventas,28,0
+me gustaria agregar cable a mi paquete mmm y de la aplicacion,Ventas,61,0
+estimados pago con tarjeta rechazado pucha,Facturacion,42,0
+oye mi somputador no se sonesta al serbidor pusa entonses son mi tarjeta,Soporte,72,0
+estimados me siento estafado con este plan ahh,Reclamos,46,1
+buenas detalles del ciclo de facturacion osea,Facturacion,45,0
+buenas pagar con tarjeta de credito porque sobre mi cuenta,Facturacion,58,0
+por favor se cayo la red,Soporte,24,0
+ayuda precios del paquete osea,Ventas,30,0
+por favor mi cuenta aparece como suspendida mmm o sea para hoy mismo,Soporte,68,0
+oye necesito resetear mi clave de la cuenta ehh y para hoy mismo,Soporte,64,0
+por favor costos adicionales por activacion entonces en el sistema,Ventas,66,0
+hola no me carga la pagina web mmm o sea de la aplicacion,Soporte,57,0
+ayuda el serbisio de internet esta lento mmm y rapido,Soporte,53,0
+deseo adquirir fibra simetrica pucha,Ventas,36,0
+ayuda mi modem parpadea sin parar osea,Soporte,38,0
+buenas planes postpago son gigas libres a,Soporte,41,0
+planes postpago son gigas libres,Ventas,32,0
+buenas mi suenta registra saldo a fabor osea,Facturacion,44,0
+ola mi suenta aparese somo suspendida mmm,Soporte,41,0
+ayuda pago con tarjeta rechazado pucha pero del servicio,Facturacion,56,0
+hola donde reporto mi comprobante osea pero sobre mi cuenta,Facturacion,59,0
+planes familiares de telefonia pucha porque ahora mismo,Ventas,55,0
+oye mi suenta aparese somo suspendida este...,Soporte,45,0
+hola el monto de este mes es incorrecto,Facturacion,39,0
+ayuda el internet va a paso de tortuga mmm,Soporte,42,0
+oye quiero suspender el servicio definitivamente mmm,Reclamos,52,0
+buenos dias por que aumento el precio del recibo,Facturacion,48,0
+buenos dias quiero cancelar mi cuenta ya mmm,Reclamos,44,1
+ola pagina web dise error 500 e,Soporte,31,0
+oye no me carga la pagina web ehh entonces rapido,Soporte,49,0
+buenas kuiero dar de alta mi rus,Facturacion,32,0
+buenos dias quiero solicitar un reembolso de cobro o sea para hoy mismo,Facturacion,71,0
+oye tengo un problema de conexion con el servicio ehh,Soporte,53,0
+el sistema esta saido a,Soporte,23,0
+ayuda falla tecnica en la red local osea pero de la aplicacion,Soporte,62,0
+buenas la pantalla se kueda en blanso a,Soporte,39,0
+por fabor kuiero sanselar mi suenta ya pusa resulta kue son mi sontrato,Reclamos,71,1
+ayuda su servicio es una porqueria mmm,Reclamos,38,0
+buenos dias tienen fibra optica pucha o sea con mi tarjeta,Ventas,58,0
+buenas soporte son la sonfigurasion del proxy pusa entonses de la aplisasion,Soporte,76,0
+buenos dias tengo un problema de conexion con el servicio ahh,Soporte,61,0
+ayuda me prometieron algo que no cumplen ehh entonces con mi contrato,Reclamos,69,0
+buenos dias no me llego el cobro,Facturacion,32,0
+oye soporte tesniso urgente por fabor resulta kue para oy mismo,Soporte,63,1
+buenos dias se cayo la red,Soporte,26,0
+hola aplicacion movil no abre se cierra ehh entonces para hoy mismo,Soporte,67,0
+estimados falla tecnica en la red local este... pero con mi tarjeta,Soporte,67,0
+ayuda no resibo sorreos de berifisasion mmm,Soporte,43,0
+problemas para ingresar mmm o sea con mi tarjeta,Soporte,48,0
+buenos dias mi cuenta registra saldo a favor pucha porque en el sistema,Facturacion,71,0
+ayuda exijo una devolucion por falta de servicio osea,Reclamos,53,0
+oye soporte tecnico urgente por favor ehh entonces en el sistema,Soporte,64,1
+oye cuanto es mi deuda pucha,Facturacion,28,0
+me interesa el serbisio ogar mmm entonses del serbisio,Ventas,54,0
+por fabor no ay señal en mi sona e porkue de la aplisasion,Soporte,58,0
+por fabor soporte son la sonfigurasion del proxy mmm resulta kue para oy mismo,Soporte,78,0
+estimados pago pendiente sin procesar osea,Facturacion,42,0
+oye exijo solucion inmediata pucha,Reclamos,34,0
+ayuda es la tersera bes kue llamo por lo mismo osea,Reclamos,51,0
+voy a denunciarlos ante el regulador pucha,Reclamos,42,1
+por fabor pagar son tarjeta de sredito e,Facturacion,40,0
+quiero renovar mi plan osea entonces de la aplicacion,Ventas,53,0
+oye mi transferencia no pasa osea,Facturacion,33,0
+por favor me estan cobrando de mas en la factura osea,Facturacion,53,0
+tengo un problema con el servicio es pesimo mmm pero para hoy mismo,Reclamos,67,0
+no tengo acceso al portal de clientes ahh porque para hoy mismo,Soporte,63,0
+oye costo de instalacion de la fibra mmm,Ventas,40,0
+ayuda por que aumento el precio del recibo mmm y en el sistema,Facturacion,62,0
+hola pago pendiente sin procesar mmm resulta que ahora mismo,Facturacion,60,0
+buenas necesito resetear mi clave de la cuenta ehh,Soporte,50,0
+buenas no reconoce mis credenciales este...,Soporte,43,0
+oye error de login usuario bloqueado pucha,Soporte,42,0
+mi internet no funciona este... resulta que ahora mismo,Soporte,55,0
+buenos dias el serbisio de internet esta lento este...,Soporte,54,0
+oye me interesa el servicio hogar,Ventas,33,0
+por favor voy a denunciarlos ante el regulador mmm pero con mi contrato,Reclamos,71,1
+recibo en formato digital por favor mmm,Facturacion,39,0
+buenos dias olvide mi contrasena osea,Soporte,37,0
+estimados cambiar clave de mi red inalambrica,Soporte,45,0
+por favor me interesa adquirir otra linea de servicio,Ventas,53,0
+por favor el router tiene la luz roja pucha entonces con mi contrato,Soporte,68,0
+quiero comprar un plan ilimitado,Ventas,32,0
+buenos dias quiero pagar mi recibo ehh,Facturacion,38,0
+por fabor kuiero renobar mi plan e,Ventas,34,0
+estimados velocidad de internet inestable ehh pero rapido,Soporte,57,0
+oye exijo solucion inmediata osea,Reclamos,33,0
+me estan cobrando de mas en la factura mmm y rapido,Facturacion,51,0
+por fabor falla de red inalambrisa e,Soporte,36,0
+informasion de planes,Ventas,21,0
+por favor como adquiero un chip nuevo ehh,Ventas,41,0
+soporte son la sonfigurasion del proxy a entonses del serbisio,Soporte,62,0
+buenas falla de red inalambrica pucha,Soporte,37,0
+buenas pesimo soporte de la app a o sea rapido,Reclamos,46,0
+estimados olvide mi contrasena este... pero de la aplicacion,Soporte,60,0
+estimados que beneficios tiene el plan premium ahh,Ventas,50,0
+buenos dias olvide mi contrasena pucha pero del servicio,Soporte,56,0
+ayuda pagina web dice error 500 ahh o sea de la aplicacion,Soporte,58,0
+oye pesimo soporte de la app pucha,Reclamos,34,0
+estimados no recibo correos de verificacion ahh resulta que para hoy mismo,Soporte,74,0
+buenas quiero contratar telefonia fija ahh,Ventas,42,0
+buenas aplicacion movil no abre se cierra resulta que sobre mi cuenta,Soporte,69,0
+exijo ablar son un superbisor por este sobro a o sea sobre mi suenta,Facturacion,68,0
+quiero renovar mi plan osea o sea en el sistema,Ventas,47,0
+buenas kuiero afiliar mi pago a debito automatiso a,Facturacion,51,0
+por fabor boy a denunsiarlos ante el regulador mmm entonses son mi sontrato,Reclamos,75,0
+ayuda la sonexion se sae sonstantemente a o sea aora mismo,Soporte,58,0
+estimados el router tiene la luz roja ehh,Soporte,41,0
+nadie me da solucion pucha o sea sobre mi cuenta,Reclamos,48,0
+buenas soporte tesniso urgente por fabor este...,Soporte,48,1
+por fabor pago pendiente sin prosesar a y de la aplisasion,Facturacion,58,0
+buenas boy a presentar una kueja sobre mi suenta pusa,Reclamos,53,0
+ayuda nadie me da solucion osea,Reclamos,31,0
+buenos dias necesito mi comprobante mmm y en el sistema,Facturacion,55,0
+por favor mi computador no se conecta al servidor este... o sea para hoy mismo,Soporte,78,0
+buenas aclaracion de cargos adicionales osea porque rapido,Facturacion,58,0
+estimados no hay señal en mi zona pucha pero de la aplicacion,Soporte,61,0
+ayuda no puedo ingresar al sistema mmm,Soporte,38,0
+estimados solicitar cotizacion corporativa ehh,Ventas,46,0
+por favor error en el navegador al abrir la app ehh porque rapido,Soporte,65,0
+buenas exijo solucion inmediata este... y con mi tarjeta,Reclamos,56,0
+hola me siento estafado con este plan osea,Reclamos,42,1
+por favor recibo en formato digital por favor ehh,Facturacion,49,0
+estimados el internet es una basura mmm pero son mi sontrato,Reclamos,60,1
+por fabor llebo dias sin sonexion de internet a,Reclamos,47,0
+ayuda solucionen este problema con el pago ya este...,Soporte,53,1
+recibo en formato digital por favor este... porque ahora mismo,Facturacion,62,0
+buenas se cayo la red ahh pero del servicio,Soporte,43,0
+buenas no recibo correos de verificacion mmm y del servicio,Soporte,59,0
+estimados se dessonesta a sada rato porkue son mi sontrato,Soporte,58,0
+estimados soporte tecnico urgente por favor ahh resulta que de la aplicacion,Soporte,76,1
+oye me estan cobrando de mas en la factura ehh,Facturacion,46,0
+por favor recibo en formato digital por favor pucha,Facturacion,51,0
+buenos dias no me carga la pagina web ahh,Soporte,41,0
+oye tengo un problema de conexion con el servicio osea,Soporte,54,0
+estimados quiero afiliar mi pago a debito automatico pero para hoy mismo,Facturacion,72,0
+hola cuales son los requisitos para contratar osea pero en el sistema,Ventas,69,0
+por favor el internet va a paso de tortuga o sea con mi tarjeta,Soporte,63,0
+por favor quiero cancelar mi cuenta ya ahh,Reclamos,42,1
+hola quiero aumentar la velocidad contratada mmm y en el sistema,Ventas,64,0
+oye olvide mi contrasena,Soporte,24,0
+buenas mi cuenta registra saldo a favor ehh,Facturacion,43,0
+oye falla tecnica en la red local osea y rapido,Facturacion,47,0
+por favor falla de red inalambrica,Soporte,34,0
+ayuda kuiero pagar mi resibo,Facturacion,28,0
+sambiar slabe de mi red inalambrisa osea,Soporte,40,0
+mi transferencia no pasa osea entonces rapido,Facturacion,45,0
+por favor tengo un problema de conexion con el servicio pucha o sea del servicio,Soporte,80,0
+oye deseo adkuirir fibra simetrisa mmm o sea para oy mismo,Ventas,58,0
+estimados la conexion se cae constantemente mmm resulta que en el sistema,Soporte,73,0
+ola olbide mi sontrasena osea,Soporte,29,0
+buenos dias suanto es mi deuda este...,Facturacion,38,0
+estimados recibo en formato digital por favor este... pero ahora mismo,Facturacion,70,0
+estimados satalogo de ekuipos disponibles este... porkue son mi sontrato,Ventas,72,0
+por fabor problemas para ingresar,Soporte,33,0
+oye soporte tecnico urgente por favor o sea con mi tarjeta,Soporte,58,1
+su servicio es una porqueria este... entonces ahora mismo,Reclamos,57,0
+hola catalogo de equipos disponibles ahh,Ventas,40,0
+hola costos adicionales por activacion ehh,Ventas,42,0
+buenos dias el sistema esta caido este...,Soporte,41,0
+oye el monto de este mes es incorrecto este...,Facturacion,46,0
+hola planes postpago con gigas libres mmm entonces de la aplicacion,Ventas,67,0
+buenas me sobraron doble estoy arto del serbisio a pero rapido,Reclamos,62,0
+por favor como adquiero un chip nuevo este... resulta que del servicio,Ventas,70,0
+por favor quiero afiliar mi pago a debito automatico mmm,Facturacion,56,0
+hola quiero cancelar mi cuenta ya pucha porque rapido,Reclamos,53,1
+mi cuenta aparece como suspendida pucha entonces ahora mismo,Soporte,60,0
+estimados quiero comprar un plan ilimitado,Ventas,42,0
+estimados quiero renovar mi plan osea,Ventas,37,0
+ola exijo ablar son un superbisor por este sobro pusa,Reclamos,53,0
+ayuda la pantalla se queda en blanco osea resulta que rapido,Soporte,60,0
+ayuda confirmar si ya ingreso mi pago este...,Facturacion,45,1
+hola no reconoce mis credenciales mmm resulta que de la aplicacion,Soporte,66,0
+oye llevo dias sin conexion de internet pucha entonces del servicio,Reclamos,67,0
+por favor planes familiares de telefonia o sea con mi tarjeta,Ventas,61,0
+oye me prometieron algo que no cumplen,Reclamos,38,0
+hola me prometieron algo que no cumplen osea resulta que con mi contrato,Reclamos,72,0
+buenas tengo un problema de conexion con el servicio pucha,Soporte,58,0
+buenas mi cuenta aparece como suspendida osea,Soporte,45,0
+buenas exijo solucion inmediata ehh,Reclamos,35,0
+buenos dias nesesito resetear mi slabe de la suenta e o sea de la aplisasion,Soporte,76,0
+buenas me cobraron doble estoy harto del servicio,Reclamos,49,1
+hola voy a presentar una queja sobre mi cuenta ehh,Reclamos,50,1
+por favor mi modem parpadea sin parar pucha pero con mi tarjeta,Soporte,63,0
+buenos dias no me llego el cobro osea,Facturacion,37,0
+buenas sosto de instalasion de la fibra a,Ventas,41,0
+por favor error de red al descargar archivos mmm,Soporte,48,0
+buenos dias velocidad de internet inestable ehh pero rapido,Soporte,59,0
+buenas confirmar si ya ingreso mi pago este... resulta que rapido,Facturacion,65,1
+por favor nadie atiende mis reclamos pucha o sea del servicio,Reclamos,61,0
+no puedo conectar el wifi mmm o sea ahora mismo,Soporte,47,0
+donde pago mi mensualidad,Ventas,25,0
+ayuda se cayo la red pucha entonces del servicio,Soporte,48,0
+oye mi cuenta registra saldo a favor pucha,Facturacion,42,0
+ayuda que beneficios tiene el plan premium mmm,Ventas,46,0
+ola suales son las promosiones de internet entonses son mi tarjeta,Ventas,66,0
+hola me estan cobrando de mas en la factura entonces del servicio,Facturacion,65,0
+oye asesor de bentas por fabor este...,Ventas,38,0
+ola soporte son la sonfigurasion del proxy,Soporte,42,0
+ola el serbisio de internet esta lento mmm o sea sobre mi suenta,Soporte,64,0
+buenos dias el sistema esta caido ehh,Soporte,37,0
+estimados planes familiares de telefonia este... resulta kue de la aplisasion,Ventas,77,0
+buenos dias me interesa adquirir otra linea de servicio este... pero ahora mismo,Ventas,80,0
+buenos dias soporte con la configuracion del proxy osea,Soporte,55,0
+buenas se desconecta a cada rato osea,Soporte,37,0
+oye aplicacion movil no abre se cierra osea pero ahora mismo,Soporte,60,0
+ayuda soporte con la configuracion del proxy ahh,Soporte,48,0
+buenos dias el serbisio de internet esta lento e resulta kue rapido,Facturacion,67,0
+ayuda no tengo acceso al portal de clientes ehh,Soporte,47,0
+ayuda no tengo acceso al portal de clientes,Soporte,43,0
+hola metodos de pago habilitados mmm,Facturacion,36,0
+por favor necesito mi comprobante mmm pero ahora mismo,Facturacion,54,0
+ayuda quiero ver mi estado de cuenta entonces con mi tarjeta,Facturacion,60,0
+servicio inestable exijo cancelacion sin penalidad,Reclamos,50,0
+buenas somprar nuebo ekuipo pusa porkue rapido,Ventas,46,0
+ayuda tienen fibra optica ahh o sea ahora mismo,Ventas,47,0
+oye reclamar por cobro excesivo,Reclamos,31,0
+ayuda deseo adquirir fibra simetrica ehh porque de la aplicacion,Ventas,64,0
+hola asesor de ventas por favor este... porque en el sistema,Ventas,60,0
+buenos dias se cayo la red ehh porque en el sistema,Soporte,51,0
+nadie me da solucion ahh,Reclamos,24,0
+buenos dias pesimo soporte de la app mmm pero de la aplicacion,Reclamos,62,0
+por fabor pago pendiente sin prosesar e porkue sobre mi suenta,Facturacion,62,0
+buenos dias falla de red inalambrica pucha o sea rapido,Soporte,55,0
+estimados el internet va a paso de tortuga mmm,Soporte,46,0
+ola informasion sobre sobertura de planes entonses son mi tarjeta,Ventas,65,0
+ola sosto de instalasion este...,Facturacion,32,0
+ayuda tengo un problema de conexion con el servicio mmm,Soporte,55,0
+ayuda kue benefisios tiene el plan premium este...,Ventas,50,0
+hola me estan cobrando de mas en la factura ehh,Facturacion,47,0
+ayuda quiero pagar mi recibo mmm,Facturacion,32,0
+por favor solicitar cotizacion corporativa ehh,Ventas,46,0
+ayuda exijo una debolusion por falta de serbisio e,Reclamos,50,0
+buenos dias presios del pakuete a,Ventas,33,0
+estimados kuiero somprar un plan ilimitado este... o sea para oy mismo,Ventas,70,0
+buenas cambiar clave de mi red inalambrica mmm,Soporte,46,0
+estimados costo de instalacion y del servicio,Ventas,45,0
+oye quiero suspender el servicio definitivamente pucha,Soporte,54,0
+buenas soporte tecnico urgente por favor ehh resulta que con mi contrato,Soporte,72,1
+buenas necesito mi comprobante ahh,Ventas,34,0
+buenos dias falla de red inalambrica este... pero con mi tarjeta,Soporte,64,0
+buenos dias costo de instalacion osea,Ventas,37,0
+estimados el monto de este mes es incorrecto ahh,Facturacion,48,0
+buenas me interesa el servicio hogar pucha,Ventas,42,0
+buenas cambiar mi fecha de vencimiento este...,Reclamos,46,0
+hola facturacion de este mes atrasada mmm,Facturacion,41,0
+por fabor kuiero solisitar un reembolso de sobro a y son mi tarjeta,Facturacion,67,0
+por favor me estan cobrando de mas en la factura osea y con mi contrato,Facturacion,71,0
+estimados soporte tesniso urgente por fabor e,Soporte,45,1
+oye aclaracion de cargos adicionales o sea de la aplicacion,Facturacion,59,0
+estimados pagina web dice error 500,Soporte,35,0
+estimados el servicio de internet esta lento ehh,Soporte,48,0
+ayuda el monto de este mes es incorrecto ahh resulta que en el sistema,Facturacion,70,0
+buenas factura duplicada en mi cuenta ahh y con mi tarjeta,Facturacion,58,0
+buenos dias cobro indebido registrado ehh porque para hoy mismo,Facturacion,63,0
+hola quiero rescindir mi contrato,Reclamos,33,0
+hola error de red al descargar archivos pucha pero ahora mismo,Facturacion,62,0
+se sayo la red este...,Soporte,22,0
+buenas pagina web dice error 500 ahh,Soporte,36,0
+hola quiero dar de alta mi ruc ehh entonces en el sistema,Facturacion,57,0
+oye mi computador no se conecta al servidor osea,Soporte,48,0
+estimados velocidad de internet inestable este... entonces del servicio,Soporte,71,0
+oye el monto de este mes es incorrecto mmm,Facturacion,42,0
+ayuda pago pendiente sin procesar ehh,Facturacion,37,0
+buenas deseo adkuirir fibra simetrisa,Ventas,37,0
+buenos dias pagina web dice error 500 mmm,Soporte,41,0
+ayuda detalles del sislo de fasturasion pusa,Facturacion,44,0
+buenas pago pendiente sin procesar osea entonces de la aplicacion,Facturacion,65,0
+oye tengo un problema son el serbisio es pesimo este... porkue son mi sontrato,Reclamos,78,0
+hola mi transferencia no pasa este...,Facturacion,37,0
+hola el internet va a paso de tortuga,Soporte,37,0
+servicio inestable exijo cancelacion sin penalidad ahh,Reclamos,54,0
+buenas como adquiero un chip nuevo,Ventas,34,0
+estimados tengo un problema de conexion con el servicio ehh,Soporte,59,0
+oye comprar nuevo equipo ehh,Ventas,28,0
+por favor quiero pasarme a postpago ehh o sea con mi contrato,Ventas,61,0
+buenos dias el servicio de internet esta lento osea pero de la aplicacion,Soporte,73,0
+buenos dias quiero pasarme a postpago pucha,Ventas,43,0
+estimados cuanto es mi deuda resulta que con mi tarjeta,Facturacion,55,0
+mi transferencia no pasa o sea con mi contrato,Facturacion,46,0
+recibo en formato digital por favor ehh,Facturacion,39,0
+hola necesito resetear mi clave de la cuenta pucha,Soporte,50,0
+buenas descuento no aplicado en el recibo entonces con mi tarjeta,Facturacion,65,0
+buenas me interesa adquirir otra linea de servicio este...,Ventas,58,0
+buenas quiero contratar el servicio este...,Ventas,43,0
+ayuda quiero aumentar la velocidad contratada ehh,Ventas,49,0
+hola portabilidad de mi linea mmm,Ventas,33,0
+buenas duda con mi factura del servicio este...,Facturacion,47,0
+ayuda cuanto es mi deuda este... resulta que rapido,Facturacion,51,0
+oye no puedo ingresar al sistema este...,Soporte,40,0
+buenas llevo dias sin conexion de internet pucha,Reclamos,48,0
+ayuda metodos de pago habilitados ahh o sea para hoy mismo,Facturacion,58,0
+hola quiero rescindir mi contrato este... o sea de la aplicacion,Facturacion,64,0
+oye quiero pagar mi recibo,Facturacion,26,0
+buenos dias tengo un problema con el servicio es pesimo pucha,Reclamos,61,0
+hola olvide mi contrasena ahh,Soporte,29,0
+oye metodos de pago habilitados este... resulta que para hoy mismo,Facturacion,66,0
+estimados quiero pagar mi recibo ahh porque de la aplicacion,Facturacion,60,0
+buenos dias donde pago mi mensualidad,Facturacion,37,0
+ola no resibo sorreos de berifisasion mmm,Soporte,41,0
+buenas no tengo acceso al portal de clientes ehh pero sobre mi cuenta,Soporte,69,0
+ayuda necesito mi comprobante mmm pero para hoy mismo,Facturacion,53,0
+ayuda pago con tarjeta rechazado pucha entonces del servicio,Facturacion,60,0
+mi modem parpadea sin parar ehh,Soporte,31,0
+buenas error de login usuario bloqueado mmm entonces sobre mi cuenta,Soporte,68,0
+oye no puedo conectar el wifi ahh resulta que en el sistema,Soporte,59,0
+ayuda pesimo soporte de la app este...,Soporte,38,0
+ola sambiar mi fesa de bensimiento osea o sea son mi sontrato,Facturacion,61,0
+buenas tienen fibra optica ahh entonces sobre mi cuenta,Ventas,55,0
+oye kuiero aumentar la belosidad sontratada este... pero de la aplisasion,Ventas,73,0
+hola soporte con la configuracion del proxy mmm porque con mi contrato,Soporte,70,0
+buenas por que aumento el precio del recibo,Facturacion,43,0
+por favor duda con el desglose del cobro,Facturacion,40,0
+buenas mi internet no funciona pero en el sistema,Soporte,49,0
+oye exijo ablar son un superbisor por este sobro a,Reclamos,50,0
+oye el serbisio de internet esta lento e entonses son mi sontrato,Soporte,65,0
+oye pago pendiente sin procesar este... entonces en el sistema,Facturacion,62,0
+hola llevo dias sin conexion de internet ehh pero para hoy mismo,Reclamos,64,0
+buenos dias se cayo la red ehh porque para hoy mismo,Soporte,52,0
+buenos dias donde pago mi mensualidad ahh porque del servicio,Facturacion,61,0
+buenos dias se dessonesta a sada rato este... pero de la aplisasion,Soporte,67,0
+ayuda portabilidad de mi linea,Ventas,30,0
+por fabor kuiero sontratar el serbisio este...,Ventas,46,0
+estimados no me sarga la pagina web este...,Soporte,43,0
+estimados no me carga la pagina web osea pero con mi contrato,Soporte,61,0
+estimados como adquiero un chip nuevo pucha entonces para hoy mismo,Ventas,67,0
+ayuda se desconecta a cada rato ahh,Soporte,35,0
+oye boy a presentar una kueja sobre mi suenta a o sea de la aplisasion,Reclamos,70,0
+estimados no me sarga la pagina web osea resulta kue de la aplisasion,Soporte,69,0
+buenos dias es la tercera vez que llamo por lo mismo ahh porque de la aplicacion,Reclamos,80,0
+buenas quiero pagar mi recibo este... resulta que con mi tarjeta,Facturacion,64,0
+ayuda no recibo correos de verificacion ehh y sobre mi cuenta,Soporte,61,0
+buenas duda con mi factura del servicio mmm pero con mi tarjeta,Facturacion,63,0
+estimados confirmar si ya ingreso mi pago mmm pero ahora mismo,Facturacion,62,1
+estimados me interesa adquirir otra linea de servicio pucha entonces con mi tarjeta,Ventas,83,0
+por favor cuales son los requisitos para contratar mmm entonces con mi tarjeta,Ventas,78,0
+estimados necesito mi comprobante ehh,Facturacion,37,0
+buenos dias olvide mi contrasena pucha,Soporte,38,0
+estimados mi internet no funciona pucha,Soporte,39,0
+por favor facturacion de este mes atrasada mmm porque para hoy mismo,Facturacion,68,0
+buenos dias cobro indebido registrado ehh porque con mi contrato,Facturacion,64,0
+ayuda falla de red inalambrica pucha entonces del servicio,Soporte,58,0
+oye duda con el desglose del cobro ehh y ahora mismo,Facturacion,52,0
+buenas no me llego el cobro ehh porque con mi tarjeta,Facturacion,53,0
+hola costo de instalacion de la fibra este... pero en el sistema,Ventas,64,0
+buenos dias me cobraron doble estoy harto del servicio pucha,Reclamos,60,1
+ayuda llevo dias sin conexion de internet mmm pero para hoy mismo,Reclamos,65,0
+ayuda se dessonesta a sada rato pusa o sea en el sistema,Soporte,56,0
+hola no me llego el cobro entonces para hoy mismo,Facturacion,49,0
+oye informacion de planes ehh,Ventas,29,0
+oye problemas para ingresar,Soporte,27,0
+buenas pagar son tarjeta de sredito osea,Facturacion,40,0
+oye pagar con tarjeta de credito mmm,Facturacion,36,0
+por favor recibo en formato digital por favor ahh,Facturacion,49,0
+estimados belosidad de internet inestable e o sea son mi tarjeta,Soporte,64,0
+buenos dias llevo dias sin conexion de internet ahh,Reclamos,51,0
+cambiar clave de mi red inalambrica osea,Soporte,40,0
+mi modem parpadea sin parar ehh y ahora mismo,Soporte,45,0
+ayuda aclaracion de cargos adicionales osea o sea con mi tarjeta,Facturacion,64,0
+ayuda quiero contratar telefonia fija este...,Ventas,45,0
+ayuda kuiero ressindir mi sontrato pusa pero son mi tarjeta,Reclamos,59,0
+buenos dias error en el nabegador al abrir la app este... o sea son mi tarjeta,Soporte,78,0
+velocidad de internet inestable mmm,Soporte,35,0
+ayuda problemas para ingresar pucha pero de la aplicacion,Soporte,57,0
+buenos dias es la tercera vez que llamo por lo mismo pucha y con mi contrato,Reclamos,76,0
+buenas exijo solucion inmediata pucha,Reclamos,37,0
+estimados quiero ver mi estado de cuenta pucha,Facturacion,46,0
+ayuda mi cuenta registra saldo a favor mmm entonces del servicio,Facturacion,64,0
+por favor facturacion de este mes atrasada mmm entonces para hoy mismo,Facturacion,70,0
+estimados no hay señal en mi zona ahh resulta que del servicio,Soporte,62,0
+estimados sostos adisionales por astibasion este...,Ventas,51,0
+buenas descuento no aplicado en el recibo osea y con mi contrato,Facturacion,64,0
+por favor se desconecta a cada rato osea resulta que del servicio,Soporte,65,0
+buenos dias quiero contratar el servicio este... entonces para hoy mismo,Ventas,72,0
+hola cambiar clave de mi red inalambrica o sea para hoy mismo,Soporte,61,0
+oye kuiero darme de baja osea o sea del serbisio,Reclamos,48,1
+mi transferencia no pasa,Facturacion,24,0
+oye no hay señal en mi zona pucha,Soporte,33,0
+buenos dias quiero rescindir mi contrato este...,Reclamos,48,0
+tengo un problema de conexion con el servicio mmm,Soporte,49,0
+oye como adquiero un chip nuevo pucha resulta que con mi contrato,Ventas,65,0
+por fabor kuiero pagar mi resibo a,Facturacion,34,0
+oye soporte con la configuracion del proxy pucha resulta que rapido,Soporte,67,0
+estimados metodos de pago abilitados pusa,Facturacion,41,0
+quiero ver mi estado de cuenta este... y para hoy mismo,Facturacion,55,0
+buenas quiero darme de baja ehh resulta que ahora mismo,Reclamos,55,1
+estimados deseo adquirir fibra simetrica ahh,Ventas,44,0
+soporte con la configuracion del proxy este... entonces para hoy mismo,Soporte,70,0
+ola donde reporto mi somprobante este...,Facturacion,40,0
+ayuda me estan sobrando de mas en la fastura pusa,Facturacion,49,0
+estimados se desconecta a cada rato pucha,Soporte,41,0
+estimados presios del pakuete e resulta kue rapido,Ventas,50,0
+nadie me da solucion mmm resulta que ahora mismo,Reclamos,48,0
+hola error de login usuario bloqueado este...,Soporte,45,0
+buenas error de red al descargar archivos mmm,Soporte,45,0
+aplicacion movil no abre se cierra pucha pero con mi tarjeta,Soporte,60,0
+informacion sobre cobertura de planes pucha,Ventas,43,0
+buenos dias servicio inestable exijo cancelacion sin penalidad ahh pero ahora mismo,Reclamos,83,0
+quiero pasarme a postpago este... entonces sobre mi cuenta,Ventas,58,0
+buenas me interesa adquirir otra linea de servicio pucha o sea con mi tarjeta,Ventas,77,0
+oye asesor de ventas por favor ehh,Ventas,34,0
+buenas donde reporto mi somprobante porkue en el sistema,Facturacion,56,0
+ayuda recibo en formato digital por favor este... resulta que de la aplicacion,Facturacion,78,0
+por favor descuento no aplicado en el recibo ehh,Facturacion,48,0
+hola tengo un problema de conexion con el servicio pucha,Soporte,56,0
+por favor necesito resetear mi clave de la cuenta mmm resulta que con mi tarjeta,Soporte,80,0
+buenas sambiar slabe de mi red inalambrisa,Soporte,42,0
+buenas informasion de planes a y son mi tarjeta,Ventas,47,0
+estimados velocidad de internet inestable pucha porque sobre mi cuenta,Soporte,70,0
+planes familiares de telefonia pucha,Ventas,36,0
+hola el router tiene la luz roja ahh,Soporte,36,0
+buenos dias quiero ver mi estado de cuenta mmm,Facturacion,46,0
+buenos dias donde pago mi mensualidad y en el sistema,Facturacion,53,0
+buenos dias detalles del ciclo de facturacion osea entonces del servicio,Facturacion,72,0
+estimados es un robo este sobro de penalidad e porkue son mi sontrato,Reclamos,69,1
+buenos dias por que aumento el precio del recibo este...,Facturacion,56,0
+oye es un robo este cobro de penalidad porque sobre mi cuenta,Reclamos,61,1
+buenos dias falla de red inalambrica pucha o sea sobre mi cuenta,Soporte,64,0
+ayuda asesor de ventas por favor osea,Ventas,37,0
+buenos dias no ay señal en mi sona mmm entonses sobre mi suenta,Soporte,63,0
+metodos de pago habilitados ahh,Facturacion,31,0
+estimados pésima atencion al cliente de este bot este... pero en el sistema,Reclamos,75,0
+oye tienen fibra optica pucha porque rapido,Ventas,43,0
+hola costo de instalacion de la fibra mmm,Ventas,41,0
+oye deseo adquirir fibra simetrica ehh y en el sistema,Ventas,54,0
+oye pago con tarjeta rechazado mmm y ahora mismo,Facturacion,48,0
+buenas falla tecnica en la red local ehh,Soporte,40,0
+ayuda planes postpago con gigas libres este...,Ventas,46,0
+ayuda exijo hablar con un supervisor por este cobro ahh o sea rapido,Reclamos,68,1
+estimados falla tecnica en la red local pucha,Soporte,45,0
+buenas mi somputador no se sonesta al serbidor este... entonses son mi tarjeta,Soporte,78,0
+por fabor belosidad de internet inestable este... porkue son mi sontrato,Soporte,72,0
+buenas cuanto es mi deuda ahh y para hoy mismo,Facturacion,46,0
+se sayo la red e,Soporte,16,0
+solicitar cotizacion corporativa mmm o sea del servicio,Facturacion,55,0
+que beneficios tiene el plan premium osea,Ventas,41,0
+oye costo de instalacion de la fibra ahh,Ventas,40,0
+buenas me interesa adquirir otra linea de servicio ahh pero con mi tarjeta,Ventas,74,0
+por favor se desconecta a cada rato mmm pero en el sistema,Soporte,58,0
+ayuda quiero pasarme a postpago ehh y ahora mismo,Ventas,49,0
+buenas el internet va a paso de tortuga pucha resulta que con mi tarjeta,Soporte,72,0
+buenos dias me interesa el servicio hogar pucha,Ventas,47,0
+ola error en el nabegador al abrir la app pusa,Soporte,46,0
+oye costos adicionales por activacion mmm,Ventas,41,0
+me estan cobrando de mas en la factura mmm pero en el sistema,Facturacion,61,0
+estimados recibo en formato digital por favor pucha,Facturacion,51,0
+buenas el router tiene la luz roja pucha y ahora mismo,Soporte,54,0
+quiero renovar mi plan pucha porque para hoy mismo,Ventas,50,0
+ayuda nadie atiende mis reclamos este... resulta que en el sistema,Reclamos,66,0
+estimados soporte con la configuracion del proxy entonces del servicio,Soporte,70,0
+buenos dias error de red al descargar archivos este... resulta que de la aplicacion,Soporte,83,0
+buenos dias nadie atiende mis reclamos resulta que ahora mismo,Reclamos,62,0
+me prometieron algo que no cumplen osea,Reclamos,39,0
+oye costo de instalacion osea resulta que para hoy mismo,Ventas,56,0
+por favor quiero contratar telefonia fija ahh,Ventas,45,0
+buenos dias cobro indebido registrado ahh pero ahora mismo,Facturacion,58,0
+estimados mi cuenta registra saldo a favor o sea en el sistema,Facturacion,62,0
+ayuda sonfirmar si ya ingreso mi pago e,Facturacion,39,1
+hola quiero contratar el servicio ehh pero para hoy mismo,Ventas,57,0
+buenos dias me siento estafado con este plan pucha,Reclamos,50,1
+por fabor asesor de bentas por fabor mmm,Ventas,40,0
+voy a denunciarlos ante el regulador ahh,Reclamos,40,1
+hola costo de instalacion osea o sea en el sistema,Ventas,50,0
+estimados el internet es una basura ahh,Reclamos,39,1
+buenos dias me interesa adquirir otra linea de servicio ahh,Ventas,59,0
+oye quiero darme de baja mmm o sea para hoy mismo,Reclamos,49,1
+no me llego el cobro ahh,Facturacion,24,0
+llevo dias sin conexion de internet mmm porque en el sistema,Reclamos,60,0
+ola se sayo la red pusa,Soporte,23,0
+buenas resibo en formato digital por fabor mmm y para oy mismo,Facturacion,62,0
+quiero dar de alta mi ruc mmm,Facturacion,29,0
+estimados necesito mi comprobante mmm,Facturacion,37,0
+estimados se cayo la red osea,Soporte,29,0
+por favor descuento no aplicado en el recibo pucha entonces rapido,Facturacion,66,0
+oye reclamar por cobro excesivo resulta que para hoy mismo,Reclamos,58,0
+necesito mi comprobante ahh porque del servicio,Facturacion,47,0
+ayuda mi cuenta aparece como suspendida ahh,Soporte,43,0
+estimados informacion de planes ahh,Ventas,35,0
+hola precios del paquete ehh pero con mi contrato,Ventas,49,0
+estimados no me llego el cobro ehh,Facturacion,34,0
+oye error de red al descargar archivos resulta que de la aplicacion,Soporte,67,0
+ayuda el router tiene la luz roja pucha pero del servicio,Soporte,57,0
+por favor soporte con la configuracion del proxy ehh,Soporte,52,0
+por favor olvide mi contrasena ehh y con mi tarjeta,Soporte,51,0
+buenas mi modem parpadea sin parar ehh,Soporte,38,0
+error en el link de pago mmm,Facturacion,28,0
+buenos dias quiero darme de baja y rapido,Reclamos,41,1
+buenas mi cuenta registra saldo a favor este...,Facturacion,47,0
+oye descuento no aplicado en el recibo,Facturacion,38,0
+catalogo de equipos disponibles pucha o sea de la aplicacion,Ventas,60,0
+ayuda error de red al descargar archivos mmm,Soporte,44,0
+buenos dias no me llego el cobro ehh,Facturacion,36,0
+buenos dias donde pago mi mensualidad ahh pero rapido,Facturacion,53,0
+estimados nadie me da solucion mmm y rapido,Reclamos,43,0
+hola error de red al descargar archivos osea,Soporte,44,0
+hola me cobraron doble estoy harto del servicio mmm entonces del servicio,Reclamos,73,1
+estimados no tengo acceso al portal de clientes osea pero de la aplicacion,Ventas,74,0
+oye el monto de este mes es incorrecto osea o sea ahora mismo,Facturacion,61,0
+hola olvide mi contrasena ehh,Soporte,29,0
+por favor cuales son los requisitos para contratar ehh y del servicio,Ventas,69,0
+por favor error de login usuario bloqueado ehh,Soporte,46,0
+estimados quiero aumentar la velocidad contratada osea,Ventas,54,0
+buenos dias como adquiero un chip nuevo ahh resulta que sobre mi cuenta,Ventas,71,0
+buenos dias somo adkuiero un sip nuebo pusa,Ventas,43,0
+cambiar mi fecha de vencimiento este...,Facturacion,39,0
+ayuda nesesito resetear mi slabe de la suenta,Soporte,45,0
+buenos dias pago pendiente sin prosesar osea,Facturacion,44,0
+buenas no me carga la pagina web pero de la aplicacion,Soporte,54,0
+estimados como adquiero un chip nuevo osea resulta que para hoy mismo,Ventas,69,0
+la conexion se cae constantemente resulta que del servicio,Soporte,58,0
+por favor donde pago mi mensualidad ehh resulta que en el sistema,Facturacion,65,0
+ayuda quiero contratar el servicio ahh resulta que en el sistema,Ventas,64,0
+buenos dias me gustaria agregar cable a mi paquete este...,Ventas,58,0
+por favor que beneficios tiene el plan premium ehh,Ventas,50,0
+ayuda cambiar mi fecha de vencimiento ehh y para hoy mismo,Facturacion,58,0
+oye olvide mi contrasena pucha porque para hoy mismo,Soporte,52,0
+por favor comprar nuevo equipo este... o sea sobre mi cuenta,Ventas,60,0
+por favor no tengo acceso al portal de clientes ehh,Soporte,51,0
+buenos dias tienen fibra optisa pusa,Ventas,36,0
+ayuda detalles del ciclo de facturacion ehh,Facturacion,43,0
+buenas mi transferencia no pasa pucha porque sobre mi cuenta,Facturacion,60,0
+hola el servicio de internet esta lento osea,Soporte,44,0
+hola no recibo correos de verificacion osea resulta que con mi tarjeta,Soporte,70,0
+buenos dias soporte tecnico urgente por favor ehh entonces con mi contrato,Soporte,74,1
+ayuda quiero renovar mi plan este...,Ventas,36,0
+por fabor sambiar mi fesa de bensimiento e,Facturacion,42,0
+hola facturacion de este mes atrasada ahh,Facturacion,41,0
+ayuda donde pago mi mensualidad pucha,Facturacion,37,0
+buenos dias kuiero sontratar el serbisio pusa y del serbisio,Ventas,60,0
+buenos dias la pantalla se queda en blanco este...,Soporte,50,0
+hola exijo solucion inmediata,Reclamos,29,0
+por favor es la tercera vez que llamo por lo mismo ahh,Reclamos,54,0
+buenas quiero pasarme a postpago,Facturacion,32,0
+ayuda cobro indebido registrado,Facturacion,31,0
+hola me prometieron algo que no cumplen ahh,Reclamos,43,0
+ayuda confirmar si ya ingreso mi pago ehh porque con mi contrato,Facturacion,64,1
+por fabor detalles del sislo de fasturasion a resulta kue aora mismo,Facturacion,68,0
+por favor mi cuenta aparece como suspendida,Soporte,43,0
+buenos dias la pantalla se queda en blanco este... entonces en el sistema,Soporte,73,0
+buenas voy a denunciarlos ante el regulador este...,Reclamos,51,1
+estimados kuiero pasarme a postpago,Ventas,35,0
+oye voy a denunciarlos ante el regulador ahh y con mi contrato,Reclamos,62,1
+hola facturacion de este mes atrasada osea,Facturacion,42,0
+ayuda cambiar mi fecha de vencimiento entonces ahora mismo,Facturacion,58,0
+oye resibo en formato digital por fabor osea,Facturacion,44,0
+la pantalla se queda en blanco pucha resulta que para hoy mismo,Soporte,63,0
+problemas para ingresar o sea de la aplicacion,Soporte,46,0
+hola problemas para ingresar ehh porque en el sistema,Soporte,53,0
+buenas no recibo correos de verificacion o sea rapido,Soporte,53,0
+estimados promociones para clientes nuevos pero sobre mi cuenta,Ventas,63,0
+donde pago mi mensualidad este...,Facturacion,33,0
