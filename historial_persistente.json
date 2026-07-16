@@ -1,0 +1,32 @@
+[
+  {
+    "timestamp": "18:47",
+    "canal": "WhatsApp",
+    "agente": "Chat Sim",
+    "mensaje": "nunca más voy a recomendar este servicio, es una basura total",
+    "intencion": "Reclamos",
+    "prioridad": "CRÍTICA",
+    "urgencia": true,
+    "sla": "≤ 30 seg"
+  },
+  {
+    "timestamp": "18:47",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "el servicio no funciona desde esta mañana, reinicié el router y nada",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 2 min"
+  },
+  {
+    "timestamp": "18:48",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "se me cayó la red otra vez, esto pasa todos los días desde hace semanas",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 2 min"
+  }
+]

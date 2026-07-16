@@ -1,0 +1,16 @@
+[
+  {
+    "tipo": "cliente",
+    "texto": "el servicio no funciona desde esta mañana, reinicié el router y nada",
+    "intencion": "Soporte",
+    "urgencia": false,
+    "timestamp": "18:47"
+  },
+  {
+    "tipo": "cliente",
+    "texto": "se me cayó la red otra vez, esto pasa todos los días desde hace semanas",
+    "intencion": "Soporte",
+    "urgencia": false,
+    "timestamp": "18:48"
+  }
+]

@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beex Copilot – Vista del Agente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  :root {
+    --mode: sketch;
+    --accent: #1a1a1a;
+    --accent2: #444;
+    --bg-main: #f9f8f5;
+    --bg-sidebar: #f0efe9;
+    --bg-panel: #fff;
+    --bg-active: #e8e7e0;
+    --border: #c8c7bc;
+    --border2: #a8a79e;
+    --text-primary: #1a1a1a;
+    --text-secondary: #555;
+    --text-muted: #888;
+    --btn-bg: #fff;
+    --btn-border: #999;
+    --badge-bg: #e0dfd8;
+    --chat-bubble-in: #f0efe9;
+    --chat-bubble-out: #e0dfd8;
+    --unread: #1a1a1a;
+    --sidebar-icon: #555;
+    --nav-active-bg: #e0dfd8;
+    --tag-all-bg: #1a1a1a;
+    --tag-all-text: #fff;
+    --tag-other-bg: #fff;
+    --font-ui: 'DM Sans', sans-serif;
+    --font-brand: 'Sora', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --shadow: none;
+    --online-dot: #555;
+    --sketch-border-style: 1.5px solid var(--border);
+    --transition: 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .color-mode {
+    --accent: #2563EB;
+    --accent2: #1D4ED8;
+    --bg-main: #F0F4FF;
+    --bg-sidebar: #1E293B;
+    --bg-panel: #ffffff;
+    --bg-active: #EFF6FF;
+    --border: #CBD5E1;
+    --border2: #94A3B8;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --btn-bg: #2563EB;
+    --btn-border: #2563EB;
+    --badge-bg: #DBEAFE;
+    --chat-bubble-in: #F1F5F9;
+    --chat-bubble-out: #EFF6FF;
+    --unread: #2563EB;
+    --sidebar-icon: #94A3B8;
+    --nav-active-bg: rgba(37,99,235,0.12);
+    --tag-all-bg: #2563EB;
+    --tag-all-text: #fff;
+    --tag-other-bg: #fff;
+    --online-dot: #22C55E;
+    --sketch-border-style: 1px solid var(--border);
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-ui);
+    background: var(--bg-main);
+    color: var(--text-primary);
+    min-height: 100vh;
+    transition: background var(--transition), color var(--transition);
+  }
+
+  /* ── TOP NAV ── */
+  .topnav {
+    height: 52px;
+    background: var(--bg-panel);
+    border-bottom: var(--sketch-border-style);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background var(--transition), border var(--transition), box-shadow var(--transition);
+    box-shadow: var(--shadow);
+  }
+  .color-mode .topnav { background: #fff; }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-brand);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text-primary);
+    min-width: 140px;
+    letter-spacing: -0.3px;
+    transition: color var(--transition);
+  }
+  .color-mode .brand { color: #2563EB; }
+
+  .brand-icon {
+    width: 30px; height: 30px;
+    border: var(--sketch-border-style);
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    background: var(--bg-active);
+    transition: all var(--transition);
+  }
+  .color-mode .brand-icon { background: #2563EB; color: #fff; border-color: #2563EB; }
+
+  .hamburger {
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--text-secondary);
+    padding: 4px;
+    transition: color var(--transition);
+  }
+
+  .search-bar {
+    flex: 1;
+    max-width: 480px;
+    height: 34px;
+    border: var(--sketch-border-style);
+    border-radius: var(--radius-md);
+    background: var(--bg-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+    transition: all var(--transition);
+  }
+  .color-mode .search-bar { background: #F8FAFC; }
+
+  .topnav-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .topnav-actions i {
+    font-size: 20px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition);
+  }
+  .topnav-actions .avatar-top {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    border: var(--sketch-border-style);
+    background: var(--bg-active);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .color-mode .avatar-top { background: #DBEAFE; color: #1D4ED8; }
+
+  /* ── MAIN LAYOUT ── */
+  .app-shell {
+    display: flex;
+    height: calc(100vh - 52px);
+    overflow: hidden;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: 180px;
+    background: var(--bg-sidebar);
+    border-right: var(--sketch-border-style);
+    display: flex;
+    flex-direction: column;
+    padding: 12px 8px;
+    gap: 2px;
+    flex-shrink: 0;
+    transition: background var(--transition), border var(--transition);
+  }
+  .color-mode .sidebar { border-right-color: #334155; }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition);
+    border: 1.5px solid transparent;
+  }
+  .color-mode .nav-item { color: #94A3B8; }
+  .nav-item:hover { background: var(--nav-active-bg); color: var(--text-primary); }
+  .color-mode .nav-item:hover { color: #fff; }
+  .nav-item.active {
+    background: var(--nav-active-bg);
+    color: var(--text-primary);
+    font-weight: 500;
+    border-color: var(--border);
+  }
+  .color-mode .nav-item.active { color: #fff; border-color: rgba(37,99,235,0.3); }
+  .nav-item i { font-size: 18px; }
+
+  .sidebar-spacer { flex: 1; }
+
+  .agent-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border-top: var(--sketch-border-style);
+    margin-top: 8px;
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .color-mode .agent-footer { border-top-color: #334155; }
+
+  .agent-avatar {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--badge-bg);
+    border: var(--sketch-border-style);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    flex-shrink: 0;
+    position: relative;
+    transition: all var(--transition);
+  }
+  .color-mode .agent-avatar { background: #1E3A5F; color: #93C5FD; }
+
+  .online-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--online-dot);
+    border: 2px solid var(--bg-sidebar);
+    position: absolute;
+    bottom: 0; right: 0;
+    transition: background var(--transition);
+  }
+
+  .agent-info { flex: 1; min-width: 0; }
+  .agent-name { font-size: 12px; font-weight: 500; color: var(--text-primary); transition: color var(--transition); }
+  .color-mode .agent-name { color: #E2E8F0; }
+  .agent-status { font-size: 11px; color: var(--text-muted); transition: color var(--transition); }
+  .color-mode .agent-status { color: #22C55E; }
+
+  /* ── INBOX COLUMN ── */
+  .inbox-col {
+    width: 240px;
+    background: var(--bg-panel);
+    border-right: var(--sketch-border-style);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: background var(--transition), border var(--transition), box-shadow var(--transition);
+    box-shadow: var(--shadow);
+  }
+
+  .col-header {
+    padding: 14px 14px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: var(--sketch-border-style);
+    transition: all var(--transition);
+  }
+
+  .inbox-filters {
+    display: flex;
+    gap: 6px;
+    padding: 10px 12px;
+    border-bottom: var(--sketch-border-style);
+    flex-wrap: wrap;
+    transition: border var(--transition);
+  }
+
+  .tag {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    background: var(--tag-other-bg);
+    cursor: pointer;
+    transition: all var(--transition);
+    color: var(--text-secondary);
+  }
+  .tag.active-tag {
+    background: var(--tag-all-bg);
+    color: var(--tag-all-text);
+    border-color: var(--tag-all-bg);
+  }
+
+  .conv-list { flex: 1; overflow-y: auto; }
+  .conv-item {
+    padding: 10px 14px;
+    border-bottom: var(--sketch-border-style);
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    transition: background var(--transition), border var(--transition);
+  }
+  .conv-item:hover { background: var(--bg-active); }
+  .conv-item.active { background: var(--bg-active); }
+  .color-mode .conv-item.active { background: #EFF6FF; border-left: 3px solid #2563EB; }
+
+  .conv-icon {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: var(--sketch-border-style);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    background: var(--bg-active);
+    flex-shrink: 0;
+    transition: all var(--transition);
+  }
+  .color-mode .conv-icon.wapp { background: #DCFCE7; color: #16A34A; border-color: #86EFAC; }
+  .color-mode .conv-icon.call { background: #DBEAFE; color: #1D4ED8; border-color: #93C5FD; }
+  .color-mode .conv-icon.ig { background: #FCE7F3; color: #BE185D; border-color: #F9A8D4; }
+  .color-mode .conv-icon.chat { background: #FEF3C7; color: #92400E; border-color: #FCD34D; }
+  .color-mode .conv-icon.mail { background: #F1F5F9; color: #475569; border-color: #CBD5E1; }
+
+  .conv-body { flex: 1; min-width: 0; }
+  .conv-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
+  .conv-name { font-size: 13px; font-weight: 500; color: var(--text-primary); transition: color var(--transition); }
+  .conv-time { font-size: 11px; color: var(--text-muted); transition: color var(--transition); }
+  .conv-preview {
+    font-size: 12px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color var(--transition);
+  }
+  .unread-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--unread);
+    flex-shrink: 0;
+    margin-left: auto;
+    transition: background var(--transition);
+  }
+
+  .see-more {
+    padding: 12px 14px;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    border-top: var(--sketch-border-style);
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .see-more:hover { color: var(--accent); }
+
+  /* ── CHAT COLUMN ── */
+  .chat-col {
+    flex: 1;
+    background: var(--bg-main);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: background var(--transition);
+    min-width: 0;
+  }
+
+  .chat-header {
+    padding: 12px 16px;
+    background: var(--bg-panel);
+    border-bottom: var(--sketch-border-style);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: background var(--transition), border var(--transition), box-shadow var(--transition);
+    box-shadow: var(--shadow);
+  }
+
+  .chat-title-wrap { flex: 1; min-width: 0; }
+  .chat-contact-name { font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: color var(--transition); }
+  .color-mode .chat-contact-name { color: #1E293B; }
+  .chat-meta { font-size: 12px; color: var(--text-muted); margin-top: 2px; transition: color var(--transition); }
+
+  .chat-icon-lg {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: var(--sketch-border-style);
+    background: var(--bg-active);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    transition: all var(--transition);
+  }
+  .color-mode .chat-icon-lg { background: #DCFCE7; color: #16A34A; border-color: #86EFAC; }
+
+  .status-btn {
+    padding: 6px 14px;
+    border-radius: var(--radius-md);
+    border: var(--sketch-border-style);
+    background: var(--bg-panel);
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    font-family: var(--font-ui);
+    color: var(--text-primary);
+    transition: all var(--transition);
+  }
+  .color-mode .status-btn { background: #EFF6FF; border-color: #93C5FD; color: #1D4ED8; }
+
+  .messages-area { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+
+  .msg { max-width: 72%; }
+  .msg.in { align-self: flex-start; }
+  .msg.out { align-self: flex-end; }
+
+  .bubble {
+    padding: 10px 14px;
+    border-radius: var(--radius-lg);
+    font-size: 13px;
+    line-height: 1.5;
+    border: var(--sketch-border-style);
+    transition: all var(--transition);
+  }
+  .msg.in .bubble { background: var(--chat-bubble-in); border-radius: 4px 12px 12px 12px; }
+  .msg.out .bubble { background: var(--chat-bubble-out); border-radius: 12px 4px 12px 12px; }
+  .color-mode .msg.in .bubble { background: #F1F5F9; border-color: #E2E8F0; }
+  .color-mode .msg.out .bubble { background: #EFF6FF; border-color: #BFDBFE; }
+
+  .msg-time { font-size: 11px; color: var(--text-muted); margin-top: 4px; display: flex; align-items: center; gap: 4px; transition: color var(--transition); }
+  .msg.out .msg-time { justify-content: flex-end; }
+  .color-mode .msg.out .msg-time .ticks { color: #2563EB; }
+
+  .reply-section {
+    background: var(--bg-panel);
+    border-top: var(--sketch-border-style);
+    padding: 12px 16px;
+    transition: background var(--transition), border var(--transition), box-shadow var(--transition);
+    box-shadow: 0 -1px 4px rgba(0,0,0,0.04);
+  }
+
+  .reply-tabs { display: flex; gap: 0; margin-bottom: 10px; border-bottom: var(--sketch-border-style); }
+  .rtab {
+    padding: 6px 14px;
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--text-muted);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: all var(--transition);
+    font-weight: 500;
+  }
+  .rtab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .suggested-reply {
+    background: var(--bg-main);
+    border: var(--sketch-border-style);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 10px;
+    transition: all var(--transition);
+  }
+  .color-mode .suggested-reply { background: #F8FAFC; border-color: #E2E8F0; }
+
+  .reply-actions { display: flex; gap: 8px; }
+
+  .btn {
+    padding: 7px 14px;
+    border-radius: var(--radius-md);
+    border: var(--sketch-border-style);
+    font-size: 12px;
+    font-family: var(--font-ui);
+    cursor: pointer;
+    font-weight: 500;
+    background: var(--btn-bg);
+    color: var(--text-primary);
+    transition: all var(--transition);
+  }
+  .btn:hover { background: var(--bg-active); }
+  .btn.primary {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .btn.primary:hover { background: var(--accent2); }
+  .color-mode .btn { background: #fff; border-color: #CBD5E1; color: #374151; }
+  .color-mode .btn.primary { background: #2563EB; color: #fff; border-color: #2563EB; }
+
+  .composer {
+    margin-top: 10px;
+    border: var(--sketch-border-style);
+    border-radius: var(--radius-md);
+    background: var(--bg-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    height: 40px;
+    transition: all var(--transition);
+  }
+  .color-mode .composer { background: #F8FAFC; border-color: #CBD5E1; }
+
+  .composer-placeholder { flex: 1; font-size: 13px; color: var(--text-muted); transition: color var(--transition); }
+  .composer-icons { display: flex; gap: 8px; }
+  .composer-icons i { font-size: 17px; color: var(--text-muted); cursor: pointer; transition: color var(--transition); }
+  .color-mode .composer-icons i { color: #94A3B8; }
+  .color-mode .composer-icons .send-icon { color: #2563EB; }
+
+  /* ── RIGHT PANEL ── */
+  .right-panel {
+    width: 260px;
+    background: var(--bg-panel);
+    border-left: var(--sketch-border-style);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    gap: 0;
+    flex-shrink: 0;
+    transition: background var(--transition), border var(--transition), box-shadow var(--transition);
+    box-shadow: var(--shadow);
+  }
+
+  .panel-section {
+    padding: 12px 14px;
+    border-bottom: var(--sketch-border-style);
+    transition: border var(--transition);
+  }
+
+  .panel-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    transition: color var(--transition);
+  }
+  .color-mode .panel-title { color: #64748B; }
+
+  .history-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .history-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 28px;
+    bottom: -10px;
+    width: 1px;
+    background: var(--border);
+    transition: background var(--transition);
+  }
+  .history-dot {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: var(--sketch-border-style);
+    background: var(--bg-active);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+    z-index: 1;
+    transition: all var(--transition);
+  }
+  .color-mode .history-dot.wapp { background: #DCFCE7; color: #16A34A; border-color: #86EFAC; }
+  .color-mode .history-dot.call { background: #DBEAFE; color: #1D4ED8; border-color: #93C5FD; }
+  .color-mode .history-dot.ig { background: #FCE7F3; color: #BE185D; border-color: #F9A8D4; }
+  .color-mode .history-dot.mail { background: #F1F5F9; color: #475569; border-color: #CBD5E1; }
+
+  .history-content { flex: 1; min-width: 0; }
+  .history-channel { font-size: 12px; font-weight: 500; color: var(--text-primary); transition: color var(--transition); }
+  .history-note { font-size: 11px; color: var(--text-muted); line-height: 1.4; transition: color var(--transition); }
+
+  .see-full-btn {
+    display: block;
+    width: 100%;
+    padding: 7px;
+    border: var(--sketch-border-style);
+    border-radius: var(--radius-md);
+    background: var(--bg-main);
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+    margin-top: 8px;
+    font-family: var(--font-ui);
+    transition: all var(--transition);
+  }
+  .see-full-btn:hover { background: var(--bg-active); }
+
+  .copilot-header {
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 10px;
+  }
+  .copilot-header i { font-size: 16px; color: var(--accent); transition: color var(--transition); }
+
+  .copilot-list { list-style: none; padding: 0; }
+  .copilot-list li {
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 3px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    line-height: 1.4;
+    transition: color var(--transition);
+  }
+  .copilot-list li::before { content: '•'; color: var(--accent); flex-shrink: 0; margin-top: 1px; transition: color var(--transition); }
+  .copilot-list .link { color: var(--accent); text-decoration: underline; cursor: pointer; transition: color var(--transition); }
+
+  .quick-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .qa-btn {
+    flex: 1;
+    min-width: 70px;
+    padding: 8px 6px;
+    border: var(--sketch-border-style);
+    border-radius: var(--radius-md);
+    background: var(--bg-main);
+    font-size: 11px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-family: var(--font-ui);
+    line-height: 1.3;
+    font-weight: 500;
+    transition: all var(--transition);
+  }
+  .qa-btn:hover { background: var(--bg-active); color: var(--accent); }
+  .color-mode .qa-btn:hover { background: #EFF6FF; border-color: #93C5FD; }
+
+  /* ── CONFIG MODAL ── */
+  .config-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 200;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+    backdrop-filter: blur(2px);
+  }
+  .config-overlay.open { opacity: 1; pointer-events: all; }
+
+  .config-modal {
+    background: var(--bg-panel);
+    border-radius: 16px;
+    border: var(--sketch-border-style);
+    width: 380px;
+    padding: 28px;
+    transform: scale(0.95) translateY(10px);
+    transition: transform 0.3s, background var(--transition), border var(--transition);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  }
+  .config-overlay.open .config-modal { transform: scale(1) translateY(0); }
+
+  .config-modal h2 {
+    font-family: var(--font-brand);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+    transition: color var(--transition);
+  }
+  .config-modal p { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; transition: color var(--transition); }
+
+  .mode-options { display: flex; gap: 12px; margin-bottom: 24px; }
+  .mode-card {
+    flex: 1;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.25s;
+    background: var(--bg-main);
+  }
+  .mode-card:hover { border-color: var(--accent2); }
+  .mode-card.selected { border-color: var(--accent); background: var(--bg-active); }
+  .color-mode .mode-card.selected { background: #EFF6FF; border-color: #2563EB; }
+
+  .mode-preview {
+    width: 100%; height: 80px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    border: var(--sketch-border-style);
+    display: flex; flex-direction: column;
+    gap: 4px;
+    padding: 6px;
+  }
+  .mode-preview.sketch-prev { background: #f9f8f5; }
+  .mode-preview.color-prev { background: #F0F4FF; }
+  .prev-bar { height: 8px; border-radius: 3px; }
+  .sketch-prev .prev-bar { background: #1a1a1a; }
+  .color-prev .prev-bar:nth-child(1) { background: #2563EB; }
+  .color-prev .prev-bar:nth-child(2) { background: #22C55E; }
+  .color-prev .prev-bar:nth-child(3) { background: #F59E0B; }
+
+  .mode-label { font-size: 12px; font-weight: 600; color: var(--text-primary); transition: color var(--transition); }
+  .mode-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; transition: color var(--transition); }
+
+  .config-actions { display: flex; gap: 10px; justify-content: flex-end; }
+  .config-close-btn {
+    padding: 9px 20px;
+    border-radius: var(--radius-md);
+    border: var(--sketch-border-style);
+    background: var(--bg-main);
+    font-size: 13px;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    color: var(--text-secondary);
+    transition: all var(--transition);
+  }
+  .config-apply-btn {
+    padding: 9px 20px;
+    border-radius: var(--radius-md);
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    transition: all var(--transition);
+  }
+  .config-apply-btn:hover { background: var(--accent2); }
+
+  .proto-label {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-muted);
+    padding: 6px;
+    font-style: italic;
+    border-top: var(--sketch-border-style);
+    transition: all var(--transition);
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<!-- CONFIG MODAL -->
+<div class="config-overlay" id="configOverlay">
+  <div class="config-modal">
+    <h2><i class="ti ti-settings" style="vertical-align:-2px; margin-right:6px" aria-hidden="true"></i>Configuración de Apariencia</h2>
+    <p>Elige el modo visual para la interfaz del agente Beex.</p>
+    <div class="mode-options">
+      <div class="mode-card selected" id="sketchCard" onclick="selectMode('sketch')">
+        <div class="mode-preview sketch-prev">
+          <div class="prev-bar" style="width:80%"></div>
+          <div class="prev-bar" style="width:60%"></div>
+          <div class="prev-bar" style="width:90%"></div>
+          <div class="prev-bar" style="width:50%"></div>
+        </div>
+        <div class="mode-label">Boceto</div>
+        <div class="mode-sub">Blanco y negro — prototipo</div>
+      </div>
+      <div class="mode-card" id="colorCard" onclick="selectMode('color')">
+        <div class="mode-preview color-prev">
+          <div class="prev-bar" style="width:80%"></div>
+          <div class="prev-bar" style="width:60%"></div>
+          <div class="prev-bar" style="width:90%"></div>
+          <div class="prev-bar" style="width:50%"></div>
+        </div>
+        <div class="mode-label">Color</div>
+        <div class="mode-sub">Versión visual completa</div>
+      </div>
+    </div>
+    <div class="config-actions">
+      <button class="config-close-btn" onclick="closeConfig()">Cancelar</button>
+      <button class="config-apply-btn" onclick="applyMode()">Aplicar</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <div class="brand">
+    <div class="brand-icon"><i class="ti ti-hexagon" aria-hidden="true"></i></div>
+    beex
+  </div>
+  <i class="ti ti-menu-2 hamburger" aria-hidden="true"></i>
+  <div class="search-bar">
+    <i class="ti ti-search" style="font-size:15px" aria-hidden="true"></i>
+    Buscar conversación o cliente...
+  </div>
+  <div class="topnav-actions">
+    <i class="ti ti-bell" aria-label="Notificaciones"></i>
+    <i class="ti ti-help-circle" aria-label="Ayuda"></i>
+    <div class="avatar-top">A7</div>
+  </div>
+</nav>
+
+<!-- MAIN APP -->
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" role="navigation" aria-label="Navegación principal">
+    <div class="nav-item active">
+      <i class="ti ti-home" aria-hidden="true"></i> Inicio
+    </div>
+    <div class="nav-item">
+      <i class="ti ti-message-2" aria-hidden="true"></i> Conversaciones
+    </div>
+    <div class="nav-item">
+      <i class="ti ti-users" aria-hidden="true"></i> Clientes
+    </div>
+    <div class="nav-item">
+      <i class="ti ti-chart-bar" aria-hidden="true"></i> Reportes
+    </div>
+    <div class="nav-item">
+      <i class="ti ti-robot" aria-hidden="true"></i> Automatizaciones
+    </div>
+    <div class="nav-item">
+      <i class="ti ti-book" aria-hidden="true"></i> Base de Conocimiento
+    </div>
+    <div class="nav-item" onclick="openConfig()" role="button" aria-label="Configuración">
+      <i class="ti ti-settings" aria-hidden="true"></i> Configuración
+    </div>
+    <div class="sidebar-spacer"></div>
+    <div class="agent-footer">
+      <div class="agent-avatar">
+        A7
+        <span class="online-dot"></span>
+      </div>
+      <div class="agent-info">
+        <div class="agent-name">Agente 07</div>
+        <div class="agent-status">● En línea</div>
+      </div>
+      <i class="ti ti-chevron-down" style="font-size:14px; color: var(--text-muted)" aria-hidden="true"></i>
+    </div>
+  </aside>
+
+  <!-- INBOX COLUMN -->
+  <section class="inbox-col" aria-label="Bandeja de conversaciones">
+    <div class="col-header">Bandeja de Conversaciones</div>
+    <div class="inbox-filters">
+      <span class="tag active-tag">Todas (12)</span>
+      <span class="tag">Mis (5)</span>
+      <span class="tag">Pendientes (7)</span>
+    </div>
+    <div class="conv-list">
+      <div class="conv-item active">
+        <div class="conv-icon wapp"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i></div>
+        <div class="conv-body">
+          <div class="conv-meta">
+            <span class="conv-name">Juan Pérez</span>
+            <span class="conv-time">10:32 AM</span>
+          </div>
+          <div class="conv-preview">
+            Consulta sobre pago
+            <span class="unread-dot"></span>
+          </div>
+        </div>
+      </div>
+      <div class="conv-item">
+        <div class="conv-icon call"><i class="ti ti-phone-incoming" aria-hidden="true"></i></div>
+        <div class="conv-body">
+          <div class="conv-meta">
+            <span class="conv-name">Juan Pérez</span>
+            <span class="conv-time">10:15 AM</span>
+          </div>
+          <div class="conv-preview">
+            Llamado entrante
+            <span class="unread-dot"></span>
+          </div>
+        </div>
+      </div>
+      <div class="conv-item">
+        <div class="conv-icon ig"><i class="ti ti-brand-instagram" aria-hidden="true"></i></div>
+        <div class="conv-body">
+          <div class="conv-meta">
+            <span class="conv-name">Juan Pérez</span>
+            <span class="conv-time">Ayer</span>
+          </div>
+          <div class="conv-preview">
+            Mensaje en Instagram
+            <span class="unread-dot"></span>
+          </div>
+        </div>
+      </div>
+      <div class="conv-item">
+        <div class="conv-icon chat"><i class="ti ti-message-circle" aria-hidden="true"></i></div>
+        <div class="conv-body">
+          <div class="conv-meta">
+            <span class="conv-name">Juan Pérez</span>
+            <span class="conv-time">Ayer</span>
+          </div>
+          <div class="conv-preview">
+            Webchat
+            <span class="unread-dot"></span>
+          </div>
+        </div>
+      </div>
+      <div class="conv-item">
+        <div class="conv-icon mail"><i class="ti ti-mail" aria-hidden="true"></i></div>
+        <div class="conv-body">
+          <div class="conv-meta">
+            <span class="conv-name">Juan Pérez</span>
+            <span class="conv-time">2 días</span>
+          </div>
+          <div class="conv-preview">
+            Correo electrónico
+            <span class="unread-dot"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="see-more">Ver más conversaciones</div>
+  </section>
+
+  <!-- CHAT COLUMN -->
+  <main class="chat-col" aria-label="Conversación activa">
+    <div class="chat-header">
+      <div class="chat-icon-lg"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i></div>
+      
+      <div class="chat-title-wrap">Conversacion: Activa        
+        <div class="chat-contact-name">
+          Juan Pérez
+        </div>
+        <div class="chat-meta">ID Cliente: 12345 &nbsp;|&nbsp; Canal actual: WhatsApp</div>
+      </div>
+      <button class="status-btn" aria-label="Cambiar estado de conversación">
+        Cambiar estado <i class="ti ti-chevron-down" style="font-size:13px" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div class="messages-area" role="log" aria-label="Mensajes">
+      <div class="msg in">
+        <div class="bubble">Hola, quiero saber por qué no se procesó mi pago de la cuota.</div>
+        <div class="msg-time">10:32 AM</div>
+      </div>
+      <div class="msg out">
+        <div class="bubble">¡Hola Juan! Revisaré tu caso para ayudarte con tu consulta.</div>
+        <div class="msg-time">10:33 AM <span class="ticks">✓✓</span></div>
+      </div>
+    </div>
+
+    <div class="reply-section">
+      <div class="reply-tabs">
+        <span class="rtab active">Respuesta sugerida</span>
+        <span class="rtab">Notas internas</span>
+      </div>
+      <div class="suggested-reply">
+        Hemos revisado tu pago y notamos que aún está en proceso de verificación. En breve verás el abono reflejado.
+      </div>
+      <div class="reply-actions">
+        <button class="btn primary" aria-label="Enviar respuesta">Enviar respuesta</button>
+        <button class="btn" aria-label="Editar respuesta">Editar</button>
+        <button class="btn" aria-label="Marcar como no útil">No es útil</button>
+      </div>
+      <div class="composer" role="textbox" aria-label="Escribe un mensaje" aria-multiline="true">
+        <span class="composer-placeholder">Escribe un mensaje...</span>
+        <div class="composer-icons">
+          <i class="ti ti-paperclip" aria-label="Adjuntar archivo"></i>
+          <i class="ti ti-mood-smile" aria-label="Emojis"></i>
+          <i class="ti ti-send send-icon" aria-label="Enviar"></i>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- RIGHT PANEL -->
+  <aside class="right-panel" aria-label="Contexto del cliente">
+    <div class="panel-section">
+      <div class="panel-title">Contexto del cliente (Historial omnicanal)</div>
+      <div class="history-item">
+        <div class="history-dot wapp"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i></div>
+        <div class="history-content">
+          <div class="history-channel">WhatsApp – Hoy 10:32 AM</div>
+          <div class="history-note">Consulta sobre pago</div>
+        </div>
+      </div>
+      <div class="history-item">
+        <div class="history-dot call"><i class="ti ti-phone" aria-hidden="true"></i></div>
+        <div class="history-content">
+          <div class="history-channel">Llamada – Hoy 10:15 AM</div>
+          <div class="history-note">El cliente intentó comunicarse sobre su cuota</div>
+        </div>
+      </div>
+      <div class="history-item">
+        <div class="history-dot ig"><i class="ti ti-brand-instagram" aria-hidden="true"></i></div>
+        <div class="history-content">
+          <div class="history-channel">Instagram – Ayer 6:40 PM</div>
+          <div class="history-note">Preguntó si su pago fue recibido</div>
+        </div>
+      </div>
+      <div class="history-item" style="margin-bottom:0">
+        <div class="history-dot mail"><i class="ti ti-mail" aria-hidden="true"></i></div>
+        <div class="history-content">
+          <div class="history-channel">Correo – Hace 2 días</div>
+          <div class="history-note">Envío comprobante de pago</div>
+        </div>
+      </div>
+      <button class="see-full-btn" aria-label="Ver historial completo">Ver historial completo</button>
+    </div>
+
+    <div class="panel-section">
+      <div class="copilot-header">
+        <i class="ti ti-bulb" aria-hidden="true"></i>
+        <span class="panel-title" style="margin-bottom:0">Sugerencias del Copilot</span>
+      </div>
+      <ul class="copilot-list" aria-label="Sugerencias">
+        <li>El cliente ya realizó el pago el 15/05.</li>
+        <li>El pago está en verificación.</li>
+        <li>Política de pagos: <span class="link">link</span></li>
+        <li>Producto: Plan Premium</li>
+      </ul>
+    </div>
+
+    <div class="panel-section">
+      <div class="panel-title">Acciones rápidas</div>
+      <div class="quick-actions">
+        <button class="qa-btn" aria-label="Confirmar pago">Confirmar pago</button>
+        <button class="qa-btn" aria-label="Generar comprobante">Generar comprobante</button>
+        <button class="qa-btn" aria-label="Transferir a especialista">Transferir a especialista</button>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<div class="proto-label">* Prototipo de baja fidelidad – Diseño referencial. Haz clic en <strong>Configuración</strong> para cambiar el modo visual.</div>
+
+<script>
+  let pendingMode = 'sketch';
+  let currentMode = 'sketch';
+
+  function openConfig() {
+    pendingMode = currentMode;
+    updateModalSelection();
+    document.getElementById('configOverlay').classList.add('open');
+  }
+
+  function closeConfig() {
+    document.getElementById('configOverlay').classList.remove('open');
+  }
+
+  function selectMode(mode) {
+    pendingMode = mode;
+    updateModalSelection();
+  }
+
+  function updateModalSelection() {
+    document.getElementById('sketchCard').classList.toggle('selected', pendingMode === 'sketch');
+    document.getElementById('colorCard').classList.toggle('selected', pendingMode === 'color');
+  }
+
+  function applyMode() {
+    currentMode = pendingMode;
+    if (currentMode === 'color') {
+      document.body.classList.add('color-mode');
+    } else {
+      document.body.classList.remove('color-mode');
+    }
+    closeConfig();
+  }
+
+  document.getElementById('configOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeConfig();
+  });
+</script>
+</body>
+</html>
