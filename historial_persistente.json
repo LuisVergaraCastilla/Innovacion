@@ -1,17 +1,27 @@
 [
   {
-    "timestamp": "18:47",
+    "timestamp": "00:44",
     "canal": "WhatsApp",
     "agente": "Chat Sim",
-    "mensaje": "nunca más voy a recomendar este servicio, es una basura total",
-    "intencion": "Reclamos",
-    "prioridad": "CRÍTICA",
+    "mensaje": "el técnico vino ayer y sigue sin funcionar, necesito ayuda urgente",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
     "urgencia": true,
-    "sla": "≤ 30 seg"
+    "sla": "≤ 2 min"
   },
   {
-    "timestamp": "18:47",
+    "timestamp": "00:45",
     "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "tengo problemas para acceder a la plataforma, me da error 503",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 2 min"
+  },
+  {
+    "timestamp": "00:47",
+    "canal": "Instagram",
     "agente": "Chat Sim",
     "mensaje": "el servicio no funciona desde esta mañana, reinicié el router y nada",
     "intencion": "Soporte",
@@ -20,13 +30,33 @@
     "sla": "≤ 2 min"
   },
   {
-    "timestamp": "18:48",
-    "canal": "Webchat",
+    "timestamp": "00:48",
+    "canal": "Instagram",
     "agente": "Chat Sim",
-    "mensaje": "se me cayó la red otra vez, esto pasa todos los días desde hace semanas",
-    "intencion": "Soporte",
-    "prioridad": "Normal",
+    "mensaje": "esto es inaceptable, me prometieron resolver en 24 horas y ya pasó una semana",
+    "intencion": "Reclamos",
+    "prioridad": "CRÍTICA",
+    "urgencia": true,
+    "sla": "≤ 30 seg"
+  },
+  {
+    "timestamp": "00:52",
+    "canal": "Instagram",
+    "agente": "Chat Sim",
+    "mensaje": "nunca más voy a recomendar este servicio, es una basura total",
+    "intencion": "Reclamos",
+    "prioridad": "CRÍTICA",
+    "urgencia": true,
+    "sla": "≤ 30 seg"
+  },
+  {
+    "timestamp": "00:56",
+    "canal": "Instagram",
+    "agente": "Chat Sim",
+    "mensaje": "quiero contratar el servicio para mi negocio, tienen planes empresariales",
+    "intencion": "Ventas",
+    "prioridad": "Alta",
     "urgencia": false,
-    "sla": "≤ 2 min"
+    "sla": "≤ 1 min"
   }
 ]

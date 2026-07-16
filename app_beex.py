@@ -1,6 +1,6 @@
 """
-BEEX — Suite de Inteligencia Conversacional para Contact Center
-Producto Final (PROY) — Implementación de HU-01 a HU-08
+BEEX - Clasificador de Intenciones de Clientes
+Demo funcional del modelo ML (APF3) integrado con interfaz Streamlit
 Curso: Innovación y Transformación Digital — UTP
 """
 
@@ -17,306 +17,537 @@ from datetime import datetime
 # CONFIGURACIÓN DE PÁGINA
 # ==============================================================================
 st.set_page_config(
-    page_title="BEEX — Suite de Inteligencia Conversacional",
+    page_title="BEEX - Clasificador de Intenciones",
     page_icon="beex",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # ==============================================================================
-# CSS PERSONALIZADO
+# CSS PERSONALIZADO — SISTEMA DE DISEÑO BEEX
 # ==============================================================================
 st.markdown("""
 <style>
-    /* Paleta corporativa y temas dinámicos */
-    :root {
-        --beex-blue:   #1a56db;
-        --beex-green:  #0e9f6e;
-        --beex-orange: #f59e0b;
-        --beex-red:    #e02424;
-        --beex-gray:   #6b7280;
+    /* ═══════════════════════════════════════════════════════════════
+       1. VARIABLES CSS — PALETA CORPORATIVA Y TEMAS (TAILWIND BEEX)
+       ═══════════════════════════════════════════════════════════════ */
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
-        /* Light Mode (Sketch) */
-        --c-bg: #ffffff;
-        --c-border: #e5e7eb;
-        --c-text: #1a1a1a;
-        --c-text-muted: #6b7280;
-        --chat-bg: #f9f8f5;
-        --chat-border: #c8c7bc;
-        --bubble-in: #f0efe9;
-        --bubble-out: #e0dfd8;
-        --input-bg: #f9f8f5;
-        --btn-sec-bg: #ffffff;
-        --btn-sec-border: #999999;
-        
-        /* Cajas de Información */
-        --copilot-bg: rgba(14, 159, 110, 0.08);
-        --copilot-border: #0e9f6e;
-        --faq-bg: rgba(26, 86, 219, 0.08);
-        --faq-border: #1a56db;
-        --urgency-bg: linear-gradient(90deg, #fee2e2, #fef2f2);
-        --urgency-border: #e02424;
-        --urgency-text: #7f1d1d;
-        --checklist-text: #374151;
-        --checklist-border: #f3f4f6;
+    :root {
+        /* Paleta Primaria (Basada en Tailwind config) */
+        --beex-blue:      #004ac6; /* primary */
+        --beex-blue-dark: #003ea8; /* on-primary-fixed-variant */
+        --beex-blue-light:#2563eb; /* primary-container */
+        --beex-green:     #10b981; 
+        --beex-green-dark:#047857;
+        --beex-green-light:#34d399;
+        --beex-orange:    #bc4800; /* tertiary-container */
+        --beex-orange-light:#ffb596; /* tertiary-fixed-dim */
+        --beex-red:       #ba1a1a; /* error */
+        --beex-red-dark:  #93000a; /* on-error-container */
+        --beex-red-light: #ffdad6; /* error-container */
+        --beex-gray:      #5c647a; /* on-secondary-container */
+        --beex-gray-dark: #434655; /* on-surface-variant */
+        --beex-gray-light:#c3c6d7; /* outline-variant */
+
+        /* Tema Claro */
+        --c-bg:           #f8f9ff; /* background */
+        --c-bg-secondary: #eff4ff; /* surface-container-low */
+        --c-border:       #c3c6d7; /* outline-variant */
+        --c-border-light: #e5eeff; /* surface-container */
+        --c-text:         #0b1c30; /* on-background */
+        --c-text-secondary:#434655; /* on-surface-variant */
+        --c-text-muted:   #737686; /* outline */
+        --c-shadow:       rgba(0, 0, 0, 0.05);
+        --c-shadow-md:    rgba(0, 0, 0, 0.08);
+
+        /* Chat */
+        --chat-bg:        #f8f9ff; /* surface */
+        --chat-border:    #d3e4fe; /* surface-variant */
+        --bubble-in:      #ffffff; /* surface-container-lowest */
+        --bubble-in-border:#c3c6d7;
+        --bubble-out:     #004ac6; /* primary */
+        --bubble-out-text:#ffffff; /* on-primary */
+        --input-bg:       #ffffff;
+
+        /* Componentes */
+        --copilot-bg:     rgba(37, 99, 235, 0.06);
+        --copilot-border: #2563eb;
+        --faq-bg:         rgba(0, 74, 198, 0.06);
+        --faq-border:     #004ac6;
+        --urgency-bg:     linear-gradient(135deg, #ffdad6 0%, #ffb596 100%);
+        --urgency-border: #ba1a1a;
+        --urgency-text:   #93000a;
+
+        /* Spacing */
+        --space-xs: 4px;
+        --space-sm: 8px;
+        --space-md: 16px;
+        --space-lg: 24px;
+        --space-xl: 32px;
+
+        /* Border Radius */
+        --radius-sm: 0.25rem;
+        --radius-md: 0.5rem;
+        --radius-lg: 0.75rem;
+        --radius-xl: 1rem;
+        --radius-full: 9999px;
+
+        /* Tipografía */
+        --font-sans: 'Inter', 'Geist', 'Segoe UI', sans-serif;
+        --font-mono: 'Geist', monospace;
+        --text-xs: 12px;
+        --text-sm: 14px;
+        --text-base: 16px;
+        --text-lg: 18px;
+        --text-xl: 24px;
+        --text-2xl: 32px;
     }
 
+    /* Dark Mode (adaptado) */
     @media (prefers-color-scheme: dark) {
         :root {
-            /* Dark Mode */
-            --c-bg: #262730;
-            --c-border: #444444;
-            --c-text: #e0e0e0;
-            --c-text-muted: #a3a8b8;
-            --chat-bg: #1a1c23;
-            --chat-border: #333333;
-            --bubble-in: #333333;
-            --bubble-out: #1a56db;
-            --input-bg: #1a1c23;
-            --btn-sec-bg: #262730;
-            --btn-sec-border: #666666;
+            --c-bg:           #0b1c30;
+            --c-bg-secondary:#131b2e;
+            --c-border:       #434655;
+            --c-border-light:#213145;
+            --c-text:         #ffffff;
+            --c-text-secondary:#c3c6d7;
+            --c-text-muted:   #737686;
+            --c-shadow:       rgba(0, 0, 0, 0.2);
+            --c-shadow-md:    rgba(0, 0, 0, 0.3);
 
-            /* Cajas de Información Oscuro */
-            --copilot-bg: rgba(14, 159, 110, 0.15);
-            --copilot-border: #059669;
-            --faq-bg: rgba(26, 86, 219, 0.15);
-            --faq-border: #3b82f6;
-            --urgency-bg: linear-gradient(90deg, #450a0a, #7f1d1d);
+            --chat-bg:        #0b1c30;
+            --chat-border:    #434655;
+            --bubble-in:      #131b2e;
+            --bubble-in-border:#434655;
+            --bubble-out:     #004ac6;
+            --bubble-out-text:#ffffff;
+            --input-bg:       #131b2e;
+
+            --copilot-bg:     rgba(37, 99, 235, 0.1);
+            --copilot-border: #2563eb;
+            --faq-bg:         rgba(0, 74, 198, 0.1);
+            --faq-border:     #004ac6;
+            --urgency-bg:     linear-gradient(135deg, #450a0a 0%, #7f1d1d 100%);
             --urgency-border: #ef4444;
-            --urgency-text: #fca5a5;
-            --checklist-text: #d1d5db;
-            --checklist-border: #444444;
+            --urgency-text:   #fca5a5;
         }
     }
 
-    /* Sobrescribir Botones Principales Nativos */
+    /* ═══════════════════════════════════════════════════════════════
+       2. TIPOGRAFÍA
+       ═══════════════════════════════════════════════════════════════ */
+    * { box-sizing: border-box; }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-sans);
+        font-weight: 700;
+        color: var(--c-text);
+        line-height: 1.2;
+    }
+    p, span, div, label { font-family: var(--font-sans); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       3. BOTONES
+       ═══════════════════════════════════════════════════════════════ */
     div[data-testid="stButton"] button[kind="primary"] {
-        background-color: var(--beex-blue) !important;
-        border-color: var(--beex-blue) !important;
-        color: white !important;
+        background: var(--beex-blue) !important;
+        border: none !important;
+        color: var(--bubble-out-text) !important;
+        font-weight: 600 !important;
+        border-radius: var(--radius-md) !important;
+        transition: all 0.2s ease !important;
+        box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2) !important;
+        padding: 12px 24px !important;
     }
     div[data-testid="stButton"] button[kind="primary"]:hover {
-        background-color: #1e40af !important;
-        border-color: #1e40af !important;
-        transform: translateY(-1px);
-        transition: all 0.2s ease;
+        background: var(--beex-blue-dark) !important;
+        transform: scale(0.98) !important;
+    }
+    div[data-testid="stButton"] button[kind="secondary"] {
+        background: var(--c-bg) !important;
+        border: 1px solid var(--c-border) !important;
+        color: var(--c-text) !important;
+        font-weight: 600 !important;
+        border-radius: var(--radius-md) !important;
+        transition: all 0.2s ease !important;
+        padding: 12px 24px !important;
     }
     div[data-testid="stButton"] button[kind="secondary"]:hover {
         border-color: var(--beex-blue) !important;
         color: var(--beex-blue) !important;
+        background: var(--c-bg-secondary) !important;
+        transform: scale(0.98) !important;
     }
 
-    /* Tabs */
-    .stTabs [data-baseweb="tab-list"] { gap: 16px; border-bottom: 1.5px solid var(--chat-border); padding-bottom: 0px; }
+    /* ═══════════════════════════════════════════════════════════════
+       4. TABS
+       ═══════════════════════════════════════════════════════════════ */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 16px;
+        border-bottom: 1px solid var(--c-border);
+        padding-bottom: 0px;
+    }
     .stTabs [data-baseweb="tab"] {
-        height: 40px;
+        height: 48px;
         background-color: transparent;
-        padding: 0 8px;
-        font-weight: 500;
+        padding: 0 16px;
+        font-weight: 600;
+        font-size: var(--text-sm);
         color: var(--c-text-muted);
-        border-bottom: 2px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-radius: var(--radius-md) var(--radius-md) 0 0;
+        transition: all 0.2s ease !important;
+    }
+    .stTabs [data-baseweb="tab"]:hover {
+        color: var(--beex-blue);
+        background: var(--c-bg-secondary);
     }
     .stTabs [aria-selected="true"] {
-        color: var(--c-text) !important;
-        border-bottom-color: var(--c-text) !important;
+        color: var(--beex-blue) !important;
+        border-bottom-color: var(--beex-blue) !important;
+        background: var(--c-bg-secondary) !important;
     }
 
-    /* Cards genéricas */
+    /* ═══════════════════════════════════════════════════════════════
+       5. CARDS
+       ═══════════════════════════════════════════════════════════════ */
     .beex-card {
         background: var(--c-bg);
-        border-radius: 12px;
-        padding: 20px 24px;
+        border-radius: var(--radius-lg);
+        padding: var(--space-lg);
         border: 1px solid var(--c-border);
-        box-shadow: 0 1px 3px rgba(0,0,0,.08);
-        margin-bottom: 16px;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        margin-bottom: var(--space-md);
+        transition: all 0.2s ease;
+    }
+    .beex-card:hover {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .beex-card-compact {
+        background: var(--c-bg);
+        border-radius: var(--radius-md);
+        padding: var(--space-md);
+        border: 1px solid var(--c-border);
+        margin-bottom: var(--space-sm);
     }
 
-    /* Badges de intención */
-    .badge-soporte     { background:#dbeafe; color:#1e40af; padding:4px 12px; border-radius:20px; font-weight:700; font-size:13px; }
-    .badge-facturacion { background:#fef3c7; color:#92400e; padding:4px 12px; border-radius:20px; font-weight:700; font-size:13px; }
-    .badge-ventas      { background:#d1fae5; color:#065f46; padding:4px 12px; border-radius:20px; font-weight:700; font-size:13px; }
-    .badge-reclamos    { background:#fee2e2; color:#991b1b; padding:4px 12px; border-radius:20px; font-weight:700; font-size:13px; }
+    /* ═══════════════════════════════════════════════════════════════
+       6. BADGES Y PILLS
+       ═══════════════════════════════════════════════════════════════ */
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 12px;
+        border-radius: var(--radius-full);
+        font-weight: 600;
+        font-size: var(--text-xs);
+        font-family: var(--font-mono);
+        letter-spacing: 0.05em;
+    }
+    .badge-soporte     { background:#dbe1ff; color:#00174b; } /* primary-fixed */
+    .badge-facturacion { background:#ffede6; color:#7d2d00; } /* tertiary-container-ish */
+    .badge-ventas      { background:#d3e4fe; color:#003ea8; } /* surface-container-highest */
+    .badge-reclamos    { background:#ffdad6; color:#93000a; } /* error-container */
 
-    /* Banner urgencia */
+    /* ═══════════════════════════════════════════════════════════════
+       7. BANNERS Y ALERTAS
+       ═══════════════════════════════════════════════════════════════ */
     .urgencia-banner {
         background: var(--urgency-bg);
         border-left: 4px solid var(--urgency-border);
-        border-radius: 8px;
-        padding: 12px 16px;
-        margin-top: 12px;
+        border-radius: var(--radius-md);
+        padding: var(--space-md);
+        margin-top: var(--space-md);
         font-weight: 600;
         color: var(--urgency-text);
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        animation: pulse-urgency 2s infinite;
+    }
+    @keyframes pulse-urgency {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.9; }
     }
 
-    /* Copilot & FAQ boxes — colores consistentes */
+    /* ═══════════════════════════════════════════════════════════════
+       8. COPILOT Y FAQ BOXES
+       ═══════════════════════════════════════════════════════════════ */
     .copilot-box {
         background: var(--copilot-bg);
         border-left: 4px solid var(--copilot-border);
-        border-radius: 8px;
-        padding: 14px 18px;
-        margin: 8px 0;
-        font-size: 14px;
+        border-radius: var(--radius-md);
+        padding: var(--space-md) var(--space-lg);
+        margin: var(--space-sm) 0;
+        font-size: var(--text-sm);
         color: var(--c-text);
-        line-height: 1.6;
+        line-height: 1.7;
     }
     .faq-box {
         background: var(--faq-bg);
         border-left: 4px solid var(--faq-border);
-        border-radius: 8px;
-        padding: 14px 18px;
-        margin: 8px 0;
-        font-size: 14px;
+        border-radius: var(--radius-md);
+        padding: var(--space-md) var(--space-lg);
+        margin: var(--space-sm) 0;
+        font-size: var(--text-sm);
         color: var(--c-text);
-        line-height: 1.6;
+        line-height: 1.7;
     }
 
-    /* Checklist — sin bullets de lista, solo texto plano con ícono */
+    /* ═══════════════════════════════════════════════════════════════
+       9. CHECKLIST
+       ═══════════════════════════════════════════════════════════════ */
     .checklist-item {
         display: flex;
         align-items: flex-start;
-        gap: 8px;
-        padding: 8px 0;
-        font-size: 14px;
-        color: var(--checklist-text);
-        border-bottom: 1px solid var(--checklist-border);
+        gap: var(--space-sm);
+        padding: var(--space-sm) 0;
+        font-size: var(--text-sm);
+        color: var(--c-text-secondary);
+        border-bottom: 1px solid var(--c-border-light);
+        transition: background 0.15s ease;
+    }
+    .checklist-item:hover {
+        background: var(--c-bg-secondary);
+        margin: 0 calc(-1 * var(--space-sm));
+        padding-left: var(--space-sm);
+        padding-right: var(--space-sm);
+        border-radius: var(--radius-sm);
     }
     .checklist-item:last-child { border-bottom: none; }
-    .checklist-icon-ok   { color: #0e9f6e; font-weight: 700; flex-shrink: 0; }
-    .checklist-icon-warn { color: #e02424; font-weight: 700; flex-shrink: 0; }
+    .checklist-icon-ok   { color: var(--beex-green); font-weight: 700; flex-shrink: 0; }
+    .checklist-icon-warn { color: var(--beex-red); font-weight: 700; flex-shrink: 0; }
 
-    /* ── CHAT SIMULADO ──────────────────────────────── */
+    /* ═══════════════════════════════════════════════════════════════
+       10. CHAT SIMULADO
+       ═══════════════════════════════════════════════════════════════ */
     .chat-wrapper {
-        background: #f9f8f5;
-        border: 1.5px solid #c8c7bc;
-        border-radius: 12px;
+        background: var(--chat-bg);
+        border: 1px solid var(--chat-border);
+        border-radius: var(--radius-lg);
         overflow: hidden;
+        box-shadow: 0 2px 8px var(--c-shadow);
     }
-
-    /* Header del chat */
     .chat-header-sim {
-        background: #fff;
-        border-bottom: 1.5px solid #c8c7bc;
-        padding: 12px 16px;
+        background: var(--c-bg);
+        border-bottom: 1px solid var(--chat-border);
+        padding: var(--space-md);
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: var(--space-md);
     }
     .chat-avatar {
-        width: 38px; height: 38px;
+        width: 42px; height: 42px;
         border-radius: 50%;
-        background: #e0dfd8;
-        border: 1.5px solid #c8c7bc;
+        background: linear-gradient(135deg, var(--beex-blue-light) 0%, var(--beex-blue) 100%);
         display: flex; align-items: center; justify-content: center;
-        font-size: 16px;
-        font-weight: 600;
-        color: #555;
+        font-size: 18px;
+        font-weight: 700;
+        color: white;
+        flex-shrink: 0;
     }
     .chat-user-info { flex: 1; }
-    .chat-user-name { font-weight: 600; font-size: 15px; color: #1a1a1a; }
-    .chat-user-meta { font-size: 12px; color: #888; margin-top: 2px; }
+    .chat-user-name { font-weight: 600; font-size: var(--text-base); color: var(--c-text); }
+    .chat-user-meta { font-size: var(--text-xs); color: var(--c-text-muted); margin-top: 2px; }
     .chat-status-pill {
-        background: #d1fae5;
-        color: #065f46;
-        border: 1px solid #6ee7b7;
-        border-radius: 20px;
-        padding: 3px 10px;
-        font-size: 11px;
+        background: rgba(5, 150, 105, 0.1);
+        color: var(--beex-green);
+        border: 1px solid var(--beex-green-light);
+        border-radius: var(--radius-full);
+        padding: 4px 12px;
+        font-size: var(--text-xs);
         font-weight: 600;
     }
-
-    /* Área de mensajes */
     .messages-area-sim {
-        padding: 16px;
+        padding: var(--space-md);
         min-height: 200px;
         max-height: 520px;
         overflow-y: auto;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: var(--space-md);
         scroll-behavior: smooth;
     }
-
-    /* Burbujas */
-    .msg-in {
-        align-self: flex-start;
-        max-width: 70%;
-    }
-    .msg-out {
-        align-self: flex-end;
-        max-width: 70%;
-    }
+    .msg-in { align-self: flex-start; max-width: 75%; }
+    .msg-out { align-self: flex-end; max-width: 75%; }
     .bubble-in {
-        background: #f0efe9;
-        border: 1.5px solid #c8c7bc;
-        border-radius: 4px 12px 12px 12px;
-        padding: 10px 14px;
-        font-size: 13px;
-        color: #1a1a1a;
-        line-height: 1.5;
+        background: var(--bubble-in);
+        border: 1px solid var(--bubble-in-border);
+        border-radius: var(--radius-sm) var(--radius-lg) var(--radius-lg) var(--radius-lg);
+        padding: var(--space-sm) var(--space-md);
+        font-size: var(--text-sm);
+        color: var(--c-text);
+        line-height: 1.6;
     }
     .bubble-out {
-        background: #e0dfd8;
-        border: 1.5px solid #c8c7bc;
-        border-radius: 12px 4px 12px 12px;
-        padding: 10px 14px;
-        font-size: 13px;
-        color: #1a1a1a;
-        line-height: 1.5;
+        background: var(--bubble-out);
+        border: 1px solid var(--beex-blue-dark);
+        border-radius: var(--radius-lg) var(--radius-sm) var(--radius-lg) var(--radius-lg);
+        padding: var(--space-sm) var(--space-md);
+        font-size: var(--text-sm);
+        color: var(--bubble-out-text);
+        line-height: 1.6;
     }
     .msg-time-sim {
-        font-size: 11px;
-        color: #888;
-        margin-top: 3px;
+        font-size: var(--text-xs);
+        color: var(--c-text-muted);
+        margin-top: var(--space-xs);
     }
     .msg-time-sim.right { text-align: right; }
 
-    /* Badge de intención inline en el chat */
+    /* ═══════════════════════════════════════════════════════════════
+       11. INTENT PILLS
+       ═══════════════════════════════════════════════════════════════ */
     .intent-pill {
-        display: inline-block;
-        padding: 2px 10px;
-        border-radius: 20px;
-        font-size: 11px;
-        font-weight: 700;
-        margin-top: 4px;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 3px 10px;
+        border-radius: var(--radius-full);
+        font-size: var(--text-xs);
+        font-weight: 600;
+        margin-top: var(--space-xs);
     }
     .intent-Soporte     { background:#dbeafe; color:#1e40af; }
     .intent-Facturacion { background:#fef3c7; color:#92400e; }
     .intent-Ventas      { background:#d1fae5; color:#065f46; }
     .intent-Reclamos    { background:#fee2e2; color:#991b1b; }
 
-    /* Sugerencia Copilot inline */
+    /* ═══════════════════════════════════════════════════════════════
+       12. COPILOT INLINE
+       ═══════════════════════════════════════════════════════════════ */
     .copilot-inline {
-        background: #fafaf7;
-        border: 1.5px solid #c8c7bc;
-        border-radius: 8px;
-        padding: 10px 14px;
-        margin-top: 6px;
-        font-size: 12px;
-        color: #555;
-        line-height: 1.5;
-        max-width: 80%;
+        background: var(--c-bg);
+        border: 1px solid var(--chat-border);
+        border-radius: var(--radius-md);
+        padding: var(--space-sm) var(--space-md);
+        margin-top: var(--space-sm);
+        font-size: var(--text-xs);
+        color: var(--c-text-secondary);
+        line-height: 1.6;
+        max-width: 85%;
     }
     .copilot-inline-header {
         font-size: 10px;
         font-weight: 700;
-        color: #1a56db;
+        color: var(--beex-blue);
         text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-bottom: 4px;
+        letter-spacing: 0.05em;
+        margin-bottom: var(--space-xs);
     }
     .copilot-urgencia-inline {
-        background: #fee2e2;
-        border: 1.5px solid #fca5a5;
-        border-radius: 8px;
-        padding: 8px 12px;
-        font-size: 12px;
-        color: #991b1b;
+        background: var(--urgency-bg);
+        border: 1px solid var(--urgency-border);
+        border-radius: var(--radius-md);
+        padding: var(--space-sm) var(--space-md);
+        font-size: var(--text-xs);
+        color: var(--urgency-text);
         font-weight: 600;
-        margin-top: 6px;
+        margin-top: var(--space-sm);
     }
 
+    /* ═══════════════════════════════════════════════════════════════
+       13. SIDEBAR
+       ═══════════════════════════════════════════════════════════════ */
+    section[data-testid="stSidebar"] {
+        background: var(--c-bg-secondary);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       14. MÉTRICAS
+       ═══════════════════════════════════════════════════════════════ */
+    [data-testid="stMetric"] {
+        background: var(--c-bg);
+        border: 1px solid var(--c-border);
+        border-radius: var(--radius-md);
+        padding: var(--space-md);
+        transition: box-shadow 0.2s ease;
+    }
+    [data-testid="stMetric"]:hover {
+        box-shadow: 0 2px 8px var(--c-shadow-md);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       15. TABLA HISTORIAL
+       ═══════════════════════════════════════════════════════════════ */
+    .dataframe tbody tr:nth-child(even) { background-color: var(--c-bg-secondary); }
+    .dataframe tbody tr:hover { background-color: rgba(37, 99, 235, 0.04); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       16. UTILIDADES
+       ═══════════════════════════════════════════════════════════════ */
+    .beex-mt-xs { margin-top: var(--space-xs) !important; }
+    .beex-mt-sm { margin-top: var(--space-sm) !important; }
+    .beex-mt-md { margin-top: var(--space-md) !important; }
+    .beex-mt-lg { margin-top: var(--space-lg) !important; }
+    .beex-mb-xs { margin-bottom: var(--space-xs) !important; }
+    .beex-mb-sm { margin-bottom: var(--space-sm) !important; }
+    .beex-mb-md { margin-bottom: var(--space-md) !important; }
+    .beex-mb-lg { margin-bottom: var(--space-lg) !important; }
+    .beex-text-center { text-align: center !important; }
+    .beex-text-muted { color: var(--c-text-muted) !important; }
+    .beex-font-bold { font-weight: 700 !important; }
+    .beex-divider {
+        border: none;
+        border-top: 1px solid var(--c-border);
+        margin: var(--space-lg) 0;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       17. ANIMACIONES
+       ═══════════════════════════════════════════════════════════════ */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .beex-fade-in { animation: fadeIn 0.3s ease-out; }
+
     /* Tabla historial zebra */
-    .dataframe tbody tr:nth-child(even) { background-color: #f9fafb; }
+    .dataframe tbody tr:nth-child(even) { background-color: var(--c-bg-secondary); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       18. SIDEBAR MENU (RADIO COMO LINKS)
+       ═══════════════════════════════════════════════════════════════ */
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div {
+        gap: 8px;
+    }
+    [data-testid="stSidebar"] div[role="radiogroup"] label {
+        padding: 12px 16px;
+        background-color: transparent;
+        border-radius: var(--radius-md);
+        margin: 0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    [data-testid="stSidebar"] div[role="radiogroup"] label:hover {
+        background-color: var(--c-bg-secondary);
+        color: var(--beex-blue);
+    }
+    [data-testid="stSidebar"] div[role="radiogroup"] label[data-checked="true"] {
+        background-color: var(--c-bg-secondary) !important;
+        border-left: 4px solid var(--beex-blue) !important;
+    }
+    [data-testid="stSidebar"] div[role="radiogroup"] label[data-checked="true"] div[data-testid="stMarkdownContainer"] p {
+        color: var(--beex-blue) !important;
+        font-weight: 700 !important;
+    }
+    [data-testid="stSidebar"] div[role="radiogroup"] label div[data-testid="stMarkdownContainer"] p {
+        font-size: var(--text-base) !important;
+        font-weight: 600;
+        color: var(--c-text-secondary);
+        margin: 0;
+    }
+    /* Hide the radio circle */
+    [data-testid="stSidebar"] div[role="radiogroup"] label span[data-baseweb="radio"] {
+        display: none !important;
+    }
+    /* Hide radio label if it's there */
+    [data-testid="stSidebar"] [data-testid="stWidgetLabel"] {
+        display: none !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -593,32 +824,38 @@ inicializar_session_state()
 # SIDEBAR
 # ==============================================================================
 with st.sidebar:
-    st.markdown("## BEEX Suite")
-    st.markdown("*Inteligencia Conversacional para Contact Center*")
-    st.markdown("---")
+    st.markdown(
+        """
+        <div style='display:flex;align-items:center;gap:12px;margin-bottom:32px'>
+            <div style='width:40px;height:40px;border-radius:8px;background:var(--beex-blue-light);color:white;display:flex;align-items:center;justify-content:center'>
+                <span class='material-symbols-outlined' style='font-size:24px;font-variation-settings:"FILL" 1'>hive</span>
+            </div>
+            <div>
+                <h1 style='margin:0;font-size:24px;line-height:28px;font-weight:700;color:var(--beex-blue);letter-spacing:-0.02em'>BEEX AI</h1>
+                <p style='margin:4px 0 0 0;font-size:12px;font-weight:600;color:var(--beex-blue);display:flex;align-items:center;gap:4px;letter-spacing:0.05em;text-transform:uppercase'>
+                    <span style='width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 8px rgba(16,185,129,0.5)'></span>
+                    Model Active
+                </p>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
+    
+    # Navegación Principal
+    menu = st.radio(
+        "Navegación",
+        ["Dashboard", "Historial", "Copilot", "Clasificador"],
+        label_visibility="collapsed"
+    )
 
-    st.markdown("### Modelo en Producción")
-    col_s1, col_s2 = st.columns(2)
-    with col_s1:
-        st.metric("Accuracy",  "94.56%")
-        st.metric("Precision", "94.77%")
-    with col_s2:
-        st.metric("Recall",    "94.56%")
-        st.metric("F1-Score",  "94.60%")
+    # Espaciador para enviar el resto al fondo
+    st.markdown("<div style='margin-top: 150px'></div>", unsafe_allow_html=True)
 
-    st.markdown("---")
-    st.markdown("**Algoritmo:** SVM · Kernel RBF")
-    st.markdown("**Vectorizer:** TF-IDF (1-2 gramas)")
-    st.markdown("**Dataset:** 1,500 interacciones sintéticas")
-    st.markdown("**Inferencia:** ~0.029 seg/mensaje")
-    st.markdown("---")
-    st.markdown("**Sesión actual**")
-    st.metric("Clasificaciones realizadas", st.session_state.total_sesion)
-    if st.session_state.historial:
-        urgentes = sum(1 for h in st.session_state.historial if h["urgencia"])
-        st.metric("⚡ Alertas de urgencia", urgentes)
-    st.markdown("---")
-    if st.button("Limpiar sesión", use_container_width=True):
+    # Botón de Nueva Sesión (Primary)
+    if st.button("+ New Session", type="primary", use_container_width=True, key="btn_limpiar_sesion"):
         for k in ["historial", "ultima_clasificacion", "total_sesion",
                   "chat_mensajes", "chat_cliente", "chat_canal"]:
             if k in st.session_state:
@@ -628,34 +865,39 @@ with st.sidebar:
         if os.path.exists("chat_persistente.json"):
             os.remove("chat_persistente.json")
         st.rerun()
-    st.markdown("---")
-    st.caption("Proyecto Final · Innovación y TDI · UTP")
-    st.caption("Beex Contact Center · Julio 2026")
+
+    # Perfil del Agente
+    st.markdown(
+        """
+        <div style='display:flex;align-items:center;gap:12px;margin-top:16px;padding-top:16px;border-top:1px solid var(--c-border)'>
+            <div style='width:36px;height:36px;border-radius:50%;background:var(--c-bg-secondary);border:1px solid var(--c-border);display:flex;align-items:center;justify-content:center;overflow:hidden'>
+                <img src='https://lh3.googleusercontent.com/aida-public/AB6AXuD9AxP-2KR_3RpRcCNlk-N5zl6CILYdBTZhbDvn9NpE_tkPnRYL8MFwwQNLiph96f7NTzw1lcY2fWO18KfkYqmi84Ss5AUlEydy-bw53_L3n-oa8ccKuWhxOoqGCFGL_1Wzet1rqwrQ-GyiiPGHYQ8nBVfoXDIN-tJXcBDKdCoZ6anez0LsY4WLH9MVPwOU27OsREHQSiNyPnFrTtqYhpYrTjNs4evxW9JnfF1iUc_mi0xZgu_2ldvnRQ' style='width:100%;height:100%;object-fit:cover'>
+            </div>
+            <div style='display:flex;flex-direction:column'>
+                <span style='font-size:14px;font-weight:600;color:var(--c-text);line-height:1'>Agent Admin</span>
+                <span style='font-size:12px;font-weight:600;color:var(--c-text-muted);letter-spacing:0.05em;margin-top:4px'>ID: BX-994</span>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 # ==============================================================================
-# HEADER PRINCIPAL
+# RUTEO DE PÁGINAS PRINCIPALES
 # ==============================================================================
-st.markdown("# BEEX — Suite de Inteligencia Conversacional")
-st.markdown("*Motor centralizado de clasificación de intenciones, historial omnicanal y asistencia al agente con IA*")
-st.markdown("---")
-
-# ==============================================================================
-# PESTAÑAS PRINCIPALES
-# ==============================================================================
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
-    "Clasificador",
-    "Chat Simulado",
-    "Historial",
-    "Dashboard",
-    "Copilot & FAQ"
-])
 
 # ─────────────────────────────────────────────────────────────────────────────
-# TAB 1 — CLASIFICADOR (diseño original restaurado)
+# PÁGINA 1 — CLASIFICADOR
 # ─────────────────────────────────────────────────────────────────────────────
-with tab1:
-    st.subheader("Ingrese la interacción del cliente")
-    st.markdown("*Escriba o pegue el mensaje del cliente (WhatsApp, transcripción, webchat, etc.)*")
+if menu == "Clasificador":
+    st.markdown(
+        "<div style='margin-bottom:16px'>"
+        "<h2 style='margin:0 0 4px 0;font-size:1.35rem'>Ingrese la interacción del cliente</h2>"
+        "<p style='margin:0;color:var(--c-text-muted);font-size:0.9rem'>"
+        "Escriba o pegue el mensaje del cliente (WhatsApp, transcripción, webchat, etc.)</p>"
+        "</div>",
+        unsafe_allow_html=True
+    )
 
     col_input, col_config = st.columns([2, 1])
 
@@ -723,8 +965,13 @@ with tab1:
             st.session_state.total_sesion += 1
 
             # ── Resultado visual (diseño original del APF3) ──
-            st.markdown("---")
-            st.subheader("📋 Resultado de la Clasificación")
+            st.markdown(
+                "<div class='beex-fade-in' style='background:var(--c-bg);border:1px solid var(--c-border);"
+                "border-radius:var(--radius-lg);padding:24px;margin-top:16px'>"
+                "<h3 style='margin:0 0 16px 0;font-size:1.15rem'>📋 Resultado de la Clasificación</h3>"
+                "</div>",
+                unsafe_allow_html=True
+            )
 
             col1, col2 = st.columns([1, 2])
             with col1:
@@ -744,11 +991,22 @@ with tab1:
                 st.metric("🚨 Bandera de Urgencia", "ACTIVADA" if urgencia else "Normal")
 
             if urgencia:
-                st.warning("⚡ **ALERTA DE URGENCIA:** Se detectaron términos de alta fricción. "
-                           "Se recomienda escalamiento inmediato o activación de protocolo Fast-Track.")
+                st.markdown(
+                    "<div class='urgencia-banner'>"
+                    "⚡ <strong>ALERTA DE URGENCIA:</strong> Se detectaron términos de alta fricción. "
+                    "Se recomienda escalamiento inmediato o activación de protocolo Fast-Track."
+                    "</div>",
+                    unsafe_allow_html=True
+                )
 
             st.markdown("---")
-            st.subheader("📈 Métricas del Modelo (APF3)")
+            st.markdown(
+                "<div style='background:var(--c-bg-secondary);border:1px solid var(--c-border);"
+                "border-radius:var(--radius-lg);padding:20px;margin-top:16px'>"
+                "<h4 style='margin:0 0 12px 0;font-size:1rem'>📈 Métricas del Modelo (APF3)</h4>"
+                "</div>",
+                unsafe_allow_html=True
+            )
             col_m1, col_m2, col_m3, col_m4 = st.columns(4)
             with col_m1: st.metric("Accuracy",    "94.56%")
             with col_m2: st.metric("Precision (W)", "94.77%")
@@ -762,547 +1020,508 @@ with tab1:
 # ─────────────────────────────────────────────────────────────────────────────
 # TAB 2 — CHAT SIMULADO
 # ─────────────────────────────────────────────────────────────────────────────
-with tab2:
-    st.subheader("Chat Simulado — Copilot en tiempo real")
-    st.caption(
-        "Simule una conversación de cliente en tiempo real. Presione **'Nuevo mensaje del cliente'** "
-        "para recibir un mensaje aleatorio. El modelo lo clasificará automáticamente y el Copilot "
-        "mostrará sugerencias de respuesta inline."
-    )
-
-    # ── Controles del chat ───────────────────────────────────────────────────
-    ctrl_col1, ctrl_col2, ctrl_col3 = st.columns([2, 1, 1])
-    with ctrl_col1:
-        st.markdown(
-            f"**Cliente activo:** {st.session_state.chat_cliente} &nbsp;·&nbsp; "
-            f"**Canal:** {st.session_state.chat_canal}"
-        )
-    with ctrl_col2:
-        if st.button("Cambiar cliente", use_container_width=True):
-            st.session_state.chat_cliente = random.choice(NOMBRES_CLIENTES)
-            st.session_state.chat_canal   = random.choice(CANALES_CHAT)
-            st.session_state.chat_mensajes = []
-            if os.path.exists("chat_persistente.json"):
-                os.remove("chat_persistente.json")
-            st.rerun()
-    with ctrl_col3:
-        if st.button("Limpiar chat", use_container_width=True):
-            st.session_state.chat_mensajes = []
-            if os.path.exists("chat_persistente.json"):
-                os.remove("chat_persistente.json")
-            st.rerun()
-
-    st.markdown("---")
-
-    # ── Layout: chat a la izquierda, panel copilot a la derecha ─────────────
-    chat_col, panel_col = st.columns([3, 2])
-
-    with chat_col:
-        # Build the ENTIRE chat as a single HTML string so everything renders inside the wrapper
-        canal_emoji = {
-            "WhatsApp": "💬", "Webchat": "🌐",
-            "Instagram": "📸", "Teléfono": "📞"
-        }.get(st.session_state.chat_canal, "💬")
-
-        client_id = f"CL-{hash(st.session_state.chat_cliente) % 9000 + 1000}"
-
-        # Inline CSS for the component (rendered in iframe, needs its own styles)
-        chat_css = """<style>
-          :root {
-              --chat-bg: #f9f8f5; --chat-border: #c8c7bc; --c-bg: #ffffff;
-              --c-text: #1a1a1a; --c-text-muted: #555555;
-              --bubble-in: #f0efe9; --bubble-out: #e0dfd8;
-              --bubble-out-text: #1a1a1a; --pill-bg: #e0dfd8;
-              --urgency-bg: rgba(224, 36, 36, 0.1); --urgency-border: #e02424; --urgency-text: #e02424;
-          }
-          @media (prefers-color-scheme: dark) {
-              :root {
-                  --chat-bg: #1a1c23; --chat-border: #333333; --c-bg: #262730;
-                  --c-text: #e0e0e0; --c-text-muted: #a3a8b8;
-                  --bubble-in: #333333; --bubble-out: #1a56db;
-                  --bubble-out-text: #ffffff; --pill-bg: #333333;
-                  --urgency-bg: rgba(239, 68, 68, 0.15); --urgency-border: #ef4444; --urgency-text: #fca5a5;
-              }
-          }
-          * { box-sizing: border-box; margin: 0; padding: 0; }
-          html, body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: transparent; height: 100%; color: var(--c-text); }
-          .chat-wrapper {
-              background: var(--chat-bg); border: 1.5px solid var(--chat-border);
-              border-bottom: none; border-radius: 12px 12px 0 0; overflow: hidden;
-              height: 100%; display: flex; flex-direction: column;
-          }
-          .chat-header-sim {
-              background: var(--c-bg); border-bottom: 1.5px solid var(--chat-border);
-              padding: 12px 16px; display: flex; align-items: center; gap: 12px;
-          }
-          .chat-avatar {
-              width: 38px; height: 38px; border-radius: 50%; background: var(--pill-bg);
-              border: 1.5px solid var(--chat-border); display: flex; align-items: center;
-              justify-content: center; font-size: 16px; font-weight: 600; color: var(--c-text-muted);
-              flex-shrink: 0;
-          }
-          .chat-user-info { flex: 1; }
-          .chat-user-name { font-weight: 600; font-size: 15px; color: var(--c-text); }
-          .chat-user-meta { font-size: 12px; color: var(--c-text-muted); margin-top: 2px; }
-          .chat-status-pill {
-              background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7;
-              border-radius: 20px; padding: 3px 10px; font-size: 11px; font-weight: 600;
-          }
-          .messages-area {
-              padding: 16px; display: flex; flex-direction: column; gap: 12px;
-              overflow-y: auto; scroll-behavior: smooth; flex: 1;
-          }
-          .msg-in { align-self: flex-start; max-width: 75%; }
-          .msg-out { align-self: flex-end; max-width: 75%; }
-          .bubble-in {
-              background: var(--bubble-in); border: 1.5px solid var(--chat-border);
-              border-radius: 4px 12px 12px 12px; padding: 10px 14px;
-              font-size: 13px; color: var(--c-text); line-height: 1.5;
-          }
-          .bubble-out {
-              background: var(--bubble-out); border: 1.5px solid var(--chat-border);
-              border-radius: 12px 4px 12px 12px; padding: 10px 14px;
-              font-size: 13px; color: var(--bubble-out-text); line-height: 1.5;
-          }
-          .msg-time { font-size: 11px; color: var(--c-text-muted); margin-top: 3px; }
-          .msg-time.right { text-align: right; }
-          .intent-pill {
-              display: inline-block; padding: 2px 10px; border-radius: 20px;
-              font-size: 11px; font-weight: 700; margin-top: 4px; color: #fff;
-          }
-          .intent-Soporte     { background:#1e40af; }
-          .intent-Facturacion { background:#d97706; }
-          .intent-Ventas      { background:#047857; }
-          .intent-Reclamos    { background:#b91c1c; }
-          .copilot-inline {
-              background: var(--chat-bg); border: 1.5px solid var(--chat-border); border-radius: 8px;
-              padding: 10px 14px; margin-top: 6px; font-size: 12px; color: var(--c-text);
-              line-height: 1.5; max-width: 80%; align-self: flex-start;
-          }
-          .copilot-inline-header {
-              font-size: 10px; font-weight: 700; color: #1a56db;
-              text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;
-          }
-          .urgencia-inline {
-              background: var(--urgency-bg); border: 1.5px solid var(--urgency-border); border-radius: 8px;
-              padding: 8px 12px; font-size: 12px; color: var(--urgency-text); font-weight: 600;
-              margin-top: 6px; align-self: flex-start;
-          }
-          .empty-state {
-              text-align: center; padding: 60px 20px; color: var(--c-text-muted); font-size: 13px;
-          }
-          .empty-icon { font-size: 40px; margin-bottom: 12px; }
-          ::-webkit-scrollbar { width: 5px; }
-          ::-webkit-scrollbar-track { background: transparent; }
-          ::-webkit-scrollbar-thumb { background: var(--chat-border); border-radius: 4px; }
-        </style>"""
-
-        # Build chat body
-        chat_body = ""
-        if not st.session_state.chat_mensajes:
-            chat_body = """
-            <div class="empty-state">
-              <div class="empty-icon">💬</div>
-              <p>No hay mensajes aún.</p>
-              <p style="margin-top:6px">Presione <strong>"Nuevo mensaje del cliente"</strong> para iniciar la conversación.</p>
-            </div>"""
-        else:
-            for msg in st.session_state.chat_mensajes:
-                ts = msg["timestamp"]
-                if msg["tipo"] == "cliente":
-                    intencion = msg.get("intencion", "")
-                    urgencia  = msg.get("urgencia", False)
-                    urg_html  = '<span class="intent-pill" style="background:#fee2e2;color:#991b1b;margin-left:4px">⚡ Urgente</span>' if urgencia else ''
-                    icon      = INTERPRETACION[intencion]["icono"]
-
-                    chat_body += f"""
-                    <div class="msg-in">
-                      <div class="bubble-in">{msg['texto']}</div>
-                      <div style="margin-top:4px">
-                        <span class="intent-pill intent-{intencion}">{icon} {intencion}</span>{urg_html}
-                      </div>
-                      <div class="msg-time">{ts}</div>
-                    </div>"""
-
-                else:
-                    chat_body += f"""
-                    <div class="msg-out">
-                      <div class="bubble-out">{msg['texto']}</div>
-                      <div class="msg-time right">{ts} ✓✓</div>
-                    </div>"""
-
-        # Calculate component height — bigger window
-        n_msgs = len(st.session_state.chat_mensajes)
-        component_height = max(400, min(750, 80 + n_msgs * 130))
-
-        full_html = f"""{chat_css}
-        <div class="chat-wrapper">
-          <div class="chat-header-sim">
-            <div class="chat-avatar">{st.session_state.chat_cliente[0]}</div>
-            <div class="chat-user-info">
-              <div class="chat-user-name">{st.session_state.chat_cliente}</div>
-              <div class="chat-user-meta">Canal: {canal_emoji} {st.session_state.chat_canal} · ID: {client_id}</div>
-            </div>
-            <span class="chat-status-pill">● En línea</span>
-          </div>
-          <div class="messages-area" id="chat-area">{chat_body}
-          </div>
-        </div>
-        <script>
-          var c = document.getElementById('chat-area');
-          if (c) c.scrollTop = c.scrollHeight;
-        </script>"""
-
-        import streamlit.components.v1 as components
-        components.html(full_html, height=component_height, scrolling=False)
-
-        # ── Barra de respuesta del agente (estilo composer Beex) ───────────────
-        st.markdown(
-            "<style>"
-            "/* Custom styles to merge the Streamlit container with the chat iframe */"
-            "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) {"
-            "    background-color: var(--c-bg) !important;"
-            "    border: 1.5px solid var(--chat-border) !important;"
-            "    border-top: 1px solid var(--chat-border) !important;"
-            "    border-radius: 0 0 12px 12px !important;"
-            "    padding: 16px 20px !important;"
-            "    margin-top: -1.2rem !important;"
-            "    box-shadow: 0 -1px 4px rgba(0,0,0,0.02) !important;"
-            "    z-index: 10;"
-            "    position: relative;"
-            "}"
-            "/* Force text colors for dark mode compatibility */"
-            "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) p,"
-            "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) span {"
-            "    color: var(--c-text) !important;"
-            "}"
-            "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) label {"
-            "    color: var(--c-text-muted) !important;"
-            "}"
-            "/* Force input and button styles to look like sketch theme */"
-            "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) div[data-baseweb='input'],"
-            "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) div[data-baseweb='textarea'] {"
-            "    background-color: var(--input-bg) !important;"
-            "    border: 1.5px solid var(--chat-border) !important;"
-            "}"
-            "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) input,"
-            "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) textarea {"
-            "    color: var(--c-text) !important;"
-            "}"
-            "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) button[kind='secondary'] {"
-            "    background-color: var(--btn-sec-bg) !important;"
-            "    border: 1.5px solid var(--btn-sec-border) !important;"
-            "    color: var(--c-text) !important;"
-            "}"
-            ".suggested-box {"
-            "    background: var(--input-bg); border: 1.5px solid var(--chat-border); border-radius: 8px;"
-            "    padding: 12px; font-size: 13px; color: var(--c-text); margin-bottom: 12px; line-height: 1.5;"
-            "}"
-            "div[data-testid='stTabs'] button { font-weight: 500; color: var(--c-text-muted); }"
-            "div[data-testid='stTabs'] button[aria-selected='true'] { color: var(--beex-blue); }"
-            "</style>", unsafe_allow_html=True
-        )
-
-        with st.container():
-            st.markdown("<span class='composer-marker'></span>", unsafe_allow_html=True)
-            tab_resp, tab_notas = st.tabs(["Respuesta sugerida", "Notas internas"])
-
-        with tab_resp:
-            # Buscar sugerencia
-            resp_pre = ""
-            if st.session_state.chat_mensajes and st.session_state.chat_mensajes[-1]["tipo"] == "cliente":
-                last_intent = st.session_state.chat_mensajes[-1]["intencion"]
-                faqs_resp   = buscar_faq(st.session_state.chat_mensajes[-1]["texto"], last_intent)
-                resp_pre    = faqs_resp[0]["respuesta"] if faqs_resp else ""
-
-            if resp_pre:
-                st.markdown(f"<div class='suggested-box'>{resp_pre}</div>", unsafe_allow_html=True)
-                
-                col_send, col_edit, col_bad = st.columns([3, 2, 2])
-                with col_send:
-                    enviar_sug = st.button("Enviar respuesta", key="btn_env_sug", type="primary", use_container_width=True)
-                with col_edit:
-                    editar_sug = st.button("Editar", key="btn_edit_sug", use_container_width=True)
-                with col_bad:
-                    st.button("No es útil", key="btn_bad_sug", use_container_width=True)
-
-                if enviar_sug:
-                    st.session_state.chat_mensajes.append({
-                        "tipo": "agente",
-                        "texto": resp_pre,
-                        "timestamp": datetime.now().strftime("%H:%M")
-                    })
-                    st.rerun()
-
-                if editar_sug:
-                    st.session_state.editar_texto = resp_pre
-            else:
-                st.info("No hay respuesta sugerida para este mensaje.")
-
-            # Input manual
-            texto_a_enviar = st.session_state.get("editar_texto", "")
-            resp_col, send_col = st.columns([6, 1])
-            with resp_col:
-                resp_agente = st.text_input(
-                    "Escribe un mensaje...",
-                    value=texto_a_enviar,
-                    key="resp_agente_txt",
-                    label_visibility="collapsed",
-                    placeholder="Escribe un mensaje..."
-                )
-            with send_col:
-                enviar_resp = st.button("📤", key="btn_enviar_resp", type="primary", use_container_width=True)
-                
-            if enviar_resp and resp_agente.strip():
-                if "editar_texto" in st.session_state:
-                    del st.session_state.editar_texto
-                st.session_state.chat_mensajes.append({
-                    "tipo": "agente",
-                    "texto": resp_agente.strip(),
-                    "timestamp": datetime.now().strftime("%H:%M")
-                })
+if menu == "Copilot":
+    col_chat, col_copilot = st.columns([6.5, 3.5], gap="large")
+    with col_chat:
+        # ── Controles del chat (Ocultos visualmente, integrados en la cabecera) ──
+        ctrl_col1, ctrl_col2 = st.columns(2)
+        with ctrl_col1:
+            if st.button("🔄 Cambiar cliente", use_container_width=True):
+                st.session_state.chat_cliente = random.choice(NOMBRES_CLIENTES)
+                st.session_state.chat_canal   = random.choice(CANALES_CHAT)
+                st.session_state.chat_mensajes = []
+                if os.path.exists("chat_persistente.json"):
+                    os.remove("chat_persistente.json")
+                st.rerun()
+        with ctrl_col2:
+            if st.button("🗑️ Limpiar chat", use_container_width=True):
+                st.session_state.chat_mensajes = []
+                if os.path.exists("chat_persistente.json"):
+                    os.remove("chat_persistente.json")
                 st.rerun()
 
-        with tab_notas:
-            st.text_area("Añadir nota interna al cliente...", height=100, label_visibility="collapsed", placeholder="Escribe una nota interna...")
-            st.button("Guardar nota", key="btn_guardar_nota")
+        # Cabecera de contacto estilo mockup
+        iniciales = "".join([n[0] for n in st.session_state.chat_cliente.split()[:2]])
+        st.markdown(
+            f"""
+            <div style='display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:var(--c-bg);border:1px solid var(--c-border);border-radius:12px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,0.05)'>
+                <div style='display:flex;align-items:center;gap:12px'>
+                    <div style='width:40px;height:40px;border-radius:50%;background:var(--c-bg-secondary);border:1px solid var(--c-border);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--c-text-muted)'>{iniciales}</div>
+                    <div>
+                        <h3 style='margin:0;font-size:16px;font-weight:700;color:var(--c-text)'>{st.session_state.chat_cliente}</h3>
+                        <p style='margin:2px 0 0 0;font-size:12px;color:var(--c-text-muted);display:flex;align-items:center;gap:4px'>
+                            <span class='material-symbols-outlined' style='font-size:14px'>chat</span> {st.session_state.chat_canal} · ID: W-9982
+                        </p>
+                    </div>
+                </div>
+                <div style='display:flex;align-items:center;gap:16px'>
+                    <span style='background:#ffdad6;color:#93000a;padding:4px 12px;border-radius:9999px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:4px'>
+                        <span class='material-symbols-outlined' style='font-size:14px'>warning</span> Reclamo - Urgente
+                    </span>
+                    <span style='font-size:12px;font-weight:600;color:var(--c-text-muted)'>SLA 0:18 / 0:30</span>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
         st.markdown("---")
 
-        # ── Entrada del cliente ──────────────────────────────────────────────
-        st.markdown("##### Mensaje del cliente")
-        modo_col1, modo_col2 = st.columns(2)
-        with modo_col1:
-            modo_cliente = st.radio(
-                "Modo de entrada:",
-                ["Escribir mensaje manualmente", "Mensaje aleatorio"],
-                horizontal=True,
-                key="modo_entrada_chat",
-                label_visibility="collapsed"
+        # ── Layout: chat usa todo el espacio izquierdo ─────────────
+        chat_col = st.container()
+
+        with chat_col:
+            # Build the ENTIRE chat as a single HTML string so everything renders inside the wrapper
+            canal_emoji = {
+                "WhatsApp": "💬", "Webchat": "🌐",
+                "Instagram": "📸", "Teléfono": "📞"
+            }.get(st.session_state.chat_canal, "💬")
+
+            client_id = f"CL-{hash(st.session_state.chat_cliente) % 9000 + 1000}"
+
+            # Inline CSS for the component (rendered in iframe, needs its own styles)
+            chat_css = """<style>
+              :root {
+                  --chat-bg: #f9f8f5; --chat-border: #c8c7bc; --c-bg: #ffffff;
+                  --c-text: #1a1a1a; --c-text-muted: #555555;
+                  --bubble-in: #f0efe9; --bubble-out: #e0dfd8;
+                  --bubble-out-text: #1a1a1a; --pill-bg: #e0dfd8;
+                  --urgency-bg: rgba(224, 36, 36, 0.1); --urgency-border: #e02424; --urgency-text: #e02424;
+              }
+              @media (prefers-color-scheme: dark) {
+                  :root {
+                      --chat-bg: #1a1c23; --chat-border: #333333; --c-bg: #262730;
+                      --c-text: #e0e0e0; --c-text-muted: #a3a8b8;
+                      --bubble-in: #333333; --bubble-out: #1a56db;
+                      --bubble-out-text: #ffffff; --pill-bg: #333333;
+                      --urgency-bg: rgba(239, 68, 68, 0.15); --urgency-border: #ef4444; --urgency-text: #fca5a5;
+                  }
+              }
+              * { box-sizing: border-box; margin: 0; padding: 0; }
+              html, body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: transparent; height: 100%; color: var(--c-text); }
+              .chat-wrapper {
+                  background: var(--chat-bg); border: 1.5px solid var(--chat-border);
+                  border-bottom: none; border-radius: 12px 12px 0 0; overflow: hidden;
+                  height: 100%; display: flex; flex-direction: column;
+              }
+              .chat-header-sim {
+                  background: var(--c-bg); border-bottom: 1.5px solid var(--chat-border);
+                  padding: 12px 16px; display: flex; align-items: center; gap: 12px;
+              }
+              .chat-avatar {
+                  width: 38px; height: 38px; border-radius: 50%; background: var(--pill-bg);
+                  border: 1.5px solid var(--chat-border); display: flex; align-items: center;
+                  justify-content: center; font-size: 16px; font-weight: 600; color: var(--c-text-muted);
+                  flex-shrink: 0;
+              }
+              .chat-user-info { flex: 1; }
+              .chat-user-name { font-weight: 600; font-size: 15px; color: var(--c-text); }
+              .chat-user-meta { font-size: 12px; color: var(--c-text-muted); margin-top: 2px; }
+              .chat-status-pill {
+                  background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7;
+                  border-radius: 20px; padding: 3px 10px; font-size: 11px; font-weight: 600;
+              }
+              .messages-area {
+                  padding: 16px; display: flex; flex-direction: column; gap: 12px;
+                  overflow-y: auto; scroll-behavior: smooth; flex: 1;
+              }
+              .msg-in { align-self: flex-start; max-width: 75%; }
+              .msg-out { align-self: flex-end; max-width: 75%; }
+              .bubble-in {
+                  background: var(--bubble-in); border: 1.5px solid var(--chat-border);
+                  border-radius: 4px 12px 12px 12px; padding: 10px 14px;
+                  font-size: 13px; color: var(--c-text); line-height: 1.5;
+              }
+              .bubble-out {
+                  background: var(--bubble-out); border: 1.5px solid var(--chat-border);
+                  border-radius: 12px 4px 12px 12px; padding: 10px 14px;
+                  font-size: 13px; color: var(--bubble-out-text); line-height: 1.5;
+              }
+              .msg-time { font-size: 11px; color: var(--c-text-muted); margin-top: 3px; }
+              .msg-time.right { text-align: right; }
+              .intent-pill {
+                  display: inline-block; padding: 2px 10px; border-radius: 20px;
+                  font-size: 11px; font-weight: 700; margin-top: 4px; color: #fff;
+              }
+              .intent-Soporte     { background:#1e40af; }
+              .intent-Facturacion { background:#d97706; }
+              .intent-Ventas      { background:#047857; }
+              .intent-Reclamos    { background:#b91c1c; }
+              .copilot-inline {
+                  background: var(--chat-bg); border: 1.5px solid var(--chat-border); border-radius: 8px;
+                  padding: 10px 14px; margin-top: 6px; font-size: 12px; color: var(--c-text);
+                  line-height: 1.5; max-width: 80%; align-self: flex-start;
+              }
+              .copilot-inline-header {
+                  font-size: 10px; font-weight: 700; color: #1a56db;
+                  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;
+              }
+              .urgencia-inline {
+                  background: var(--urgency-bg); border: 1.5px solid var(--urgency-border); border-radius: 8px;
+                  padding: 8px 12px; font-size: 12px; color: var(--urgency-text); font-weight: 600;
+                  margin-top: 6px; align-self: flex-start;
+              }
+              .empty-state {
+                  text-align: center; padding: 60px 20px; color: var(--c-text-muted); font-size: 13px;
+              }
+              .empty-icon { font-size: 40px; margin-bottom: 12px; }
+              ::-webkit-scrollbar { width: 5px; }
+              ::-webkit-scrollbar-track { background: transparent; }
+              ::-webkit-scrollbar-thumb { background: var(--chat-border); border-radius: 4px; }
+            </style>"""
+
+            # Build chat body
+            chat_body = ""
+            if not st.session_state.chat_mensajes:
+                chat_body = """
+                <div class="empty-state">
+                  <div class="empty-icon">💬</div>
+                  <p>No hay mensajes aún.</p>
+                  <p style="margin-top:6px">Presione <strong>"Nuevo mensaje del cliente"</strong> para iniciar la conversación.</p>
+                </div>"""
+            else:
+                for msg in st.session_state.chat_mensajes:
+                    ts = msg["timestamp"]
+                    if msg["tipo"] == "cliente":
+                        intencion = msg.get("intencion", "")
+                        urgencia  = msg.get("urgencia", False)
+                        urg_html  = '<span class="intent-pill" style="background:#fee2e2;color:#991b1b;margin-left:4px">⚡ Urgente</span>' if urgencia else ''
+                        icon      = INTERPRETACION[intencion]["icono"]
+
+                        chat_body += f"""
+                        <div class="msg-in">
+                          <div class="bubble-in">{msg['texto']}</div>
+                          <div style="margin-top:4px">
+                            <span class="intent-pill intent-{intencion}">{icon} {intencion}</span>{urg_html}
+                          </div>
+                          <div class="msg-time">{ts}</div>
+                        </div>"""
+
+                    else:
+                        chat_body += f"""
+                        <div class="msg-out">
+                          <div class="bubble-out">{msg['texto']}</div>
+                          <div class="msg-time right">{ts} ✓✓</div>
+                        </div>"""
+
+            # Calculate component height — bigger window
+            n_msgs = len(st.session_state.chat_mensajes)
+            component_height = max(400, min(750, 80 + n_msgs * 130))
+
+            full_html = f"""{chat_css}
+            <div class="chat-wrapper">
+              <div class="chat-header-sim">
+                <div class="chat-avatar">{st.session_state.chat_cliente[0]}</div>
+                <div class="chat-user-info">
+                  <div class="chat-user-name">{st.session_state.chat_cliente}</div>
+                  <div class="chat-user-meta">Canal: {canal_emoji} {st.session_state.chat_canal} · ID: {client_id}</div>
+                </div>
+                <span class="chat-status-pill">● En línea</span>
+              </div>
+              <div class="messages-area" id="chat-area">{chat_body}
+              </div>
+            </div>
+            <script>
+              var c = document.getElementById('chat-area');
+              if (c) c.scrollTop = c.scrollHeight;
+            </script>"""
+
+            import streamlit.components.v1 as components
+            components.html(full_html, height=component_height, scrolling=False)
+
+            # ── Barra de respuesta del agente (estilo composer Beex) ───────────────
+            st.markdown(
+                "<style>"
+                "/* Custom styles to merge the Streamlit container with the chat iframe */"
+                "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) {"
+                "    background-color: var(--c-bg) !important;"
+                "    border: 1.5px solid var(--chat-border) !important;"
+                "    border-top: 1px solid var(--chat-border) !important;"
+                "    border-radius: 0 0 12px 12px !important;"
+                "    padding: 16px 20px !important;"
+                "    margin-top: -1.2rem !important;"
+                "    box-shadow: 0 -1px 4px rgba(0,0,0,0.02) !important;"
+                "    z-index: 10;"
+                "    position: relative;"
+                "}"
+                "/* Force text colors for dark mode compatibility */"
+                "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) p,"
+                "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) span {"
+                "    color: var(--c-text) !important;"
+                "}"
+                "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) label {"
+                "    color: var(--c-text-muted) !important;"
+                "}"
+                "/* Force input and button styles to look like sketch theme */"
+                "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) div[data-baseweb='input'],"
+                "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) div[data-baseweb='textarea'] {"
+                "    background-color: var(--input-bg) !important;"
+                "    border: 1.5px solid var(--chat-border) !important;"
+                "}"
+                "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) input,"
+                "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) textarea {"
+                "    color: var(--c-text) !important;"
+                "}"
+                "div[data-testid='stVerticalBlock']:has(> div.element-container .composer-marker) button[kind='secondary'] {"
+                "    background-color: var(--btn-sec-bg) !important;"
+                "    border: 1.5px solid var(--btn-sec-border) !important;"
+                "    color: var(--c-text) !important;"
+                "}"
+                ".suggested-box {"
+                "    background: var(--input-bg); border: 1.5px solid var(--chat-border); border-radius: 8px;"
+                "    padding: 12px; font-size: 13px; color: var(--c-text); margin-bottom: 12px; line-height: 1.5;"
+                "}"
+                "div[data-testid='stTabs'] button { font-weight: 500; color: var(--c-text-muted); }"
+                "div[data-testid='stTabs'] button[aria-selected='true'] { color: var(--beex-blue); }"
+                "</style>", unsafe_allow_html=True
             )
 
-        if modo_cliente == "Escribir mensaje manualmente":
-            txt_col, send_txt_col = st.columns([5, 1])
-            with txt_col:
-                texto_manual = st.text_input(
-                    "Mensaje del cliente:",
-                    key="txt_cliente_manual",
-                    placeholder="Escriba aquí como si fuera el cliente...",
-                    label_visibility="collapsed"
-                )
-            with send_txt_col:
-                enviar_manual = st.button("📨", key="btn_enviar_manual",
-                                          type="primary", use_container_width=True,
-                                          help="Enviar mensaje del cliente")
+            with st.container():
+                st.markdown("<span class='composer-marker'></span>", unsafe_allow_html=True)
+                tab_resp, tab_notas = st.tabs(["Respuesta sugerida", "Notas internas"])
 
-            if enviar_manual and texto_manual.strip():
-                intencion_real = predecir_intencion(texto_manual)
-                urgencia_real  = detectar_urgencia(texto_manual)
-                ts_now = datetime.now().strftime("%H:%M")
+            with tab_resp:
+                # Buscar sugerencia
+                resp_pre = ""
+                if st.session_state.chat_mensajes and st.session_state.chat_mensajes[-1]["tipo"] == "cliente":
+                    last_intent = st.session_state.chat_mensajes[-1]["intencion"]
+                    faqs_resp   = buscar_faq(st.session_state.chat_mensajes[-1]["texto"], last_intent)
+                    resp_pre    = faqs_resp[0]["respuesta"] if faqs_resp else ""
 
-                st.session_state.chat_mensajes.append({
-                    "tipo": "cliente", "texto": texto_manual.strip(),
-                    "intencion": intencion_real, "urgencia": urgencia_real,
-                    "timestamp": ts_now
-                })
-                st.session_state.historial.append({
-                    "timestamp": ts_now,
-                    "canal": st.session_state.chat_canal,
-                    "agente": "Chat Sim",
-                    "mensaje": texto_manual[:100],
-                    "intencion": intencion_real,
-                    "prioridad": INTERPRETACION[intencion_real]["prioridad"],
-                    "urgencia": urgencia_real,
-                    "sla": INTERPRETACION[intencion_real]["sla_sugerido"]
-                })
-                st.session_state.total_sesion += 1
-                st.session_state.ultima_clasificacion = {
-                    "intencion": intencion_real,
-                    "info": INTERPRETACION[intencion_real],
-                    "urgencia": urgencia_real,
-                    "texto": texto_manual.strip(),
-                    "canal": st.session_state.chat_canal
-                }
-                st.rerun()
+                if resp_pre:
+                    st.markdown(f"<div class='suggested-box'>{resp_pre}</div>", unsafe_allow_html=True)
+                
+                    col_send, col_edit, col_bad = st.columns([3, 2, 2])
+                    with col_send:
+                        enviar_sug = st.button("Enviar respuesta", key="btn_env_sug", type="primary", use_container_width=True)
+                    with col_edit:
+                        editar_sug = st.button("Editar", key="btn_edit_sug", use_container_width=True)
+                    with col_bad:
+                        st.button("No es útil", key="btn_bad_sug", use_container_width=True)
 
-        else:  # Modo aleatorio
-            nuevo_msg = st.button(
-                "Generar mensaje aleatorio",
-                type="primary",
-                use_container_width=True,
-                key="btn_nuevo_msg"
-            )
-
-            if nuevo_msg:
-                cat = random.choice(list(MENSAJES_SIMULADOS.keys()))
-                texto_cliente = random.choice(MENSAJES_SIMULADOS[cat])
-
-                intencion_real = predecir_intencion(texto_cliente)
-                urgencia_real  = detectar_urgencia(texto_cliente)
-                ts_now = datetime.now().strftime("%H:%M")
-
-                st.session_state.chat_mensajes.append({
-                    "tipo": "cliente", "texto": texto_cliente,
-                    "intencion": intencion_real, "urgencia": urgencia_real,
-                    "timestamp": ts_now
-                })
-                st.session_state.historial.append({
-                    "timestamp": ts_now,
-                    "canal": st.session_state.chat_canal,
-                    "agente": "Chat Sim",
-                    "mensaje": texto_cliente[:100],
-                    "intencion": intencion_real,
-                    "prioridad": INTERPRETACION[intencion_real]["prioridad"],
-                    "urgencia": urgencia_real,
-                    "sla": INTERPRETACION[intencion_real]["sla_sugerido"]
-                })
-                st.session_state.total_sesion += 1
-                st.session_state.ultima_clasificacion = {
-                    "intencion": intencion_real,
-                    "info": INTERPRETACION[intencion_real],
-                    "urgencia": urgencia_real,
-                    "texto": texto_cliente,
-                    "canal": st.session_state.chat_canal
-                }
-                st.rerun()
-
-    # ── Panel Copilot lateral del chat ───────────────────────────────────────
-    with panel_col:
-        st.markdown("### Copilot del Agente")
-
-        if not st.session_state.chat_mensajes:
-            st.info("El Copilot aparecerá aquí cuando el cliente envíe su primer mensaje.")
-        else:
-            ultimo_cliente = next(
-                (m for m in reversed(st.session_state.chat_mensajes) if m["tipo"] == "cliente"),
-                None
-            )
-            if ultimo_cliente:
-                intent_actual = ultimo_cliente["intencion"]
-                info_actual   = INTERPRETACION[intent_actual]
-                script        = COPILOT_SCRIPTS[intent_actual]
-
-                # Badge de intención
-                st.markdown(
-                    f"<span class='intent-pill intent-{intent_actual}' style='font-size:14px;padding:5px 14px'>"
-                    f"{info_actual['icono']} {intent_actual} · {info_actual['prioridad']}</span>",
-                    unsafe_allow_html=True
-                )
-                st.markdown(f"**SLA:** {info_actual['sla_sugerido']}")
-                st.markdown("---")
-
-                # Script de apertura
-                st.markdown("**📢 Apertura recomendada:**")
-                st.markdown(
-                    f"<div class='copilot-box' style='font-size:13px'>{script['apertura']}</div>",
-                    unsafe_allow_html=True
-                )
-
-                # Checklist
-                st.markdown("**✅ Checklist:**")
-                checklist_html = ""
-                for tipo, item in script["checklist"]:
-                    icon_cls = "checklist-icon-ok" if tipo == "ok" else "checklist-icon-warn"
-                    icon_char = "✓" if tipo == "ok" else "⚑"
-                    checklist_html += (
-                        f"<div class='checklist-item'>"
-                        f"<span class='{icon_cls}'>{icon_char}</span>"
-                        f"<span>{item}</span></div>"
-                    )
-                st.markdown(
-                    f"<div class='beex-card' style='padding:12px 16px'>{checklist_html}</div>",
-                    unsafe_allow_html=True
-                )
-
-                # Respuesta sugerida (RAG) — estilo copilot-inline
-                faqs_panel = buscar_faq(ultimo_cliente["texto"], intent_actual)
-                if faqs_panel:
-                    st.markdown(
-                        f"<div style='background:#fafaf7;border:1.5px solid #e8a849;border-left:4px solid #e8a849;"
-                        f"border-radius:8px;padding:12px 16px;margin:8px 0;font-size:13px;color:#555;line-height:1.6'>"
-                        f"<div style='font-size:11px;font-weight:700;color:#b45309;text-transform:uppercase;"
-                        f"letter-spacing:0.5px;margin-bottom:6px'>Copilot — Respuesta sugerida para {intent_actual}</div>"
-                        f"{faqs_panel[0]['respuesta']}</div>",
-                        unsafe_allow_html=True
-                    )
-                    # Botón para enviar la respuesta sugerida directamente al chat
-                    if st.button("📤 Enviar respuesta sugerida al chat", key="btn_enviar_sugerida",
-                                 use_container_width=True, type="primary"):
+                    if enviar_sug:
                         st.session_state.chat_mensajes.append({
                             "tipo": "agente",
-                            "texto": faqs_panel[0]["respuesta"],
+                            "texto": resp_pre,
                             "timestamp": datetime.now().strftime("%H:%M")
                         })
                         st.rerun()
 
-                # Alerta urgencia
-                if ultimo_cliente.get("urgencia"):
-                    st.markdown(
-                        "<div class='urgencia-banner' style='font-size:13px'>⚡ URGENCIA — "
-                        "Escalar a supervisor · Fast-Track activo</div>",
-                        unsafe_allow_html=True
-                    )
+                    if editar_sug:
+                        st.session_state.editar_texto = resp_pre
+                else:
+                    st.info("No hay respuesta sugerida para este mensaje.")
 
-                # Cierre recomendado
-                st.markdown("**🔚 Cierre sugerido:**")
-                st.markdown(
-                    f"<div class='copilot-box' style='font-size:13px'>{script['cierre']}</div>",
-                    unsafe_allow_html=True
+                # Input manual
+                texto_a_enviar = st.session_state.get("editar_texto", "")
+                resp_col, send_col = st.columns([6, 1])
+                with resp_col:
+                    resp_agente = st.text_input(
+                        "Escribe un mensaje...",
+                        value=texto_a_enviar,
+                        key="resp_agente_txt",
+                        label_visibility="collapsed",
+                        placeholder="Escribe un mensaje..."
+                    )
+                with send_col:
+                    enviar_resp = st.button("📤", key="btn_enviar_resp", type="primary", use_container_width=True)
+                
+                if enviar_resp and resp_agente.strip():
+                    if "editar_texto" in st.session_state:
+                        del st.session_state.editar_texto
+                    st.session_state.chat_mensajes.append({
+                        "tipo": "agente",
+                        "texto": resp_agente.strip(),
+                        "timestamp": datetime.now().strftime("%H:%M")
+                    })
+                    st.rerun()
+
+            with tab_notas:
+                st.text_area("Añadir nota interna al cliente...", height=100, label_visibility="collapsed", placeholder="Escribe una nota interna...")
+                st.button("Guardar nota", key="btn_guardar_nota")
+
+            st.markdown("---")
+
+            # ── Entrada del cliente ──────────────────────────────────────────────
+            st.markdown("##### Mensaje del cliente")
+            modo_col1, modo_col2 = st.columns(2)
+            with modo_col1:
+                modo_cliente = st.radio(
+                    "Modo de entrada:",
+                    ["Escribir mensaje manualmente", "Mensaje aleatorio"],
+                    horizontal=True,
+                    key="modo_entrada_chat",
+                    label_visibility="collapsed"
                 )
 
-# ─────────────────────────────────────────────────────────────────────────────
-# TAB 3 — HISTORIAL (HU-01)
-# ─────────────────────────────────────────────────────────────────────────────
-with tab3:
-    st.subheader("Historial unificado de la sesión")
-    st.caption("Vista centralizada de todas las interacciones clasificadas (HU-01)")
+            if modo_cliente == "Escribir mensaje manualmente":
+                txt_col, send_txt_col = st.columns([5, 1])
+                with txt_col:
+                    texto_manual = st.text_input(
+                        "Mensaje del cliente:",
+                        key="txt_cliente_manual",
+                        placeholder="Escriba aquí como si fuera el cliente...",
+                        label_visibility="collapsed"
+                    )
+                with send_txt_col:
+                    enviar_manual = st.button("📨", key="btn_enviar_manual",
+                                              type="primary", use_container_width=True,
+                                              help="Enviar mensaje del cliente")
+
+                if enviar_manual and texto_manual.strip():
+                    intencion_real = predecir_intencion(texto_manual)
+                    urgencia_real  = detectar_urgencia(texto_manual)
+                    ts_now = datetime.now().strftime("%H:%M")
+
+                    st.session_state.chat_mensajes.append({
+                        "tipo": "cliente", "texto": texto_manual.strip(),
+                        "intencion": intencion_real, "urgencia": urgencia_real,
+                        "timestamp": ts_now
+                    })
+                    st.session_state.historial.append({
+                        "timestamp": ts_now,
+                        "canal": st.session_state.chat_canal,
+                        "agente": "Chat Sim",
+                        "mensaje": texto_manual[:100],
+                        "intencion": intencion_real,
+                        "prioridad": INTERPRETACION[intencion_real]["prioridad"],
+                        "urgencia": urgencia_real,
+                        "sla": INTERPRETACION[intencion_real]["sla_sugerido"]
+                    })
+                    st.session_state.total_sesion += 1
+                    st.session_state.ultima_clasificacion = {
+                        "intencion": intencion_real,
+                        "info": INTERPRETACION[intencion_real],
+                        "urgencia": urgencia_real,
+                        "texto": texto_manual.strip(),
+                        "canal": st.session_state.chat_canal
+                    }
+                    st.rerun()
+
+            else:  # Modo aleatorio
+                nuevo_msg = st.button(
+                    "Generar mensaje aleatorio",
+                    type="primary",
+                    use_container_width=True,
+                    key="btn_nuevo_msg"
+                )
+
+                if nuevo_msg:
+                    cat = random.choice(list(MENSAJES_SIMULADOS.keys()))
+                    texto_cliente = random.choice(MENSAJES_SIMULADOS[cat])
+
+                    intencion_real = predecir_intencion(texto_cliente)
+                    urgencia_real  = detectar_urgencia(texto_cliente)
+                    ts_now = datetime.now().strftime("%H:%M")
+
+                    st.session_state.chat_mensajes.append({
+                        "tipo": "cliente", "texto": texto_cliente,
+                        "intencion": intencion_real, "urgencia": urgencia_real,
+                        "timestamp": ts_now
+                    })
+                    st.session_state.historial.append({
+                        "timestamp": ts_now,
+                        "canal": st.session_state.chat_canal,
+                        "agente": "Chat Sim",
+                        "mensaje": texto_cliente[:100],
+                        "intencion": intencion_real,
+                        "prioridad": INTERPRETACION[intencion_real]["prioridad"],
+                        "urgencia": urgencia_real,
+                        "sla": INTERPRETACION[intencion_real]["sla_sugerido"]
+                    })
+                    st.session_state.total_sesion += 1
+                    st.session_state.ultima_clasificacion = {
+                        "intencion": intencion_real,
+                        "info": INTERPRETACION[intencion_real],
+                        "urgencia": urgencia_real,
+                        "texto": texto_cliente,
+                        "canal": st.session_state.chat_canal
+                    }
+                    st.rerun()
+
+
+
+    # ─────────────────────────────────────────────────────────────────────────────
+    # TAB 3 — HISTORIAL (HU-01)
+    # ─────────────────────────────────────────────────────────────────────────────
+if menu == "Historial":
+    st.markdown(
+        """
+        <div style='display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:var(--c-bg);border-bottom:1px solid var(--c-border);position:sticky;top:0;z-index:10;margin:-16px -16px 24px -16px'>
+            <div style='display:flex;align-items:center;gap:24px'>
+                <h2 style='margin:0;font-size:20px;font-weight:700;color:var(--beex-blue);letter-spacing:-0.01em'>BEEX AI Historial</h2>
+                <div style='display:flex;gap:16px;align-items:center'>
+                    <span style='font-size:14px;font-weight:600;color:var(--beex-blue);border-bottom:2px solid var(--beex-blue);padding-bottom:4px;cursor:pointer'>Recent</span>
+                    <span style='font-size:14px;font-weight:600;color:var(--c-text-muted);cursor:pointer'>Pinned</span>
+                </div>
+            </div>
+            <div style='display:flex;gap:12px;align-items:center'>
+                <div style='background:var(--c-bg-secondary);border:1px solid var(--c-border);padding:8px 16px;border-radius:9999px;font-size:12px;color:var(--c-text-muted);display:flex;align-items:center;gap:8px'>
+                    🔍 Search history...
+                </div>
+                <button style='background:var(--beex-blue);color:white;border:none;border-radius:9999px;padding:8px 16px;font-weight:600;font-size:12px;cursor:pointer'>New Transcription</button>
+                <button style='background:white;color:var(--c-text);border:1px solid var(--c-border);border-radius:9999px;padding:8px 16px;font-weight:600;font-size:12px;cursor:pointer'>📥 Exportar</button>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
     if not st.session_state.historial:
         st.info("Aún no hay clasificaciones en esta sesión.")
     else:
-        h_col1, h_col2, h_col3, h_col4 = st.columns(4)
-        total = len(st.session_state.historial)
-        urgentes = sum(1 for h in st.session_state.historial if h["urgencia"])
-        canales_unicos = len(set(h["canal"] for h in st.session_state.historial))
-        intencion_frecuente = pd.Series(
-            [h["intencion"] for h in st.session_state.historial]
-        ).value_counts().index[0]
+        st.markdown("<span style='font-size:16px;font-weight:700;color:var(--c-text);margin-bottom:8px;display:block'>Historial de Interacciones</span>", unsafe_allow_html=True)
+        filtro_intencion = st.pills(
+            "Filtro",
+            ["Todos", "Soporte", "Facturacion", "Ventas", "Reclamos"],
+            default="Todos",
+            label_visibility="collapsed"
+        )
 
-        with h_col1: st.metric("Total interacciones", total)
-        with h_col2: st.metric("⚡ Con urgencia", urgentes,
-                               delta=f"{(urgentes/total*100):.0f}% del total" if total else None)
-        with h_col3: st.metric("📡 Canales usados", canales_unicos)
-        with h_col4: st.metric("📊 Categoría dominante", intencion_frecuente)
+        with st.container():
+            df_hist = pd.DataFrame(st.session_state.historial)
+            
+            # Aplicar filtro interactivo
+            if filtro_intencion != "Todos":
+                df_hist = df_hist[df_hist["intencion"] == filtro_intencion]
+                
+            if not df_hist.empty:
+                df_hist["urgencia"] = df_hist["urgencia"].map({True: "⚡ SÍ", False: "—"})
+                df_hist.columns = ["Hora", "Canal", "Agente", "Mensaje", "Intención", "Prioridad", "Urgencia", "SLA"]
+                
+                st.dataframe(df_hist[["Hora", "Canal", "Agente", "Intención", "Urgencia"]], use_container_width=True,
+                             height=min(400, 60 + len(df_hist) * 35),
+                             hide_index=True)
 
-        st.markdown("---")
-        df_hist = pd.DataFrame(st.session_state.historial)
-        df_hist["urgencia"] = df_hist["urgencia"].map({True: "⚡ SÍ", False: "—"})
-        df_hist.columns = ["Hora", "Canal", "Agente", "Mensaje (preview)", "Intención", "Prioridad", "Urgencia", "SLA"]
+                csv_data = df_hist.to_csv(index=False, encoding="utf-8-sig")
+                st.download_button("Descargar historial CSV", data=csv_data,
+                                   file_name=f"beex_historial_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+                                   mime="text/csv", use_container_width=True)
+            else:
+                st.info("No hay interacciones para esta categoría.")
 
-        st.dataframe(df_hist, use_container_width=True,
-                     height=min(400, 60 + len(df_hist) * 35),
-                     column_config={
-                         "Hora": st.column_config.TextColumn("🕐 Hora", width="small"),
-                         "Canal": st.column_config.TextColumn("📡 Canal", width="small"),
-                         "Agente": st.column_config.TextColumn("👤 Agente", width="small"),
-                         "Mensaje (preview)": st.column_config.TextColumn("💬 Mensaje", width="large"),
-                         "Intención": st.column_config.TextColumn("🎯 Intención", width="small"),
-                         "Prioridad": st.column_config.TextColumn("🚦 Prioridad", width="small"),
-                         "Urgencia": st.column_config.TextColumn("⚡ Urgencia", width="small"),
-                         "SLA": st.column_config.TextColumn("⏱️ SLA", width="small"),
-                     })
 
-        csv_data = df_hist.to_csv(index=False, encoding="utf-8-sig")
-        st.download_button("Descargar historial CSV", data=csv_data,
-                           file_name=f"beex_historial_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
-                           mime="text/csv", use_container_width=True)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # TAB 4 — DASHBOARD (HU-02)
 # ─────────────────────────────────────────────────────────────────────────────
-with tab4:
-    st.subheader("Dashboard de métricas en tiempo real")
-    st.caption("Indicadores de rendimiento operativo de la sesión actual (HU-02)")
+if menu == "Dashboard":
+    st.markdown(
+        """
+        <div style='display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:var(--c-bg);border-bottom:1px solid var(--c-border);position:sticky;top:0;z-index:10;margin:-16px -16px 24px -16px'>
+            <div>
+                <h2 style='margin:0;font-size:24px;font-weight:600;color:var(--c-text);letter-spacing:-0.01em'>Dashboard Operativo</h2>
+                <p style='margin:4px 0 0 0;font-size:14px;color:var(--c-text-muted)'>Monitoreo en tiempo real de interacciones y SLAs.</p>
+            </div>
+            <div style='display:flex;gap:12px;align-items:center;background:var(--c-bg-secondary);border:1px solid var(--c-border);padding:4px 16px;border-radius:9999px'>
+                <span style='font-size:12px;font-weight:600;color:var(--beex-green);display:flex;align-items:center;gap:4px'>● Modelo Activo</span>
+                <span style='color:var(--c-border)'>|</span>
+                <span style='font-size:12px;font-weight:600;color:var(--beex-blue)'>📊 94.5% Accuracy</span>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
     if not st.session_state.historial:
         st.info("El dashboard se activa después de clasificar al menos 1 interacción.")
@@ -1318,13 +1537,21 @@ with tab4:
             reclamos_d = (df_dash["intencion"] == "Reclamos").sum()
             ventas_d   = (df_dash["intencion"] == "Ventas").sum()
             factura_d  = (df_dash["intencion"] == "Facturacion").sum()
+            
+            # Cálculo de intención dominante
+            intencion_counts = df_dash["intencion"].value_counts()
+            intencion_dominante = intencion_counts.idxmax() if not intencion_counts.empty else "N/A"
+            pct_dominante = (intencion_counts.max() / total_d * 100) if total_d > 0 else 0
 
-            d_col1, d_col2, d_col3, d_col4, d_col5 = st.columns(5)
-            with d_col1: st.metric("📨 Total", total_d)
-            with d_col2: st.metric("🔧 Soporte",     soporte_d,  delta=f"{(soporte_d/total_d*100):.0f}%")
-            with d_col3: st.metric("⚠️ Reclamos",    reclamos_d, delta=f"{(reclamos_d/total_d*100):.0f}%", delta_color="inverse")
-            with d_col4: st.metric("🛒 Ventas",       ventas_d,   delta=f"{(ventas_d/total_d*100):.0f}%")
-            with d_col5: st.metric("⚡ Urgencias",    int(urgentes_d), delta=f"{(urgentes_d/total_d*100):.0f}%", delta_color="inverse")
+            d_col1, d_col2, d_col3, d_col4 = st.columns(4)
+            with d_col1:
+                st.markdown(f"<div class='beex-card'><p class='beex-text-muted' style='font-weight:600;font-size:12px;margin:0'>TOTAL INTERACCIONES</p><h3 style='margin:8px 0;font-size:32px;color:var(--c-text)'>{total_d}</h3></div>", unsafe_allow_html=True)
+            with d_col2:
+                st.markdown(f"<div class='beex-card'><p class='beex-text-muted' style='font-weight:600;font-size:12px;margin:0'>SLA CUMPLIDO</p><h3 style='margin:8px 0;font-size:32px;color:var(--c-text)'>92.8%</h3></div>", unsafe_allow_html=True)
+            with d_col3:
+                st.markdown(f"<div class='beex-card' style='background:#ffdad6;border-color:#ba1a1a'><p style='color:#93000a;font-weight:600;font-size:12px;margin:0'>ALERTAS DE URGENCIA</p><h3 style='margin:8px 0;font-size:32px;color:#93000a'>{urgentes_d}</h3></div>", unsafe_allow_html=True)
+            with d_col4:
+                st.markdown(f"<div class='beex-card'><p class='beex-text-muted' style='font-weight:600;font-size:12px;margin:0'>INTENCIÓN DOMINANTE</p><h3 style='margin:8px 0;font-size:24px;color:var(--c-text)'>{intencion_dominante}</h3><p style='margin:0;color:var(--c-text-muted);font-size:12px;font-weight:600'>{pct_dominante:.0f}% del volumen total</p></div>", unsafe_allow_html=True)
 
             st.markdown("---")
             g_col1, g_col2 = st.columns(2)
@@ -1398,134 +1625,147 @@ with tab4:
 # ─────────────────────────────────────────────────────────────────────────────
 # TAB 5 — COPILOT & FAQ (HU-06, HU-07) — colores corregidos
 # ─────────────────────────────────────────────────────────────────────────────
-with tab5:
-    st.subheader("Panel Copilot & Respuestas Automáticas")
-    st.caption("Asistencia en tiempo real: scripts guiados (HU-06) y base de conocimiento FAQ con RAG simplificado (HU-07).")
-
-    if st.session_state.ultima_clasificacion is None:
-        st.info("Clasifique primero una interacción (Clasificador o Chat Simulado) para activar el Copilot.")
-    else:
-        uc = st.session_state.ultima_clasificacion
-        intencion_actual = uc["intencion"]
-        info_actual      = uc["info"]
-        texto_actual     = uc["texto"]
-        canal_actual     = uc["canal"]
-        script           = COPILOT_SCRIPTS[intencion_actual]
-
-        # Banner de contexto
+if menu == "Copilot":
+    with col_copilot:
         st.markdown(
-            f"<div class='beex-card'>"
-            f"<p style='margin:0;font-size:13px;color:var(--c-text-muted)'>Última interacción clasificada · Canal: {canal_actual}</p>"
-            f"<p style='font-size:20px;font-weight:700;color:{info_actual['color']}'>"
-            f"{info_actual['icono']} Intención detectada: {intencion_actual}</p>"
-            f"<p style='color:var(--c-text);font-style:italic'>\"{texto_actual[:120]}{'...' if len(texto_actual)>120 else ''}\"</p>"
-            f"</div>",
+            """
+            <div style='display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--c-border);margin-bottom:16px'>
+                <div style='display:flex;align-items:center;gap:8px'>
+                    <span class='material-symbols-outlined' style='color:var(--beex-blue);font-variation-settings:"FILL" 1'>smart_toy</span>
+                    <h3 style='margin:0;font-size:16px;font-weight:700;color:var(--beex-blue)'>Agent Copilot</h3>
+                </div>
+                <span style='background:rgba(16, 185, 129, 0.1);color:var(--beex-green);padding:4px 12px;border-radius:9999px;font-size:10px;font-weight:700;border:1px solid rgba(16, 185, 129, 0.2);display:flex;align-items:center;gap:4px'>
+                    ● ACTIVO
+                </span>
+            </div>
+            """,
             unsafe_allow_html=True
         )
 
-        cop_col1, cop_col2 = st.columns(2)
+        if st.session_state.ultima_clasificacion is None:
+            st.info("Clasifique primero una interacción (Clasificador o Chat Simulado) para activar el Copilot.")
+        else:
+            uc = st.session_state.ultima_clasificacion
+            intencion_actual = uc["intencion"]
+            info_actual      = uc["info"]
+            texto_actual     = uc["texto"]
+            canal_actual     = uc["canal"]
+            script           = COPILOT_SCRIPTS[intencion_actual]
 
-        # ── Panel Copilot (HU-06) ────────────────────────────────────────────
-        with cop_col1:
-            st.markdown("### Panel Copilot para el Agente")
-
-            st.markdown("**📢 Script de apertura recomendado:**")
+            # Banner de contexto
             st.markdown(
-                f"<div class='copilot-box'>{script['apertura']}</div>",
+                f"<div class='beex-card'>"
+                f"<p style='margin:0;font-size:13px;color:var(--c-text-muted)'>Última interacción clasificada · Canal: {canal_actual}</p>"
+                f"<p style='font-size:20px;font-weight:700;color:{info_actual['color']}'>"
+                f"{info_actual['icono']} Intención detectada: {intencion_actual}</p>"
+                f"<p style='color:var(--c-text);font-style:italic'>\"{texto_actual[:120]}{'...' if len(texto_actual)>120 else ''}\"</p>"
+                f"</div>",
                 unsafe_allow_html=True
             )
 
-            st.markdown("**Checklist de atención:**")
-            checklist_html = ""
-            for tipo, item in script["checklist"]:
-                icon_cls  = "checklist-icon-ok" if tipo == "ok" else "checklist-icon-warn"
-                icon_char = "✓" if tipo == "ok" else "⚑"
-                checklist_html += (
-                    f"<div class='checklist-item'>"
-                    f"<span class='{icon_cls}'>{icon_char}</span>"
-                    f"<span>{item}</span></div>"
-                )
-            st.markdown(
-                f"<div class='beex-card' style='padding:12px 16px'>{checklist_html}</div>",
-                unsafe_allow_html=True
-            )
+            # ── Panel Copilot (HU-06) ────────────────────────────────────────────
+            with st.container():
+                st.markdown("### Panel Copilot para el Agente")
 
-            st.markdown("**🔚 Frase de cierre recomendada:**")
-            st.markdown(
-                f"<div class='copilot-box'>{script['cierre']}</div>",
-                unsafe_allow_html=True
-            )
-
-            if uc["urgencia"]:
+                st.markdown("**📢 Script de apertura recomendado:**")
                 st.markdown(
-                    "<div class='urgencia-banner'>⚡ URGENCIA DETECTADA — "
-                    "Aplicar protocolo Fast-Track. Notificar supervisor y escalar "
-                    "con código de prioridad ROJO.</div>",
+                    f"<div class='copilot-box'>{script['apertura']}</div>",
                     unsafe_allow_html=True
                 )
 
-        # ── Panel FAQ / RAG (HU-07) ──────────────────────────────────────────
-        with cop_col2:
-            st.markdown("### Respuestas Automáticas Sugeridas (RAG)")
-            st.caption(f"Base de conocimiento Beex · Categoría: {intencion_actual}")
+                st.markdown("**Checklist de atención:**")
+                checklist_html = ""
+                for tipo, item in script["checklist"]:
+                    icon_cls  = "checklist-icon-ok" if tipo == "ok" else "checklist-icon-warn"
+                    icon_char = "✓" if tipo == "ok" else "⚑"
+                    checklist_html += (
+                        f"<div class='checklist-item'>"
+                        f"<span class='{icon_cls}'>{icon_char}</span>"
+                        f"<span>{item}</span></div>"
+                    )
+                st.markdown(
+                    f"<div class='beex-card' style='padding:12px 16px'>{checklist_html}</div>",
+                    unsafe_allow_html=True
+                )
 
-            faqs = buscar_faq(texto_actual, intencion_actual)
-            if faqs:
-                for i, faq in enumerate(faqs, 1):
-                    with st.expander(f"📄 {faq['pregunta']}", expanded=(i == 1)):
-                        st.markdown(
-                            f"<div class='faq-box'>{faq['respuesta']}</div>",
-                            unsafe_allow_html=True
-                        )
-                        st.button("Usar esta respuesta", key=f"usar_faq_{i}",
-                                  help="Copie esta respuesta para enviarla al cliente.")
-            else:
-                st.info("No se encontraron respuestas automáticas. El agente debe responder manualmente.")
+                st.markdown("**🔚 Frase de cierre recomendada:**")
+                st.markdown(
+                    f"<div class='copilot-box'>{script['cierre']}</div>",
+                    unsafe_allow_html=True
+                )
 
-            st.markdown("---")
-            st.markdown("#### Buscar en base de conocimiento")
-            busqueda_manual = st.text_input("Buscar por categoría:",
-                                            placeholder="Ej: 'Reclamos' o 'Ventas'", key="busqueda_faq")
-            if busqueda_manual:
-                cat_busq = next((c for c in FAQ_BEEX if c.lower() in busqueda_manual.lower()), None)
-                if cat_busq:
-                    st.markdown(f"**Resultados para: {cat_busq}**")
-                    for item in FAQ_BEEX[cat_busq]:
-                        with st.expander(f"📄 {item['pregunta']}"):
+                if uc["urgencia"]:
+                    st.markdown(
+                        "<div class='urgencia-banner'>⚡ URGENCIA DETECTADA — "
+                        "Aplicar protocolo Fast-Track. Notificar supervisor y escalar "
+                        "con código de prioridad ROJO.</div>",
+                        unsafe_allow_html=True
+                    )
+
+            # ── Panel FAQ / RAG (HU-07) ──────────────────────────────────────────
+            with st.container():
+                st.markdown("### Respuestas Automáticas Sugeridas (RAG)")
+                st.caption(f"Base de conocimiento Beex · Categoría: {intencion_actual}")
+
+                faqs = buscar_faq(texto_actual, intencion_actual)
+                if faqs:
+                    for i, faq in enumerate(faqs, 1):
+                        with st.expander(f"📄 {faq['pregunta']}", expanded=(i == 1)):
                             st.markdown(
-                                f"<div class='faq-box'>{item['respuesta']}</div>",
+                                f"<div class='faq-box'>{faq['respuesta']}</div>",
                                 unsafe_allow_html=True
                             )
+                            st.button("Usar esta respuesta", key=f"usar_faq_{i}",
+                                      help="Copie esta respuesta para enviarla al cliente.")
                 else:
-                    st.warning("Intente con: Soporte, Facturacion, Ventas o Reclamos.")
+                    st.info("No se encontraron respuestas automáticas. El agente debe responder manualmente.")
 
-    # Explorador completo
-    if st.session_state.ultima_clasificacion is not None:
-        st.markdown("---")
-        st.markdown("### Explorador completo de base de conocimiento")
-        cat_sel = st.selectbox(
-            "Seleccione una categoría:",
-            options=list(FAQ_BEEX.keys()),
-            format_func=lambda x: {"Soporte":"🔧 Soporte","Facturacion":"💰 Facturación",
-                                    "Ventas":"🛒 Ventas","Reclamos":"⚠️ Reclamos"}.get(x, x),
-            key="cat_explorador"
-        )
-        for item in FAQ_BEEX[cat_sel]:
-            with st.expander(f"📄 {item['pregunta']}"):
-                st.markdown(
-                    f"<div class='faq-box'>{item['respuesta']}</div>",
-                    unsafe_allow_html=True
-                )
+                st.markdown("---")
+                st.markdown("#### Buscar en base de conocimiento")
+                busqueda_manual = st.text_input("Buscar por categoría:",
+                                                placeholder="Ej: 'Reclamos' o 'Ventas'", key="busqueda_faq")
+                if busqueda_manual:
+                    cat_busq = next((c for c in FAQ_BEEX if c.lower() in busqueda_manual.lower()), None)
+                    if cat_busq:
+                        st.markdown(f"**Resultados para: {cat_busq}**")
+                        for item in FAQ_BEEX[cat_busq]:
+                            with st.expander(f"📄 {item['pregunta']}"):
+                                st.markdown(
+                                    f"<div class='faq-box'>{item['respuesta']}</div>",
+                                    unsafe_allow_html=True
+                                )
+                    else:
+                        st.warning("Intente con: Soporte, Facturacion, Ventas o Reclamos.")
+
+        # Explorador completo
+        if st.session_state.ultima_clasificacion is not None:
+            st.markdown("---")
+            st.markdown("### Explorador completo de base de conocimiento")
+            cat_sel = st.selectbox(
+                "Seleccione una categoría:",
+                options=list(FAQ_BEEX.keys()),
+                format_func=lambda x: {"Soporte":"🔧 Soporte","Facturacion":"💰 Facturación",
+                                        "Ventas":"🛒 Ventas","Reclamos":"⚠️ Reclamos"}.get(x, x),
+                key="cat_explorador"
+            )
+            for item in FAQ_BEEX[cat_sel]:
+                with st.expander(f"📄 {item['pregunta']}"):
+                    st.markdown(
+                        f"<div class='faq-box'>{item['respuesta']}</div>",
+                        unsafe_allow_html=True
+                    )
 
 # ==============================================================================
 # PIE DE PÁGINA
 # ==============================================================================
-st.markdown("---")
 st.markdown(
-    "<p style='text-align:center;color:#9ca3af;font-size:12px'>"
-    "BEEX Suite — Proyecto Final · Innovación y Transformación Digital · UTP · 2026 | "
-    "Modelo SVM · TF-IDF · Dataset sintético 1,500 interacciones · Ley N.° 29733"
-    "</p>",
+    "<div style='background:var(--c-bg-secondary);border:1px solid var(--c-border);"
+    "border-radius:var(--radius-lg);padding:20px;margin-top:32px;text-align:center'>"
+    "<p style='margin:0 0 4px 0;color:var(--c-text-muted);font-size:0.85rem'>"
+    "BEEX Suite — Proyecto Final · Innovación y Transformación Digital · UTP · 2026</p>"
+    "<p style='margin:0;color:var(--c-text-muted);font-size:0.75rem'>"
+    "Modelo SVM · TF-IDF · Dataset sintético 1,500 interacciones · Ley N.° 29733</p>"
+    "</div>",
     unsafe_allow_html=True
 )
 
