@@ -841,6 +841,105 @@ def buscar_faq(texto: str, intencion: str) -> list:
                   if any(kw in texto_lower for kw in item["keywords"])]
     return resultados if resultados else FAQ_BEEX.get(intencion, [])
 
+def renderizar_copilot_y_faq(intencion_actual, info_actual, texto_actual, canal_actual, uc, suffix="", compact=False):
+    script = COPILOT_SCRIPTS[intencion_actual]
+
+    if compact:
+        st.markdown(
+            """
+            <div style='display:flex;align-items:center;gap:8px;padding-bottom:8px;border-bottom:1px solid var(--c-border);margin-bottom:12px;margin-top:24px'>
+                <span class='material-symbols-outlined' style='color:var(--beex-blue);font-size:20px;font-variation-settings:"FILL" 1'>smart_toy</span>
+                <h4 style='margin:0;font-size:14px;font-weight:700;color:var(--beex-blue)'>Agent Copilot (Asistente Rápido)</h4>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        
+        col_s1, col_s2 = st.columns(2)
+        with col_s1:
+            st.markdown("<span style='font-size:12px;font-weight:700;color:var(--c-text-secondary)'>📢 Script de Apertura:</span>", unsafe_allow_html=True)
+            st.markdown(f"<div class='copilot-box' style='padding:8px 12px;font-size:12px;margin:4px 0'>{script['apertura']}</div>", unsafe_allow_html=True)
+        with col_s2:
+            st.markdown("<span style='font-size:12px;font-weight:700;color:var(--c-text-secondary)'>🔚 Frase de Cierre:</span>", unsafe_allow_html=True)
+            st.markdown(f"<div class='copilot-box' style='padding:8px 12px;font-size:12px;margin:4px 0'>{script['cierre']}</div>", unsafe_allow_html=True)
+            
+        st.markdown("<span style='font-size:12px;font-weight:700;color:var(--c-text-secondary)'>📋 Checklist de atención:</span>", unsafe_allow_html=True)
+        checklist_html = ""
+        for tipo, item in script["checklist"]:
+            icon_char = "✓" if tipo == "ok" else "⚑"
+            icon_cls = "checklist-icon-ok" if tipo == "ok" else "checklist-icon-warn"
+            checklist_html += f"<div style='font-size:12px;display:flex;gap:8px;align-items:center;margin:2px 0'><span class='{icon_cls}'>{icon_char}</span><span>{item}</span></div>"
+        st.markdown(f"<div class='beex-card' style='padding:8px 12px;margin:4px 0 12px 0'>{checklist_html}</div>", unsafe_allow_html=True)
+        
+        faqs = buscar_faq(texto_actual, intencion_actual)
+        if faqs:
+            st.markdown("<span style='font-size:12px;font-weight:700;color:var(--c-text-secondary)'>📄 Respuesta sugerida más relevante:</span>", unsafe_allow_html=True)
+            faq = faqs[0]
+            st.markdown(f"<div class='faq-box' style='padding:8px 12px;font-size:12px;margin:4px 0 8px 0'>{faq['respuesta']}</div>", unsafe_allow_html=True)
+            
+        if uc["urgencia"]:
+            st.markdown(
+                "<div class='urgencia-banner' style='padding:8px 12px;font-size:12px;margin-top:8px'>⚡ URGENCIA DETECTADA — Aplicar protocolo Fast-Track.</div>",
+                unsafe_allow_html=True
+            )
+    else:
+        # ── Panel Copilot (HU-06) ────────────────────────────────────────────
+        with st.container():
+            st.markdown("### Panel Copilot para el Agente")
+
+            st.markdown("**📢 Script de apertura recomendado:**")
+            st.markdown(
+                f"<div class='copilot-box'>{script['apertura']}</div>",
+                unsafe_allow_html=True
+            )
+
+            st.markdown("**Checklist de atención:**")
+            checklist_html = ""
+            for tipo, item in script["checklist"]:
+                icon_cls  = "checklist-icon-ok" if tipo == "ok" else "checklist-icon-warn"
+                icon_char = "✓" if tipo == "ok" else "⚑"
+                checklist_html += (
+                    f"<div class='checklist-item'>"
+                    f"<span class='{icon_cls}'>{icon_char}</span>"
+                    f"<span>{item}</span></div>"
+                )
+            st.markdown(
+                f"<div class='beex-card' style='padding:12px 16px'>{checklist_html}</div>",
+                unsafe_allow_html=True
+            )
+
+            st.markdown("**🔚 Frase de cierre recomendada:**")
+            st.markdown(
+                f"<div class='copilot-box'>{script['cierre']}</div>",
+                unsafe_allow_html=True
+            )
+
+            if uc["urgencia"]:
+                st.markdown(
+                    "<div class='urgencia-banner'>⚡ URGENCIA DETECTADA — "
+                    "Aplicar protocolo Fast-Track. Notificar supervisor y escalar "
+                    "con código de prioridad ROJO.</div>",
+                    unsafe_allow_html=True
+                )
+
+        # ── Panel FAQ / RAG (HU-07) ──────────────────────────────────────────
+        with st.container():
+            st.markdown("### Respuestas Automáticas Sugeridas (RAG)")
+            st.caption(f"Base de conocimiento Beex · Categoría: {intencion_actual}")
+
+            faqs = buscar_faq(texto_actual, intencion_actual)
+            if faqs:
+                for i, faq in enumerate(faqs, 1):
+                    with st.expander(f"📄 {faq['pregunta']}", expanded=(i == 1)):
+                        st.markdown(
+                            f"<div class='faq-box'>{faq['respuesta']}</div>",
+                            unsafe_allow_html=True
+                        )
+                        st.button("Usar esta respuesta", key=f"usar_faq_{i}_{suffix}",
+                                  help="Copie esta respuesta para enviarla al cliente.")
+            else:
+                st.info("No se encontraron respuestas automáticas. El agente debe responder manualmente.")
+
 import json
 import os
 
@@ -863,6 +962,10 @@ def inicializar_session_state():
                 pass
     if "ultima_clasificacion" not in st.session_state:
         st.session_state.ultima_clasificacion = None
+    if "ultima_clasificacion_manual" not in st.session_state:
+        st.session_state.ultima_clasificacion_manual = None
+    if "ultima_clasificacion_chat" not in st.session_state:
+        st.session_state.ultima_clasificacion_chat = None
     if "total_sesion" not in st.session_state:
         st.session_state.total_sesion = len(st.session_state.historial)
     if "chat_cliente" not in st.session_state:
@@ -1090,7 +1193,6 @@ if menu == "Clasificador":
         clasificar = st.button("Clasificar Intención", type="primary",
                                use_container_width=True, key="btn_clasificar")
 
-    # ── Resultado de clasificación — DISEÑO ORIGINAL ────────────────────────
     if clasificar:
         if texto_usuario.strip():
             intencion  = predecir_intencion(texto_usuario)
@@ -1107,64 +1209,76 @@ if menu == "Clasificador":
                 "urgencia": urgencia, "sla": info["sla_sugerido"]
             }
             st.session_state.historial.append(registro)
-            st.session_state.ultima_clasificacion = {
+            st.session_state.ultima_clasificacion_manual = {
                 "intencion": intencion, "info": info,
                 "urgencia": urgencia, "texto": texto_usuario, "canal": canal_limpio
             }
             st.session_state.total_sesion += 1
-
-            # ── Resultado visual (diseño original del APF3) ──
-            st.markdown(
-                "<div class='beex-fade-in' style='background:var(--c-bg);border:1px solid var(--c-border);"
-                "border-radius:var(--radius-lg);padding:24px;margin-top:16px'>"
-                "<h3 style='margin:0 0 16px 0;font-size:1.15rem'>📋 Resultado de la Clasificación</h3>"
-                "</div>",
-                unsafe_allow_html=True
-            )
-
-            col1, col2 = st.columns([1, 2])
-            with col1:
-                st.markdown(f"### {info['icono']} {intencion}")
-            with col2:
-                st.markdown(f"**Descripción:** {info['descripcion']}")
-
-            st.markdown("#### 🎯 Acción de Enrutamiento Recomendada")
-            st.info(info["accion_recomendada"])
-
-            col_a, col_b, col_c = st.columns(3)
-            with col_a:
-                st.metric("⏱️ SLA Sugerido", info["sla_sugerido"])
-            with col_b:
-                st.metric("🚦 Prioridad", info["prioridad"])
-            with col_c:
-                st.metric("🚨 Bandera de Urgencia", "ACTIVADA" if urgencia else "Normal")
-
-            if urgencia:
-                st.markdown(
-                    "<div class='urgencia-banner'>"
-                    "⚡ <strong>ALERTA DE URGENCIA:</strong> Se detectaron términos de alta fricción. "
-                    "Se recomienda escalamiento inmediato o activación de protocolo Fast-Track."
-                    "</div>",
-                    unsafe_allow_html=True
-                )
-
-            st.markdown("---")
-            st.markdown(
-                "<div style='background:var(--c-bg-secondary);border:1px solid var(--c-border);"
-                "border-radius:var(--radius-lg);padding:20px;margin-top:16px'>"
-                "<h4 style='margin:0 0 12px 0;font-size:1rem'>📈 Métricas del Modelo (APF3)</h4>"
-                "</div>",
-                unsafe_allow_html=True
-            )
-            col_m1, col_m2, col_m3, col_m4 = st.columns(4)
-            with col_m1: st.metric("Accuracy",    "94.56%")
-            with col_m2: st.metric("Precision (W)", "94.77%")
-            with col_m3: st.metric("Recall (W)",    "94.56%")
-            with col_m4: st.metric("F1-Score (W)",  "94.60%")
-
-            st.info("💡 Vaya a la pestaña **🤖 Copilot & FAQ** para ver el script y las respuestas automáticas.")
         else:
             st.warning("⚠️ Por favor, ingrese un mensaje del cliente para clasificar.")
+
+    # ── Resultado de clasificación y Copilot asistido (Persistente en sesión) ──
+    if st.session_state.ultima_clasificacion_manual is not None:
+        uc = st.session_state.ultima_clasificacion_manual
+        intencion = uc["intencion"]
+        info = uc["info"]
+        urgencia = uc["urgencia"]
+        texto_actual = uc["texto"]
+        canal_actual = uc["canal"]
+
+        st.markdown(
+            f"""
+            <div class='beex-card' style='background:var(--c-bg);border:1px solid var(--c-border);border-radius:var(--radius-lg);padding:24px;margin-top:16px;margin-bottom:16px'>
+                <h3 style='margin:0 0 16px 0;font-size:1.15rem'>📋 Resultado de la Clasificación</h3>
+                <div style='display:flex;align-items:center;gap:12px;margin-bottom:12px'>
+                    <span style='font-size:28px'>{info['icono']}</span>
+                    <span style='font-size:20px;font-weight:700;color:var(--c-text)'>{intencion}</span>
+                </div>
+                <p style='margin:0 0 16px 0;font-size:14px;color:var(--c-text)'><strong>Descripción:</strong> {info['descripcion']}</p>
+                <div style='margin-top:16px;padding-top:16px;border-top:1px solid var(--c-border)'>
+                    <h4 style='margin:0 0 8px 0;font-size:0.95rem;font-weight:700'>🎯 Acción de Enrutamiento Recomendada</h4>
+                    <div style='background:var(--c-bg-secondary);padding:12px 16px;border-radius:8px;border:1px solid var(--c-border);font-size:13px;color:var(--c-text)'>
+                        {info['accion_recomendada']}
+                    </div>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+        col_a, col_b, col_c = st.columns(3)
+        with col_a:
+            st.metric("⏱️ SLA Sugerido", info["sla_sugerido"])
+        with col_b:
+            st.metric("🚦 Prioridad", info["prioridad"])
+        with col_c:
+            st.metric("🚨 Bandera de Urgencia", "ACTIVADA" if urgencia else "Normal")
+
+        if urgencia:
+            st.markdown(
+                "<div class='urgencia-banner'>"
+                "⚡ <strong>ALERTA DE URGENCIA:</strong> Se detectaron términos de alta fricción. "
+                "Se recomienda escalamiento inmediato o activación de protocolo Fast-Track."
+                "</div>",
+                unsafe_allow_html=True
+            )
+
+        st.markdown("---")
+        st.markdown(
+            "<div style='background:var(--c-bg-secondary);border:1px solid var(--c-border);"
+            "border-radius:var(--radius-lg);padding:20px;margin-top:16px'>"
+            "<h4 style='margin:0 0 12px 0;font-size:1rem'>📈 Métricas del Modelo (APF3)</h4>"
+            "</div>",
+            unsafe_allow_html=True
+        )
+        col_m1, col_m2, col_m3, col_m4 = st.columns(4)
+        with col_m1: st.metric("Accuracy",    "94.56%")
+        with col_m2: st.metric("Precision (W)", "94.77%")
+        with col_m3: st.metric("Recall (W)",    "94.56%")
+        with col_m4: st.metric("F1-Score (W)",  "94.60%")
+
+        # Panel Copilot y RAG embebido directamente (Diseño Compacto)
+        renderizar_copilot_y_faq(intencion, info, texto_actual, canal_actual, uc, suffix="clasificador", compact=True)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # TAB 2 — CHAT SIMULADO
@@ -1179,12 +1293,14 @@ if menu == "Copilot":
                 st.session_state.chat_cliente = random.choice(NOMBRES_CLIENTES)
                 st.session_state.chat_canal   = random.choice(CANALES_CHAT)
                 st.session_state.chat_mensajes = []
+                st.session_state.ultima_clasificacion_chat = None
                 if os.path.exists("chat_persistente.json"):
                     os.remove("chat_persistente.json")
                 st.rerun()
         with ctrl_col2:
             if st.button("🗑️ Limpiar chat", use_container_width=True):
                 st.session_state.chat_mensajes = []
+                st.session_state.ultima_clasificacion_chat = None
                 if os.path.exists("chat_persistente.json"):
                     os.remove("chat_persistente.json")
                 st.rerun()
@@ -1446,7 +1562,7 @@ if menu == "Copilot":
                     with col_edit:
                         editar_sug = st.button("Editar", key="btn_edit_sug", use_container_width=True)
                     with col_bad:
-                        st.button("No es útil", key="btn_bad_sug", use_container_width=True)
+                        bad_sug = st.button("No es útil", key="btn_bad_sug", use_container_width=True)
 
                     if enviar_sug:
                         st.session_state.chat_mensajes.append({
@@ -1454,10 +1570,18 @@ if menu == "Copilot":
                             "texto": resp_pre,
                             "timestamp": datetime.now().strftime("%H:%M")
                         })
+                        if "editar_texto" in st.session_state:
+                            del st.session_state.editar_texto
+                        st.session_state.resp_agente_txt = ""
                         st.rerun()
 
                     if editar_sug:
+                        st.session_state.resp_agente_txt = resp_pre
                         st.session_state.editar_texto = resp_pre
+                        st.rerun()
+
+                    if bad_sug:
+                        st.toast("💡 Feedback registrado. Buscando mejores respuestas para entrenar el modelo.", icon="🧠")
                 else:
                     st.info("No hay respuesta sugerida para este mensaje.")
 
@@ -1483,11 +1607,16 @@ if menu == "Copilot":
                         "texto": resp_agente.strip(),
                         "timestamp": datetime.now().strftime("%H:%M")
                     })
+                    st.session_state.resp_agente_txt = ""
                     st.rerun()
 
             with tab_notas:
-                st.text_area("Añadir nota interna al cliente...", height=100, label_visibility="collapsed", placeholder="Escribe una nota interna...")
-                st.button("Guardar nota", key="btn_guardar_nota")
+                nota = st.text_area("Añadir nota interna al cliente...", height=100, label_visibility="collapsed", placeholder="Escribe una nota interna...", key="nota_interna")
+                guardar_nota = st.button("Guardar nota", key="btn_guardar_nota")
+                if guardar_nota and nota.strip():
+                    st.toast("📝 Nota interna guardada exitosamente en la ficha del cliente.", icon="✅")
+                    st.session_state.nota_interna = ""
+                    st.rerun()
 
             st.markdown("---")
 
@@ -1538,7 +1667,7 @@ if menu == "Copilot":
                         "sla": INTERPRETACION[intencion_real]["sla_sugerido"]
                     })
                     st.session_state.total_sesion += 1
-                    st.session_state.ultima_clasificacion = {
+                    st.session_state.ultima_clasificacion_chat = {
                         "intencion": intencion_real,
                         "info": INTERPRETACION[intencion_real],
                         "urgencia": urgencia_real,
@@ -1579,7 +1708,7 @@ if menu == "Copilot":
                         "sla": INTERPRETACION[intencion_real]["sla_sugerido"]
                     })
                     st.session_state.total_sesion += 1
-                    st.session_state.ultima_clasificacion = {
+                    st.session_state.ultima_clasificacion_chat = {
                         "intencion": intencion_real,
                         "info": INTERPRETACION[intencion_real],
                         "urgencia": urgencia_real,
@@ -1780,16 +1909,14 @@ if menu == "Copilot":
             unsafe_allow_html=True
         )
 
-        if st.session_state.ultima_clasificacion is None:
+        if st.session_state.ultima_clasificacion_chat is None:
             st.info("Clasifique primero una interacción (Clasificador o Chat Simulado) para activar el Copilot.")
         else:
-            uc = st.session_state.ultima_clasificacion
+            uc = st.session_state.ultima_clasificacion_chat
             intencion_actual = uc["intencion"]
             info_actual      = uc["info"]
             texto_actual     = uc["texto"]
             canal_actual     = uc["canal"]
-            script           = COPILOT_SCRIPTS[intencion_actual]
-
             # Banner de contexto
             st.markdown(
                 f"<div class='beex-card'>"
@@ -1801,82 +1928,28 @@ if menu == "Copilot":
                 unsafe_allow_html=True
             )
 
-            # ── Panel Copilot (HU-06) ────────────────────────────────────────────
-            with st.container():
-                st.markdown("### Panel Copilot para el Agente")
+            # Usar la función helper para renderizar Copilot y FAQ
+            renderizar_copilot_y_faq(intencion_actual, info_actual, texto_actual, canal_actual, uc, suffix="copilot")
 
-                st.markdown("**📢 Script de apertura recomendado:**")
-                st.markdown(
-                    f"<div class='copilot-box'>{script['apertura']}</div>",
-                    unsafe_allow_html=True
-                )
-
-                st.markdown("**Checklist de atención:**")
-                checklist_html = ""
-                for tipo, item in script["checklist"]:
-                    icon_cls  = "checklist-icon-ok" if tipo == "ok" else "checklist-icon-warn"
-                    icon_char = "✓" if tipo == "ok" else "⚑"
-                    checklist_html += (
-                        f"<div class='checklist-item'>"
-                        f"<span class='{icon_cls}'>{icon_char}</span>"
-                        f"<span>{item}</span></div>"
-                    )
-                st.markdown(
-                    f"<div class='beex-card' style='padding:12px 16px'>{checklist_html}</div>",
-                    unsafe_allow_html=True
-                )
-
-                st.markdown("**🔚 Frase de cierre recomendada:**")
-                st.markdown(
-                    f"<div class='copilot-box'>{script['cierre']}</div>",
-                    unsafe_allow_html=True
-                )
-
-                if uc["urgencia"]:
-                    st.markdown(
-                        "<div class='urgencia-banner'>⚡ URGENCIA DETECTADA — "
-                        "Aplicar protocolo Fast-Track. Notificar supervisor y escalar "
-                        "con código de prioridad ROJO.</div>",
-                        unsafe_allow_html=True
-                    )
-
-            # ── Panel FAQ / RAG (HU-07) ──────────────────────────────────────────
-            with st.container():
-                st.markdown("### Respuestas Automáticas Sugeridas (RAG)")
-                st.caption(f"Base de conocimiento Beex · Categoría: {intencion_actual}")
-
-                faqs = buscar_faq(texto_actual, intencion_actual)
-                if faqs:
-                    for i, faq in enumerate(faqs, 1):
-                        with st.expander(f"📄 {faq['pregunta']}", expanded=(i == 1)):
+            st.markdown("---")
+            st.markdown("#### Buscar en base de conocimiento")
+            busqueda_manual = st.text_input("Buscar por categoría:",
+                                            placeholder="Ej: 'Reclamos' o 'Ventas'", key="busqueda_faq")
+            if busqueda_manual:
+                cat_busq = next((c for c in FAQ_BEEX if c.lower() in busqueda_manual.lower()), None)
+                if cat_busq:
+                    st.markdown(f"**Resultados para: {cat_busq}**")
+                    for item in FAQ_BEEX[cat_busq]:
+                        with st.expander(f"📄 {item['pregunta']}"):
                             st.markdown(
-                                f"<div class='faq-box'>{faq['respuesta']}</div>",
+                                f"<div class='faq-box'>{item['respuesta']}</div>",
                                 unsafe_allow_html=True
                             )
-                            st.button("Usar esta respuesta", key=f"usar_faq_{i}",
-                                      help="Copie esta respuesta para enviarla al cliente.")
                 else:
-                    st.info("No se encontraron respuestas automáticas. El agente debe responder manualmente.")
-
-                st.markdown("---")
-                st.markdown("#### Buscar en base de conocimiento")
-                busqueda_manual = st.text_input("Buscar por categoría:",
-                                                placeholder="Ej: 'Reclamos' o 'Ventas'", key="busqueda_faq")
-                if busqueda_manual:
-                    cat_busq = next((c for c in FAQ_BEEX if c.lower() in busqueda_manual.lower()), None)
-                    if cat_busq:
-                        st.markdown(f"**Resultados para: {cat_busq}**")
-                        for item in FAQ_BEEX[cat_busq]:
-                            with st.expander(f"📄 {item['pregunta']}"):
-                                st.markdown(
-                                    f"<div class='faq-box'>{item['respuesta']}</div>",
-                                    unsafe_allow_html=True
-                                )
-                    else:
-                        st.warning("Intente con: Soporte, Facturacion, Ventas o Reclamos.")
+                    st.warning("Intente con: Soporte, Facturacion, Ventas o Reclamos.")
 
         # Explorador completo
-        if st.session_state.ultima_clasificacion is not None:
+        if st.session_state.ultima_clasificacion_chat is not None:
             st.markdown("---")
             st.markdown("### Explorador completo de base de conocimiento")
             cat_sel = st.selectbox(

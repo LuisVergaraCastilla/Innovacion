@@ -68,5 +68,85 @@
     "prioridad": "Normal",
     "urgencia": false,
     "sla": "≤ 3 min"
+  },
+  {
+    "timestamp": "16:11:57",
+    "canal": "WhatsApp",
+    "agente": "N/A",
+    "mensaje": "no puedo entrar a la plataforma, me dice contraseña incorrecta pero es la correcta",
+    "intencion": "Reclamos",
+    "prioridad": "CRÍTICA",
+    "urgencia": false,
+    "sla": "≤ 30 seg"
+  },
+  {
+    "timestamp": "16:13:38",
+    "canal": "WhatsApp",
+    "agente": "N/A",
+    "mensaje": "quiero mejorar mi plan actual, tienen alguna promoción para clientes antiguos",
+    "intencion": "Ventas",
+    "prioridad": "Alta",
+    "urgencia": false,
+    "sla": "≤ 1 min"
+  },
+  {
+    "timestamp": "16:13:56",
+    "canal": "WhatsApp",
+    "agente": "N/A",
+    "mensaje": "quiero mejorar mi plan actual, tienen alguna promoción para clientes antiguos",
+    "intencion": "Ventas",
+    "prioridad": "Alta",
+    "urgencia": false,
+    "sla": "≤ 1 min"
+  },
+  {
+    "timestamp": "16:15:25",
+    "canal": "WhatsApp",
+    "agente": "N/A",
+    "mensaje": "no puedo entrar a la plataforma, me dice contraseña incorrecta pero es la correcta",
+    "intencion": "Reclamos",
+    "prioridad": "CRÍTICA",
+    "urgencia": false,
+    "sla": "≤ 30 seg"
+  },
+  {
+    "timestamp": "16:21:19",
+    "canal": "WhatsApp",
+    "agente": "N/A",
+    "mensaje": "EXIJO hablar con un supervisor, me cobraron doble y llevo 3 días sin solución, esto es una basura",
+    "intencion": "Reclamos",
+    "prioridad": "CRÍTICA",
+    "urgencia": true,
+    "sla": "≤ 30 seg"
+  },
+  {
+    "timestamp": "16:25:50",
+    "canal": "WhatsApp",
+    "agente": "N/A",
+    "mensaje": "buenos días, me interesa contratar el servicio de fibra óptica, cuáles son los planes disponibles",
+    "intencion": "Ventas",
+    "prioridad": "Alta",
+    "urgencia": false,
+    "sla": "≤ 1 min"
+  },
+  {
+    "timestamp": "16:34:41",
+    "canal": "WhatsApp",
+    "agente": "N/A",
+    "mensaje": "EXIJO hablar con un supervisor, me cobraron doble y llevo 3 días sin solución, esto es una basura",
+    "intencion": "Reclamos",
+    "prioridad": "CRÍTICA",
+    "urgencia": true,
+    "sla": "≤ 30 seg"
+  },
+  {
+    "timestamp": "16:35",
+    "canal": "Instagram",
+    "agente": "Chat Sim",
+    "mensaje": "el técnico nunca llegó a la cita que tenía programada, perdí el día",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 2 min"
   }
 ]
