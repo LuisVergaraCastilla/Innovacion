@@ -1,35 +1,9 @@
 [
   {
     "tipo": "cliente",
-    "texto": "el servicio no funciona desde esta mañana, reinicié el router y nada",
-    "intencion": "Soporte",
+    "texto": "quiero pagar mi factura pero me sale error en la página de pagos",
+    "intencion": "Facturacion",
     "urgencia": false,
-    "timestamp": "00:47"
-  },
-  {
-    "tipo": "cliente",
-    "texto": "esto es inaceptable, me prometieron resolver en 24 horas y ya pasó una semana",
-    "intencion": "Reclamos",
-    "urgencia": true,
-    "timestamp": "00:48"
-  },
-  {
-    "tipo": "cliente",
-    "texto": "nunca más voy a recomendar este servicio, es una basura total",
-    "intencion": "Reclamos",
-    "urgencia": true,
-    "timestamp": "00:52"
-  },
-  {
-    "tipo": "agente",
-    "texto": "Entiendo su malestar y lo tomamos muy en serio. Lo conectaré de inmediato con nuestro supervisor de turno. Estoy registrando su reclamo con código prioritario para que tenga todo el contexto. Gracias por su paciencia.",
-    "timestamp": "00:52"
-  },
-  {
-    "tipo": "cliente",
-    "texto": "quiero contratar el servicio para mi negocio, tienen planes empresariales",
-    "intencion": "Ventas",
-    "urgencia": false,
-    "timestamp": "00:56"
+    "timestamp": "15:59"
   }
 ]

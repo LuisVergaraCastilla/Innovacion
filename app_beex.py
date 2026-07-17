@@ -521,30 +521,82 @@ st.markdown("""
         margin: 0;
         cursor: pointer;
         transition: all 0.2s ease;
+        border-left: 4px solid transparent !important;
     }
     [data-testid="stSidebar"] div[role="radiogroup"] label:hover {
-        background-color: var(--c-bg-secondary);
-        color: var(--beex-blue);
+        background-color: var(--c-bg-secondary) !important;
     }
-    [data-testid="stSidebar"] div[role="radiogroup"] label[data-checked="true"] {
+    [data-testid="stSidebar"] div[role="radiogroup"] label:hover div[data-testid="stMarkdownContainer"] p {
+        color: var(--beex-blue) !important;
+    }
+    
+    /* Estado Activo / Seleccionado */
+    [data-testid="stSidebar"] div[role="radiogroup"] label[data-checked="true"],
+    [data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) {
         background-color: var(--c-bg-secondary) !important;
         border-left: 4px solid var(--beex-blue) !important;
     }
-    [data-testid="stSidebar"] div[role="radiogroup"] label[data-checked="true"] div[data-testid="stMarkdownContainer"] p {
+    [data-testid="stSidebar"] div[role="radiogroup"] label[data-checked="true"] div[data-testid="stMarkdownContainer"] p,
+    [data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) div[data-testid="stMarkdownContainer"] p {
         color: var(--beex-blue) !important;
         font-weight: 700 !important;
     }
+    [data-testid="stSidebar"] div[role="radiogroup"] label[data-checked="true"] div[data-testid="stMarkdownContainer"] p::before,
+    [data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) div[data-testid="stMarkdownContainer"] p::before {
+        font-variation-settings: "FILL" 1 !important;
+        color: var(--beex-blue) !important;
+    }
+
     [data-testid="stSidebar"] div[role="radiogroup"] label div[data-testid="stMarkdownContainer"] p {
         font-size: var(--text-base) !important;
         font-weight: 600;
         color: var(--c-text-secondary);
         margin: 0;
+        display: flex !important;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.2s ease;
     }
-    /* Hide the radio circle */
-    [data-testid="stSidebar"] div[role="radiogroup"] label span[data-baseweb="radio"] {
+    [data-testid="stSidebar"] div[role="radiogroup"] label div[data-testid="stMarkdownContainer"] p::before {
+        font-family: 'Material Symbols Outlined';
+        font-size: 22px;
+        font-weight: normal;
+        font-style: normal;
+        line-height: 1;
+        display: inline-block;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+        -webkit-font-smoothing: antialiased;
+        transition: all 0.2s ease;
+        font-variation-settings: "FILL" 0;
+    }
+    [data-testid="stSidebar"] div[role="radiogroup"] label:nth-of-type(1) div[data-testid="stMarkdownContainer"] p::before {
+        content: 'dashboard';
+    }
+    [data-testid="stSidebar"] div[role="radiogroup"] label:nth-of-type(2) div[data-testid="stMarkdownContainer"] p::before {
+        content: 'history';
+    }
+    [data-testid="stSidebar"] div[role="radiogroup"] label:nth-of-type(3) div[data-testid="stMarkdownContainer"] p::before {
+        content: 'smart_toy';
+    }
+    [data-testid="stSidebar"] div[role="radiogroup"] label:nth-of-type(4) div[data-testid="stMarkdownContainer"] p::before {
+        content: 'category';
+    }
+    
+    /* Ocultar el círculo nativo de Streamlit de forma segura sin romper el click */
+    [data-testid="stSidebar"] div[role="radiogroup"] label div:has(> [data-testid="stMarkdownContainer"]) > *:first-child {
         display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        pointer-events: none !important;
     }
-    /* Hide radio label if it's there */
+    
+    /* Ocultar label del widget si existe */
     [data-testid="stSidebar"] [data-testid="stWidgetLabel"] {
         display: none !important;
     }
@@ -821,6 +873,87 @@ def inicializar_session_state():
 inicializar_session_state()
 
 # ==============================================================================
+# DIÁLOGO DE CONFIRMACIÓN PARA NUEVA SESIÓN
+# ==============================================================================
+@st.dialog("Confirmar Nueva Sesión")
+def dialog_nueva_sesion():
+    st.write("Los chats y clasificaciones de la sesión actual que no hayan sido guardados se eliminarán permanentemente.")
+    
+    # Preparar datos para descargar
+    historial = st.session_state.get("historial", [])
+    chat_mensajes = st.session_state.get("chat_mensajes", [])
+    
+    # Ofrecer opciones de exportación
+    st.markdown("#### Exportar datos actuales:")
+    col1, col2 = st.columns(2)
+    with col1:
+        if historial:
+            df = pd.DataFrame(historial)
+            csv = df.to_csv(index=False).encode('utf-8')
+            st.download_button(
+                label="Descargar Historial (CSV)",
+                data=csv,
+                file_name=f"historial_beex_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+                mime="text/csv",
+                use_container_width=True
+            )
+        else:
+            st.button(
+                label="Descargar Historial (CSV)",
+                disabled=True,
+                use_container_width=True,
+                key="btn_descargar_historial_disabled"
+            )
+            
+    with col2:
+        if chat_mensajes:
+            chat_json = json.dumps(chat_mensajes, indent=2, ensure_ascii=False)
+            st.download_button(
+                label="Descargar Chat (JSON)",
+                data=chat_json,
+                file_name=f"chat_beex_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
+                mime="application/json",
+                use_container_width=True
+            )
+        else:
+            st.button(
+                label="Descargar Chat (JSON)",
+                disabled=True,
+                use_container_width=True,
+                key="btn_descargar_chat_disabled"
+            )
+            
+    st.markdown("---")
+    
+    col_cancel, col_confirm = st.columns(2)
+    with col_cancel:
+        if st.button("Cancelar", use_container_width=True):
+            st.rerun()
+            
+    with col_confirm:
+        if st.button("Sí, borrar todo", type="primary", use_container_width=True):
+            # Crear backups antes de borrar
+            import shutil
+            if os.path.exists("historial_persistente.json"):
+                try:
+                    shutil.copy("historial_persistente.json", "historial_persistente_backup.json")
+                except Exception:
+                    pass
+                os.remove("historial_persistente.json")
+            if os.path.exists("chat_persistente.json"):
+                try:
+                    shutil.copy("chat_persistente.json", "chat_persistente_backup.json")
+                except Exception:
+                    pass
+                os.remove("chat_persistente.json")
+                
+            for k in ["historial", "ultima_clasificacion", "total_sesion",
+                      "chat_mensajes", "chat_cliente", "chat_canal"]:
+                if k in st.session_state:
+                    del st.session_state[k]
+            st.rerun()
+
+# ==============================================================================
 # SIDEBAR
 # ==============================================================================
 with st.sidebar:
@@ -856,15 +989,31 @@ with st.sidebar:
 
     # Botón de Nueva Sesión (Primary)
     if st.button("+ New Session", type="primary", use_container_width=True, key="btn_limpiar_sesion"):
-        for k in ["historial", "ultima_clasificacion", "total_sesion",
-                  "chat_mensajes", "chat_cliente", "chat_canal"]:
-            if k in st.session_state:
-                del st.session_state[k]
-        if os.path.exists("historial_persistente.json"):
-            os.remove("historial_persistente.json")
-        if os.path.exists("chat_persistente.json"):
-            os.remove("chat_persistente.json")
-        st.rerun()
+        dialog_nueva_sesion()
+
+    # Botón para restaurar última sesión si hay backups
+    if os.path.exists("historial_persistente_backup.json") or os.path.exists("chat_persistente_backup.json"):
+        if st.button("🔄 Restore Last Session", type="secondary", use_container_width=True, key="btn_restaurar_backup"):
+            import shutil
+            if os.path.exists("historial_persistente_backup.json"):
+                try:
+                    shutil.copy("historial_persistente_backup.json", "historial_persistente.json")
+                    os.remove("historial_persistente_backup.json")
+                except Exception:
+                    pass
+            if os.path.exists("chat_persistente_backup.json"):
+                try:
+                    shutil.copy("chat_persistente_backup.json", "chat_persistente.json")
+                    os.remove("chat_persistente_backup.json")
+                except Exception:
+                    pass
+            
+            # Forzar recarga de session state
+            for k in ["historial", "ultima_clasificacion", "total_sesion", "chat_mensajes"]:
+                if k in st.session_state:
+                    del st.session_state[k]
+            st.toast("✅ Sesión restaurada con éxito", icon="🔄")
+            st.rerun()
 
     # Perfil del Agente
     st.markdown(
@@ -1450,17 +1599,6 @@ if menu == "Historial":
         <div style='display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:var(--c-bg);border-bottom:1px solid var(--c-border);position:sticky;top:0;z-index:10;margin:-16px -16px 24px -16px'>
             <div style='display:flex;align-items:center;gap:24px'>
                 <h2 style='margin:0;font-size:20px;font-weight:700;color:var(--beex-blue);letter-spacing:-0.01em'>BEEX AI Historial</h2>
-                <div style='display:flex;gap:16px;align-items:center'>
-                    <span style='font-size:14px;font-weight:600;color:var(--beex-blue);border-bottom:2px solid var(--beex-blue);padding-bottom:4px;cursor:pointer'>Recent</span>
-                    <span style='font-size:14px;font-weight:600;color:var(--c-text-muted);cursor:pointer'>Pinned</span>
-                </div>
-            </div>
-            <div style='display:flex;gap:12px;align-items:center'>
-                <div style='background:var(--c-bg-secondary);border:1px solid var(--c-border);padding:8px 16px;border-radius:9999px;font-size:12px;color:var(--c-text-muted);display:flex;align-items:center;gap:8px'>
-                    🔍 Search history...
-                </div>
-                <button style='background:var(--beex-blue);color:white;border:none;border-radius:9999px;padding:8px 16px;font-weight:600;font-size:12px;cursor:pointer'>New Transcription</button>
-                <button style='background:white;color:var(--c-text);border:1px solid var(--c-border);border-radius:9999px;padding:8px 16px;font-weight:600;font-size:12px;cursor:pointer'>📥 Exportar</button>
             </div>
         </div>
         """,

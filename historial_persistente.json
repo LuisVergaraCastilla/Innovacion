@@ -58,5 +58,15 @@
     "prioridad": "Alta",
     "urgencia": false,
     "sla": "≤ 1 min"
+  },
+  {
+    "timestamp": "15:59",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "quiero pagar mi factura pero me sale error en la página de pagos",
+    "intencion": "Facturacion",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 3 min"
   }
 ]
