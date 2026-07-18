@@ -1,0 +1,9 @@
+[
+  {
+    "tipo": "cliente",
+    "texto": "voy a presentar una queja formal en INDECOPI si no me resuelven hoy",
+    "intencion": "Reclamos",
+    "urgencia": true,
+    "timestamp": "11:18"
+  }
+]

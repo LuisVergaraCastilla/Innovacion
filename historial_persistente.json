@@ -1,0 +1,332 @@
+[
+  {
+    "timestamp": "00:44",
+    "canal": "WhatsApp",
+    "agente": "Chat Sim",
+    "mensaje": "el técnico vino ayer y sigue sin funcionar, necesito ayuda urgente",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
+    "urgencia": true,
+    "sla": "≤ 2 min"
+  },
+  {
+    "timestamp": "00:45",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "tengo problemas para acceder a la plataforma, me da error 503",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 2 min"
+  },
+  {
+    "timestamp": "00:47",
+    "canal": "Instagram",
+    "agente": "Chat Sim",
+    "mensaje": "el servicio no funciona desde esta mañana, reinicié el router y nada",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 2 min"
+  },
+  {
+    "timestamp": "00:48",
+    "canal": "Instagram",
+    "agente": "Chat Sim",
+    "mensaje": "esto es inaceptable, me prometieron resolver en 24 horas y ya pasó una semana",
+    "intencion": "Reclamos",
+    "prioridad": "CRÍTICA",
+    "urgencia": true,
+    "sla": "≤ 30 seg"
+  },
+  {
+    "timestamp": "00:52",
+    "canal": "Instagram",
+    "agente": "Chat Sim",
+    "mensaje": "nunca más voy a recomendar este servicio, es una basura total",
+    "intencion": "Reclamos",
+    "prioridad": "CRÍTICA",
+    "urgencia": true,
+    "sla": "≤ 30 seg"
+  },
+  {
+    "timestamp": "00:56",
+    "canal": "Instagram",
+    "agente": "Chat Sim",
+    "mensaje": "quiero contratar el servicio para mi negocio, tienen planes empresariales",
+    "intencion": "Ventas",
+    "prioridad": "Alta",
+    "urgencia": false,
+    "sla": "≤ 1 min"
+  },
+  {
+    "timestamp": "15:59",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "quiero pagar mi factura pero me sale error en la página de pagos",
+    "intencion": "Facturacion",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 3 min"
+  },
+  {
+    "timestamp": "16:11:57",
+    "canal": "WhatsApp",
+    "agente": "N/A",
+    "mensaje": "no puedo entrar a la plataforma, me dice contraseña incorrecta pero es la correcta",
+    "intencion": "Reclamos",
+    "prioridad": "CRÍTICA",
+    "urgencia": false,
+    "sla": "≤ 30 seg"
+  },
+  {
+    "timestamp": "16:13:38",
+    "canal": "WhatsApp",
+    "agente": "N/A",
+    "mensaje": "quiero mejorar mi plan actual, tienen alguna promoción para clientes antiguos",
+    "intencion": "Ventas",
+    "prioridad": "Alta",
+    "urgencia": false,
+    "sla": "≤ 1 min"
+  },
+  {
+    "timestamp": "16:13:56",
+    "canal": "WhatsApp",
+    "agente": "N/A",
+    "mensaje": "quiero mejorar mi plan actual, tienen alguna promoción para clientes antiguos",
+    "intencion": "Ventas",
+    "prioridad": "Alta",
+    "urgencia": false,
+    "sla": "≤ 1 min"
+  },
+  {
+    "timestamp": "16:15:25",
+    "canal": "WhatsApp",
+    "agente": "N/A",
+    "mensaje": "no puedo entrar a la plataforma, me dice contraseña incorrecta pero es la correcta",
+    "intencion": "Reclamos",
+    "prioridad": "CRÍTICA",
+    "urgencia": false,
+    "sla": "≤ 30 seg"
+  },
+  {
+    "timestamp": "16:21:19",
+    "canal": "WhatsApp",
+    "agente": "N/A",
+    "mensaje": "EXIJO hablar con un supervisor, me cobraron doble y llevo 3 días sin solución, esto es una basura",
+    "intencion": "Reclamos",
+    "prioridad": "CRÍTICA",
+    "urgencia": true,
+    "sla": "≤ 30 seg"
+  },
+  {
+    "timestamp": "16:25:50",
+    "canal": "WhatsApp",
+    "agente": "N/A",
+    "mensaje": "buenos días, me interesa contratar el servicio de fibra óptica, cuáles son los planes disponibles",
+    "intencion": "Ventas",
+    "prioridad": "Alta",
+    "urgencia": false,
+    "sla": "≤ 1 min"
+  },
+  {
+    "timestamp": "16:34:41",
+    "canal": "WhatsApp",
+    "agente": "N/A",
+    "mensaje": "EXIJO hablar con un supervisor, me cobraron doble y llevo 3 días sin solución, esto es una basura",
+    "intencion": "Reclamos",
+    "prioridad": "CRÍTICA",
+    "urgencia": true,
+    "sla": "≤ 30 seg"
+  },
+  {
+    "timestamp": "16:35",
+    "canal": "Instagram",
+    "agente": "Chat Sim",
+    "mensaje": "el técnico nunca llegó a la cita que tenía programada, perdí el día",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 2 min"
+  },
+  {
+    "timestamp": "16:57",
+    "canal": "Teléfono",
+    "agente": "Chat Sim",
+    "mensaje": "el servicio no funciona desde esta mañana, reinicié el router y nada",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 2 min"
+  },
+  {
+    "timestamp": "16:57",
+    "canal": "Teléfono",
+    "agente": "Chat Sim",
+    "mensaje": "Hola que tal eres Ollama?",
+    "intencion": "Ventas",
+    "prioridad": "Alta",
+    "urgencia": false,
+    "sla": "≤ 1 min"
+  },
+  {
+    "timestamp": "17:01",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "el técnico vino ayer y sigue sin funcionar, necesito ayuda urgente",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
+    "urgencia": true,
+    "sla": "≤ 2 min"
+  },
+  {
+    "timestamp": "17:02",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "quiero mejorar mi plan actual, qué opciones tienen disponibles",
+    "intencion": "Ventas",
+    "prioridad": "Alta",
+    "urgencia": false,
+    "sla": "≤ 1 min"
+  },
+  {
+    "timestamp": "17:02",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "Hola que tal eres un modelo de IA?",
+    "intencion": "Ventas",
+    "prioridad": "Alta",
+    "urgencia": false,
+    "sla": "≤ 1 min"
+  },
+  {
+    "timestamp": "17:03",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "Cuanto es 1 + 20",
+    "intencion": "Facturacion",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 3 min"
+  },
+  {
+    "timestamp": "17:05",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "Que tipo de agente eres?",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 2 min"
+  },
+  {
+    "timestamp": "17:06",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "Que tipo de modelo de IA eres? Llama3 ?",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 2 min"
+  },
+  {
+    "timestamp": "17:08",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "mi internet no funciona, por favor explícame detalladamente en exactamente 3 puntos cortos qué debo ",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 2 min"
+  },
+  {
+    "timestamp": "17:10",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "mi internet no funciona, por favor explícame detalladamente en exactamente 3 puntos cortos qué debo ",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 2 min"
+  },
+  {
+    "timestamp": "17:11",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "mi internet no funciona, por favor explícame detalladamente en exactamente 3 puntos cortos qué debo ",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 2 min"
+  },
+  {
+    "timestamp": "17:13",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "Puedes darme la lista de productos que ofrecen ",
+    "intencion": "Soporte",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 2 min"
+  },
+  {
+    "timestamp": "17:14",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "Que planes ofrecen?",
+    "intencion": "Ventas",
+    "prioridad": "Alta",
+    "urgencia": false,
+    "sla": "≤ 1 min"
+  },
+  {
+    "timestamp": "17:15",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "Que otros planes mas ofrecen? no hay uno con descuento o promocion?",
+    "intencion": "Facturacion",
+    "prioridad": "Normal",
+    "urgencia": false,
+    "sla": "≤ 3 min"
+  },
+  {
+    "timestamp": "09:08",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "Hola que tal ke gustaria hablar con un asesor",
+    "intencion": "Ventas",
+    "prioridad": "Alta",
+    "urgencia": false,
+    "sla": "≤ 1 min"
+  },
+  {
+    "timestamp": "09:09",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "Hola que tal ke gustaria hablar con un asesor",
+    "intencion": "Ventas",
+    "prioridad": "Alta",
+    "urgencia": false,
+    "sla": "≤ 1 min"
+  },
+  {
+    "timestamp": "09:10",
+    "canal": "Webchat",
+    "agente": "Chat Sim",
+    "mensaje": "Hola que tal ke gustaria hablar con un asesor para que me ayude con la respuesta de 1+3",
+    "intencion": "Ventas",
+    "prioridad": "Alta",
+    "urgencia": false,
+    "sla": "≤ 1 min"
+  },
+  {
+    "timestamp": "11:18",
+    "canal": "Instagram",
+    "agente": "Chat Sim",
+    "mensaje": "voy a presentar una queja formal en INDECOPI si no me resuelven hoy",
+    "intencion": "Reclamos",
+    "prioridad": "CRÍTICA",
+    "urgencia": true,
+    "sla": "≤ 30 seg"
+  }
+]
