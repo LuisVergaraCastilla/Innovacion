@@ -1,21 +1,9 @@
 [
   {
     "tipo": "cliente",
-    "texto": "quiero pagar mi factura pero me sale error en la página de pagos",
-    "intencion": "Facturacion",
-    "urgencia": false,
-    "timestamp": "15:59"
-  },
-  {
-    "tipo": "agente",
-    "texto": "Puede consultar su saldo en tiempo real en: (1) App Beex → Mi Cuenta → Estado de cuenta, (2) enviando 'SALDO' al WhatsApp corporativo. Su próximo vencimiento y el monto exacto aparecerán de forma inmediata.",
-    "timestamp": "16:35"
-  },
-  {
-    "tipo": "cliente",
-    "texto": "el técnico nunca llegó a la cita que tenía programada, perdí el día",
-    "intencion": "Soporte",
-    "urgencia": false,
-    "timestamp": "16:35"
+    "texto": "voy a presentar una queja formal en INDECOPI si no me resuelven hoy",
+    "intencion": "Reclamos",
+    "urgencia": true,
+    "timestamp": "11:18"
   }
 ]

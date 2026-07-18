@@ -43,6 +43,13 @@ Levanta el servidor local de Streamlit con el siguiente comando:
 streamlit run app_beex.py
 ```
 
+### 5. Configurar y Ejecutar Ollama (Modelo local)
+Esta aplicación utiliza el modelo `llama3` ejecutado de manera local mediante Ollama. Para que el agente conversacional funcione, necesitas levantar el servidor de Ollama con este modelo:
+```bash
+ollama run llama3
+```
+*El servidor local de Ollama correrá por defecto en `http://localhost:11434`.*
+
 Automáticamente se abrirá una pestaña en tu navegador web por defecto (generalmente en `http://localhost:8501`) con la aplicación BEEX lista para usar.
 
 ## Estructura Principal

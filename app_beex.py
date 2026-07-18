@@ -841,6 +841,61 @@ def buscar_faq(texto: str, intencion: str) -> list:
                   if any(kw in texto_lower for kw in item["keywords"])]
     return resultados if resultados else FAQ_BEEX.get(intencion, [])
 
+def generar_respuesta_llm_local(texto_cliente: str, intencion_clasificada: str, historial_chat: list) -> tuple:
+    import requests
+    
+    # 1. Recuperamos la respuesta local de la base de conocimiento como base / fallback
+    contexto_faq = buscar_faq(texto_cliente, intencion_clasificada)
+    contexto_str = "\n".join([f"Pregunta: {f['pregunta']}\nRespuesta: {f['respuesta']}" for f in contexto_faq[:2]])
+    resp_fallback = contexto_faq[0]["respuesta"] if contexto_faq else "No hay respuestas recomendadas disponibles."
+    
+    script_guia = COPILOT_SCRIPTS.get(intencion_clasificada, {"apertura": "", "cierre": ""})
+    
+    system_prompt = f"""
+    Eres un agente de atención al cliente de la empresa Beex. 
+    Tu objetivo es responder de manera amable, directa y profesional.
+    La intención detectada del cliente es: {intencion_clasificada}.
+    
+    Usa la siguiente información autorizada de la base de conocimiento para responder:
+    {contexto_str}
+    
+    Lineamientos obligatorios:
+    - Debes saludar si es el inicio de la conversación.
+    - Sé muy claro y conciso.
+    - Utiliza un tono corporativo formal.
+    """
+    
+    # Formateamos el prompt en formato simple de diálogo
+    prompt_completo = f"System: {system_prompt}\n"
+    for msg in historial_chat[-4:]:
+        role = "User" if msg["tipo"] == "cliente" else "Assistant"
+        prompt_completo += f"{role}: {msg['texto']}\n"
+    prompt_completo += f"User: {texto_cliente}\nAssistant: "
+    
+    try:
+        # Hacemos la llamada al API local de Ollama (Recomendamos el modelo 'llama3' (8B))
+        response = requests.post(
+            "http://localhost:11434/api/generate",
+            json={
+                "model": "llama3",
+                "prompt": prompt_completo,
+                "stream": False,
+                "options": {
+                    "temperature": 0.3
+                }
+            },
+            timeout=30 # Incrementamos el timeout a 30s para que la CPU de Ollama no muera en el intento
+        )
+        if response.status_code == 200:
+            res_txt = response.json().get("response", "").strip()
+            if res_txt:
+                return res_txt, "Ollama (Llama 3)"
+    except Exception:
+        # Si Ollama no está activo o no tiene el modelo, retorna la respuesta estática RAG
+        pass
+        
+    return resp_fallback, "Base de Conocimiento (Fallback)"
+
 def renderizar_copilot_y_faq(intencion_actual, info_actual, texto_actual, canal_actual, uc, suffix="", compact=False):
     script = COPILOT_SCRIPTS[intencion_actual]
 
@@ -966,6 +1021,12 @@ def inicializar_session_state():
         st.session_state.ultima_clasificacion_manual = None
     if "ultima_clasificacion_chat" not in st.session_state:
         st.session_state.ultima_clasificacion_chat = None
+    if "sugerencia_actual" not in st.session_state:
+        st.session_state.sugerencia_actual = ""
+    if "composer_key" not in st.session_state:
+        st.session_state.composer_key = "resp_agente_txt_0"
+    if "sugerencia_proveedor" not in st.session_state:
+        st.session_state.sugerencia_proveedor = ""
     if "total_sesion" not in st.session_state:
         st.session_state.total_sesion = len(st.session_state.historial)
     if "chat_cliente" not in st.session_state:
@@ -1546,14 +1607,26 @@ if menu == "Copilot":
                 tab_resp, tab_notas = st.tabs(["Respuesta sugerida", "Notas internas"])
 
             with tab_resp:
-                # Buscar sugerencia
-                resp_pre = ""
-                if st.session_state.chat_mensajes and st.session_state.chat_mensajes[-1]["tipo"] == "cliente":
-                    last_intent = st.session_state.chat_mensajes[-1]["intencion"]
-                    faqs_resp   = buscar_faq(st.session_state.chat_mensajes[-1]["texto"], last_intent)
-                    resp_pre    = faqs_resp[0]["respuesta"] if faqs_resp else ""
-
+                # Recuperar sugerencia inteligente usando LLM Local (Ollama) desde caché
+                resp_pre = st.session_state.get("sugerencia_actual", "")
+                if not resp_pre and st.session_state.chat_mensajes and st.session_state.chat_mensajes[-1]["tipo"] == "cliente":
+                    last_intent  = st.session_state.chat_mensajes[-1]["intencion"]
+                    texto_ultimo = st.session_state.chat_mensajes[-1]["texto"]
+                    resp_pre, prov = generar_respuesta_llm_local(texto_ultimo, last_intent, st.session_state.chat_mensajes)
+                    st.session_state.sugerencia_actual = resp_pre
+                    st.session_state.sugerencia_proveedor = prov
+ 
                 if resp_pre:
+                    proveedor = st.session_state.get("sugerencia_proveedor", "Base de Conocimiento (Fallback)")
+                    badge_bg = "rgba(59, 130, 246, 0.15)" if "Ollama" in proveedor else "rgba(107, 114, 128, 0.15)"
+                    badge_color = "#3b82f6" if "Ollama" in proveedor else "#6b7280"
+                    st.markdown(
+                        f"<div style='display:flex;justify-content:space-between;align-items:center;margin-bottom:8px'>"
+                        f"<span style='font-size:12px;font-weight:700;color:var(--c-text-muted)'>Respuesta Sugerida:</span>"
+                        f"<span style='background:{badge_bg};color:{badge_color};padding:2px 8px;border-radius:12px;font-size:10px;font-weight:700'>🤖 {proveedor}</span>"
+                        f"</div>", 
+                        unsafe_allow_html=True
+                    )
                     st.markdown(f"<div class='suggested-box'>{resp_pre}</div>", unsafe_allow_html=True)
                 
                     col_send, col_edit, col_bad = st.columns([3, 2, 2])
@@ -1572,12 +1645,15 @@ if menu == "Copilot":
                         })
                         if "editar_texto" in st.session_state:
                             del st.session_state.editar_texto
-                        st.session_state.resp_agente_txt = ""
+                        st.session_state.sugerencia_actual = ""
+                        st.session_state.composer_counter = st.session_state.get("composer_counter", 0) + 1
+                        st.session_state.composer_key = f"resp_agente_txt_{st.session_state.composer_counter}"
                         st.rerun()
 
                     if editar_sug:
-                        st.session_state.resp_agente_txt = resp_pre
                         st.session_state.editar_texto = resp_pre
+                        st.session_state.composer_counter = st.session_state.get("composer_counter", 0) + 1
+                        st.session_state.composer_key = f"resp_agente_txt_{st.session_state.composer_counter}"
                         st.rerun()
 
                     if bad_sug:
@@ -1585,14 +1661,14 @@ if menu == "Copilot":
                 else:
                     st.info("No hay respuesta sugerida para este mensaje.")
 
-                # Input manual
+                # Input manual (se usa composer_key dinámico para poder reiniciarlo/limpiarlo legalmente)
                 texto_a_enviar = st.session_state.get("editar_texto", "")
                 resp_col, send_col = st.columns([6, 1])
                 with resp_col:
                     resp_agente = st.text_input(
                         "Escribe un mensaje...",
                         value=texto_a_enviar,
-                        key="resp_agente_txt",
+                        key=st.session_state.composer_key,
                         label_visibility="collapsed",
                         placeholder="Escribe un mensaje..."
                     )
@@ -1607,7 +1683,9 @@ if menu == "Copilot":
                         "texto": resp_agente.strip(),
                         "timestamp": datetime.now().strftime("%H:%M")
                     })
-                    st.session_state.resp_agente_txt = ""
+                    st.session_state.sugerencia_actual = ""
+                    st.session_state.composer_counter = st.session_state.get("composer_counter", 0) + 1
+                    st.session_state.composer_key = f"resp_agente_txt_{st.session_state.composer_counter}"
                     st.rerun()
 
             with tab_notas:
@@ -1674,6 +1752,13 @@ if menu == "Copilot":
                         "texto": texto_manual.strip(),
                         "canal": st.session_state.chat_canal
                     }
+                    if "editar_texto" in st.session_state:
+                        del st.session_state.editar_texto
+                    # Pre-calcula la sugerencia local del LLM (Ollama)
+                    with st.spinner("🤖 Consultando a Llama 3 local en Ollama..."):
+                        sug, prov = generar_respuesta_llm_local(texto_manual.strip(), intencion_real, st.session_state.chat_mensajes)
+                        st.session_state.sugerencia_actual = sug
+                        st.session_state.sugerencia_proveedor = prov
                     st.rerun()
 
             else:  # Modo aleatorio
@@ -1715,6 +1800,13 @@ if menu == "Copilot":
                         "texto": texto_cliente,
                         "canal": st.session_state.chat_canal
                     }
+                    if "editar_texto" in st.session_state:
+                        del st.session_state.editar_texto
+                    # Pre-calcula la sugerencia local del LLM (Ollama)
+                    with st.spinner("🤖 Generando sugerencia con Llama 3 local en Ollama..."):
+                        sug, prov = generar_respuesta_llm_local(texto_cliente, intencion_real, st.session_state.chat_mensajes)
+                        st.session_state.sugerencia_actual = sug
+                        st.session_state.sugerencia_proveedor = prov
                     st.rerun()
 
 
